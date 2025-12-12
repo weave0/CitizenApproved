@@ -647,3 +647,11 @@ font[style*="vertical-align: inherit"] {
   vertical-align: unset !important;
 }
 
+/* Animation delays */
+.animation-delay-3000 {
+  animation-delay: -3s;
+}
+
+.animation-delay-5000 {
+  animation-delay: -5s;
+}

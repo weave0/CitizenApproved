@@ -2,24 +2,24 @@
 
 import Link from 'next/link'
 import { Scale, Heart, Globe, Shield, BookOpen, CheckCircle, AlertTriangle } from 'lucide-react'
+import { Navbar } from '@/components/Navbar'
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-gray-950 text-white">
+    <main className="min-h-screen">
+      <Navbar />
+      
       {/* Background */}
       <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/20 via-gray-950 to-gray-950 pointer-events-none" />
       <div className="fixed inset-0 cyber-grid pointer-events-none opacity-20" />
 
-      <div className="relative z-10 max-w-4xl mx-auto px-4 py-8">
+      <div className="relative z-10 max-w-4xl mx-auto px-4 pt-28 pb-12">
         {/* Header */}
         <div className="mb-8">
-          <Link href="/" className="text-cyan-400 hover:text-cyan-300 text-sm mb-4 inline-block">
-            ← Back to Home
-          </Link>
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white via-cyan-200 to-cyan-400 bg-clip-text text-transparent mb-4">
             About CitizenApproved
           </h1>
-          <p className="text-gray-400 mt-2 text-lg">
+          <p className="text-white/60 text-lg">
             Making citizenship information accessible to everyone
           </p>
         </div>

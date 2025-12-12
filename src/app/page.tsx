@@ -1,5 +1,8 @@
+'use client'
+
 import { Shield, BookOpen, Users, Scale, Clock, Award, ChevronRight, Star, FileText } from 'lucide-react'
 import Link from 'next/link'
+import { Navbar } from '@/components/Navbar'
 
 const pathways = [
   {
@@ -59,41 +62,15 @@ const stats = [
 export default function Home() {
   return (
     <main className="min-h-screen">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-[var(--glass-border)]">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center">
-                <Scale className="w-6 h-6 text-white" />
-              </div>
-              <span className="text-xl font-bold gradient-text">CitizenApproved</span>
-            </div>
-            <div className="hidden md:flex items-center space-x-8">
-              <Link href="/pathways" className="text-[var(--text-secondary)] hover:text-white transition-colors">
-                Pathways
-              </Link>
-              <Link href="/legal" className="text-[var(--text-secondary)] hover:text-white transition-colors">
-                Legal Basis
-              </Link>
-              <Link href="/resources" className="text-[var(--text-secondary)] hover:text-white transition-colors">
-                Resources
-              </Link>
-              <Link href="/about" className="text-[var(--text-secondary)] hover:text-white transition-colors">
-                About
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6 relative overflow-hidden">
+      <section className="pt-28 md:pt-36 pb-20 px-6 relative overflow-hidden">
         {/* Hero glow effects */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute w-[600px] h-[600px] rounded-full bg-[var(--neon-cyan)] opacity-20 blur-[150px] top-[-200px] left-[10%] animate-float" />
-          <div className="absolute w-[500px] h-[500px] rounded-full bg-[var(--neon-magenta)] opacity-15 blur-[150px] top-[-100px] right-[10%] animate-float" style={{ animationDelay: '-3s' }} />
-          <div className="absolute w-[400px] h-[400px] rounded-full bg-[#8080ff] opacity-10 blur-[120px] bottom-[20%] left-[30%] animate-float" style={{ animationDelay: '-5s' }} />
+          <div className="absolute w-[500px] h-[500px] rounded-full bg-[var(--neon-magenta)] opacity-15 blur-[150px] top-[-100px] right-[10%] animate-float animation-delay-3000" />
+          <div className="absolute w-[400px] h-[400px] rounded-full bg-[#8080ff] opacity-10 blur-[120px] bottom-[20%] left-[30%] animate-float animation-delay-5000" />
         </div>
 
         <div className="max-w-7xl mx-auto relative">
@@ -132,8 +109,8 @@ export default function Home() {
 
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
-            {stats.map((stat, index) => (
-              <div key={stat.label} className="glass-panel p-8 text-center group hover:scale-105 transition-all duration-300" style={{ animationDelay: `${index * 100}ms` }}>
+            {stats.map((stat) => (
+              <div key={stat.label} className="glass-panel p-8 text-center group hover:scale-105 transition-all duration-300">
                 <div className="text-4xl font-bold gradient-text mb-3 group-hover:scale-110 transition-transform">{stat.value}</div>
                 <div className="text-sm text-[var(--text-secondary)] font-medium">{stat.label}</div>
               </div>
