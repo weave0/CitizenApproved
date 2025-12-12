@@ -567,3 +567,83 @@ button:focus-visible {
   pointer-events: none;
   opacity: 0.3;
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   GOOGLE TRANSLATE WIDGET STYLING
+   Makes the widget fit the cyberpunk theme
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Hide the Google Translate branding bar */
+.goog-te-banner-frame {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+/* Style the dropdown selector */
+.goog-te-gadget {
+  font-family: inherit !important;
+  font-size: 12px !important;
+  color: #9ca3af !important;
+}
+
+.goog-te-gadget .goog-te-combo {
+  background-color: rgba(31, 41, 55, 0.8) !important;
+  border: 1px solid rgba(75, 85, 99, 0.5) !important;
+  border-radius: 6px !important;
+  color: #e5e7eb !important;
+  padding: 4px 8px !important;
+  font-size: 12px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.goog-te-gadget .goog-te-combo:hover {
+  border-color: rgba(0, 240, 255, 0.5) !important;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.2) !important;
+}
+
+.goog-te-gadget .goog-te-combo:focus {
+  outline: none !important;
+  border-color: #00f0ff !important;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.3) !important;
+}
+
+/* Hide "Powered by Google" text */
+.goog-te-gadget > span {
+  display: none !important;
+}
+
+/* Style the translation notice/bar */
+.goog-te-menu-frame {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Translate selector container */
+.translate-selector {
+  display: inline-block;
+  min-width: 100px;
+}
+
+.translate-selector.loaded .goog-te-gadget {
+  display: flex;
+  align-items: center;
+}
+
+/* Hide the translation attribution popup */
+#goog-gt-tt {
+  display: none !important;
+}
+
+/* Prevent page shift when translation is active */
+.skiptranslate {
+  display: inline-block !important;
+}
+
+/* Fix for fonts in translated text */
+font[style*="vertical-align: inherit"] {
+  vertical-align: unset !important;
+}
+

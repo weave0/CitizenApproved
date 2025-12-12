@@ -280,6 +280,77 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Interactive Tools Section */}
+      <section className="py-24 px-6 bg-gradient-to-b from-[var(--bg-deepest)] via-[var(--bg-deep)] to-[var(--bg-deepest)]">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              <span className="gradient-text">Interactive Tools</span>
+            </h2>
+            <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
+              Free tools to help you understand, prepare, and navigate your citizenship journey.
+              All information written in plain English for easy translation.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Link href="/eligibility" className="glass-panel p-6 hover:border-cyan-500/30 transition-all group">
+              <div className="text-3xl mb-4">✓</div>
+              <h3 className="text-lg font-semibold text-cyan-400 mb-2 group-hover:text-cyan-300">Eligibility Wizard</h3>
+              <p className="text-sm text-[var(--text-secondary)]">Answer questions to find which pathway fits your situation</p>
+            </Link>
+
+            <Link href="/civics" className="glass-panel p-6 hover:border-cyan-500/30 transition-all group">
+              <div className="text-3xl mb-4">📚</div>
+              <h3 className="text-lg font-semibold text-cyan-400 mb-2 group-hover:text-cyan-300">Civics Test Practice</h3>
+              <p className="text-sm text-[var(--text-secondary)]">All 128 official questions with study mode and practice tests</p>
+            </Link>
+
+            <Link href="/documents" className="glass-panel p-6 hover:border-cyan-500/30 transition-all group">
+              <div className="text-3xl mb-4">📋</div>
+              <h3 className="text-lg font-semibold text-cyan-400 mb-2 group-hover:text-cyan-300">Document Checklist</h3>
+              <p className="text-sm text-[var(--text-secondary)]">Know exactly what documents you need for your pathway</p>
+            </Link>
+
+            <Link href="/costs" className="glass-panel p-6 hover:border-cyan-500/30 transition-all group">
+              <div className="text-3xl mb-4">💰</div>
+              <h3 className="text-lg font-semibold text-cyan-400 mb-2 group-hover:text-cyan-300">Cost Calculator</h3>
+              <p className="text-sm text-[var(--text-secondary)]">Calculate fees and check if you qualify for a fee waiver</p>
+            </Link>
+
+            <Link href="/processing" className="glass-panel p-6 hover:border-cyan-500/30 transition-all group">
+              <div className="text-3xl mb-4">⏱️</div>
+              <h3 className="text-lg font-semibold text-cyan-400 mb-2 group-hover:text-cyan-300">Processing Times</h3>
+              <p className="text-sm text-[var(--text-secondary)]">Current wait times and what to expect at each step</p>
+            </Link>
+
+            <Link href="/why-so-long" className="glass-panel p-6 hover:border-orange-500/30 transition-all group border-orange-500/20">
+              <div className="text-3xl mb-4">⏳</div>
+              <h3 className="text-lg font-semibold text-orange-400 mb-2 group-hover:text-orange-300">Why So Long?</h3>
+              <p className="text-sm text-[var(--text-secondary)]">Plain English explanation of delays and how to speed up your case</p>
+            </Link>
+
+            <Link href="/flowchart" className="glass-panel p-6 hover:border-cyan-500/30 transition-all group">
+              <div className="text-3xl mb-4">🗺️</div>
+              <h3 className="text-lg font-semibold text-cyan-400 mb-2 group-hover:text-cyan-300">Visual Flowchart</h3>
+              <p className="text-sm text-[var(--text-secondary)]">Interactive map of the naturalization process</p>
+            </Link>
+
+            <Link href="/bottlenecks" className="glass-panel p-6 hover:border-cyan-500/30 transition-all group">
+              <div className="text-3xl mb-4">🔍</div>
+              <h3 className="text-lg font-semibold text-cyan-400 mb-2 group-hover:text-cyan-300">Bottleneck Analysis</h3>
+              <p className="text-sm text-[var(--text-secondary)]">System-level issues and what is being done about them</p>
+            </Link>
+          </div>
+
+          <div className="mt-10 text-center">
+            <p className="text-[var(--text-muted)] text-sm">
+              🌐 All tools are free and available in 100+ languages via translation
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 px-6 bg-gradient-to-b from-[var(--bg-deep)] to-[var(--bg-deepest)]">
         <div className="max-w-4xl mx-auto text-center">
