@@ -3,120 +3,17 @@
 import { useEffect, useState } from 'react'
 
 /**
- * Language Selector Component
- * 
- * Uses Google Translate Widget for free translation.
- * This approach allows the entire site to be translated into 100+ languages.
- * 
- * Why Google Translate?
- * - Free for website translation
- * - Supports 100+ languages
- * - No API key required for the widget
- * - Works on static sites
+ * Language Selector Component (disabled)
+ *
+ * The previous implementation loaded the Google Translate widget, which was
+ * causing console errors and a persistent "Loading translator..." label.
+ * For now we render nothing and rely on the UI hint and browser translation.
  */
 
-declare global {
-  interface Window {
-    google?: {
-      translate?: {
-        TranslateElement: new (options: {
-          pageLanguage: string
-          includedLanguages?: string
-          layout?: number
-          autoDisplay?: boolean
-        }, element: string) => void
-        InlineLayout: {
-          SIMPLE: number
-        }
-      }
-    }
-    googleTranslateElementInit?: () => void
-  }
-}
-
 export function LanguageSelector() {
-  const [isLoaded, setIsLoaded] = useState(false)
-
-  useEffect(() => {
-    // Only run on client
-    if (typeof window === 'undefined') return
-
-    // Define the callback function that Google Translate will call
-    window.googleTranslateElementInit = () => {
-      // Check that all required properties exist before initializing
-      if (window.google?.translate?.TranslateElement && window.google?.translate?.InlineLayout) {
-        try {
-          new window.google.translate.TranslateElement(
-            {
-              pageLanguage: 'en',
-              // Most common languages for immigration information
-              includedLanguages: 'en,es,zh-CN,zh-TW,tl,vi,ko,ar,ru,pt,hi,fa,ur,bn,ja,fr,de,it,pl,uk,th,id,tr,he,am,sw,so,my,km,ne,pa,gu,ta,te,ml,mr,kn',
-              layout: window.google.translate.InlineLayout.SIMPLE,
-              autoDisplay: false
-            },
-            'google_translate_element'
-          )
-          setIsLoaded(true)
-        } catch (error) {
-          // Fallback: initialize without layout option if InlineLayout fails
-          console.warn('Google Translate layout option failed, using default:', error)
-          new window.google.translate.TranslateElement(
-            {
-              pageLanguage: 'en',
-              includedLanguages: 'en,es,zh-CN,zh-TW,tl,vi,ko,ar,ru,pt,hi,fa,ur,bn,ja,fr,de,it,pl,uk,th,id,tr,he,am,sw,so,my,km,ne,pa,gu,ta,te,ml,mr,kn',
-              autoDisplay: false
-            },
-            'google_translate_element'
-          )
-          setIsLoaded(true)
-        }
-      } else if (window.google?.translate?.TranslateElement) {
-        // InlineLayout not available, initialize without it
-        try {
-          new window.google.translate.TranslateElement(
-            {
-              pageLanguage: 'en',
-              includedLanguages: 'en,es,zh-CN,zh-TW,tl,vi,ko,ar,ru,pt,hi,fa,ur,bn,ja,fr,de,it,pl,uk,th,id,tr,he,am,sw,so,my,km,ne,pa,gu,ta,te,ml,mr,kn',
-              autoDisplay: false
-            },
-            'google_translate_element'
-          )
-          setIsLoaded(true)
-        } catch (error) {
-          console.error('Google Translate initialization failed:', error)
-        }
-      }
-    }
-
-    // Load the Google Translate script
-    if (!document.getElementById('google-translate-script')) {
-      const script = document.createElement('script')
-      script.id = 'google-translate-script'
-      script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'
-      script.async = true
-      document.body.appendChild(script)
-    } else if (window.google?.translate?.TranslateElement) {
-      // Script already loaded, just initialize
-      window.googleTranslateElementInit()
-    }
-
-    return () => {
-      // Cleanup not strictly necessary as widget persists
-    }
-  }, [])
-
-  return (
-    <div className="flex items-center gap-2">
-      <span className="text-lg" title="Translate this page">🌐</span>
-      <div 
-        id="google_translate_element"
-        className={`translate-selector ${isLoaded ? 'loaded' : ''}`}
-      />
-      {!isLoaded && (
-        <span className="text-xs text-gray-400">Loading translator...</span>
-      )}
-    </div>
-  )
+  // Disabled: we intentionally render nothing so the old widget
+  // and its "Loading translator..." text never appear.
+  return null
 }
 
 /**
