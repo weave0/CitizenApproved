@@ -67,10 +67,12 @@ export const CITIZENSHIP_AT_BIRTH = {
   inaSection: "INA § 301",
   effectiveDate: "June 27, 1952",
   lastAmended: "2002",
+  openingText: "The following shall be nationals and citizens of the United States at birth:\n\n(a) a person born in the United States, and subject to the jurisdiction thereof;\n\n(b) a person born in the United States to a member of an Indian, Eskimo, Aleutian, or other aboriginal tribe;\n\n(c) a person born outside of the United States and its outlying possessions of parents both of whom are citizens of the United States and one of whom has had a residence in the United States or one of its outlying possessions, prior to the birth of such person;\n\n(d) a person born outside of the United States and its outlying possessions of parents one of whom is a citizen of the United States who has been physically present in the United States or one of its outlying possessions for a continuous period of one year prior to the birth of such person, and the other of whom is a national, but not a citizen of the United States;",
   
   categories: [
     {
       subsection: "(a)",
+      title: "Birth in the United States",
       description: "Person born in the United States and subject to its jurisdiction",
       requirements: [
         "Birth within the United States",
@@ -80,6 +82,7 @@ export const CITIZENSHIP_AT_BIRTH = {
     },
     {
       subsection: "(b)",
+      title: "Foundlings",
       description: "Person found in the United States of unknown parentage",
       requirements: [
         "Found in the United States",
@@ -90,6 +93,7 @@ export const CITIZENSHIP_AT_BIRTH = {
     },
     {
       subsection: "(c)",
+      title: "Two Citizen Parents Abroad",
       description: "Person born outside U.S. to two U.S. citizen parents",
       requirements: [
         "Both parents are U.S. citizens at time of birth",
@@ -98,6 +102,7 @@ export const CITIZENSHIP_AT_BIRTH = {
     },
     {
       subsection: "(d)",
+      title: "One Citizen Parent, One National Parent",
       description: "Person born outside U.S. to one citizen parent (who is a national but not citizen) and one alien parent",
       requirements: [
         "One parent is a U.S. citizen",
@@ -107,6 +112,7 @@ export const CITIZENSHIP_AT_BIRTH = {
     },
     {
       subsection: "(e)",
+      title: "Born in Outlying Possession",
       description: "Person born in outlying possession of U.S. of one citizen parent and one national parent",
       requirements: [
         "Born in outlying possession",
@@ -117,6 +123,7 @@ export const CITIZENSHIP_AT_BIRTH = {
     },
     {
       subsection: "(f)",
+      title: "Unknown Parentage Under Age 5",
       description: "Person of unknown parentage found in U.S. while under 5 years old",
       requirements: [
         "Found in United States",
@@ -127,6 +134,7 @@ export const CITIZENSHIP_AT_BIRTH = {
     },
     {
       subsection: "(g)",
+      title: "One Citizen Parent, One Alien Parent",
       description: "Person born outside U.S. to one alien parent and one citizen parent",
       requirements: [
         "One parent is U.S. citizen at time of birth",
@@ -138,6 +146,7 @@ export const CITIZENSHIP_AT_BIRTH = {
     },
     {
       subsection: "(h)",
+      title: "Historical Pre-1934 Provision",
       description: "Historical provision for persons born before May 24, 1934",
       requirements: [
         "Born before noon (EST) May 24, 1934",
@@ -283,6 +292,8 @@ export const MARRIAGE_NATURALIZATION = {
   statute: "8 U.S.C. § 1430",
   title: "Married persons and employees of certain nonprofit organizations",
   inaSection: "INA § 319",
+  cfr: "8 CFR § 319",
+  statutoryText: "(a) Any person whose spouse is a citizen of the United States, or any person who obtained status as a lawful permanent resident by reason of his or her status as a spouse or child of a United States citizen who battered him or her or subjected him or her to extreme cruelty, may be naturalized upon compliance with all the requirements of this subchapter except the provisions of paragraph (1) of section 1427(a) if such person immediately preceding the date of filing his application for naturalization has resided continuously, after being lawfully admitted for permanent residence, within the United States for at least three years, and during the three years immediately preceding the date of filing his application has been living in marital union with the citizen spouse...",
   
   spouseOfCitizen: {
     subsection: "(a)",
@@ -364,14 +375,14 @@ export const MILITARY_NATURALIZATION = {
   
   // Qualifying service types
   qualifyingService: [
-    "U.S. Army",
-    "U.S. Navy",
-    "U.S. Air Force",
-    "U.S. Marine Corps",
-    "U.S. Coast Guard",
-    "U.S. Space Force",
-    "National Guard (under Title 10)",
-    "Selected Reserve (active status)"
+    { branch: "U.S. Army", icon: "🪖" },
+    { branch: "U.S. Navy", icon: "⚓" },
+    { branch: "U.S. Air Force", icon: "✈️" },
+    { branch: "U.S. Marine Corps", icon: "🎖️" },
+    { branch: "U.S. Coast Guard", icon: "🛟" },
+    { branch: "U.S. Space Force", icon: "🚀" },
+    { branch: "National Guard (Title 10)", icon: "🏛️" },
+    { branch: "Selected Reserve", icon: "⭐" }
   ],
   
   peacetime: {
@@ -417,12 +428,12 @@ export const MILITARY_NATURALIZATION = {
     ],
     
     designatedPeriods: [
-      "World War I: April 6, 1917 – November 11, 1918",
-      "World War II: September 1, 1939 – December 31, 1946",
-      "Korean Hostilities: June 25, 1950 – July 1, 1955",
-      "Vietnam Hostilities: February 28, 1961 – October 15, 1978",
-      "Persian Gulf: August 2, 1990 – April 11, 1991",
-      "War on Terrorism: September 11, 2001 – Present"
+      { name: "World War I", dates: "April 6, 1917 – November 11, 1918" },
+      { name: "World War II", dates: "September 1, 1939 – December 31, 1946" },
+      { name: "Korean Hostilities", dates: "June 25, 1950 – July 1, 1955" },
+      { name: "Vietnam Hostilities", dates: "February 28, 1961 – October 15, 1978" },
+      { name: "Persian Gulf", dates: "August 2, 1990 – April 11, 1991" },
+      { name: "War on Terrorism", dates: "September 11, 2001 – Present" }
     ]
   },
   
@@ -447,7 +458,13 @@ export const DERIVATIVE_CITIZENSHIP = {
     statute: "8 U.S.C. § 1431",
     title: "Children born outside the United States and lawfully admitted for permanent residence; conditions under which citizenship automatically acquired",
     inaSection: "INA § 320",
-    
+    statutoryText: "A child born outside of the United States automatically becomes a citizen of the United States when all of the following conditions have been fulfilled:\n\n(1) At least one parent of the child is a citizen of the United States, whether by birth or naturalization.\n\n(2) The child is under the age of eighteen years.\n\n(3) The child is residing in the United States in the legal and physical custody of the citizen parent pursuant to a lawful admission for permanent residence.",
+    conditions: [
+      "At least one parent is a U.S. citizen (by birth or naturalization)",
+      "Child is under 18 years of age at time conditions are met",
+      "Child is residing in the United States in the legal and physical custody of the citizen parent",
+      "Child has been lawfully admitted for permanent residence"
+    ],
     requirements: {
       allMustBeMet: [
         {
@@ -475,8 +492,18 @@ export const DERIVATIVE_CITIZENSHIP = {
     statute: "8 U.S.C. § 1433",
     title: "Children born and residing outside the United States; conditions for acquiring certificate of citizenship",
     inaSection: "INA § 322",
+    statutoryText: "A parent who is a citizen of the United States... may apply for naturalization on behalf of a child born outside of the United States who has not acquired citizenship automatically under section 1431... if:\n\n(1) At least one parent is a citizen of the United States;\n\n(2) The United States citizen parent has been physically present in the United States for a period of not less than five years, at least two of which were after attaining the age of fourteen years;\n\n(3) The child is under the age of eighteen years;\n\n(4) The child is residing outside of the United States in the legal and physical custody of the citizen parent;\n\n(5) The child is temporarily present in the United States pursuant to a lawful admission.",
     
     requirements: [
+      "At least one parent (or citizen grandparent if parent deceased within 5 years) is a U.S. citizen",
+      "Citizen parent/grandparent was physically present in U.S. for 5 years, at least 2 after age 14",
+      "Child is under 18 years of age",
+      "Child is residing outside U.S. in legal and physical custody of citizen parent",
+      "Child is temporarily present in the United States pursuant to lawful admission",
+      "Child must take oath of allegiance (if required by age)"
+    ],
+    
+    requirementsDetailed: [
       {
         requirement: "Citizen Parent",
         description: "At least one parent (or citizen grandparent if parent deceased within 5 years) is a U.S. citizen"
@@ -510,6 +537,10 @@ export const DERIVATIVE_CITIZENSHIP = {
       "Also applies to adopted children"
     ]
   },
+  
+  // Aliases for page compatibility
+  get automatic() { return this.automaticCitizenship; },
+  get abroad() { return this.childrenAbroad; },
   
   relatedRegulations: [
     "8 CFR § 320.1 (Automatic acquisition)",
@@ -772,10 +803,19 @@ export const USCIS_FORMS = {
   },
   N600: {
     title: "Application for Certificate of Citizenship",
+    description: "Form N-600 is used by permanent residents to obtain a Certificate of Citizenship if they automatically became a U.S. citizen through birth abroad to U.S. citizen parents or through derivation after a parent naturalized.",
     formNumber: "N-600",
     use: "For persons who acquired or derived citizenship (as evidence)",
     filingFee: 1170,
     processingTime: "5-8 months"
+  },
+  N600K: {
+    title: "Application for Citizenship and Issuance of Certificate Under Section 322",
+    description: "Form N-600K is used for children residing outside the United States to apply for citizenship based on their U.S. citizen parent or grandparent.",
+    formNumber: "N-600K",
+    use: "For children residing abroad to obtain citizenship through citizen parent",
+    filingFee: 1170,
+    processingTime: "6-12 months"
   },
   N470: {
     title: "Application to Preserve Residence for Naturalization Purposes",
