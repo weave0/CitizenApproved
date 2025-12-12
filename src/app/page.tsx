@@ -398,10 +398,10 @@ export default function Home() {
             <div>
               <h4 className="font-semibold mb-4 text-white">Legal Sources</h4>
               <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
-                <li><Link href="/legal/ina" className="hover:text-white">INA Overview</Link></li>
-                <li><Link href="/legal/title-8" className="hover:text-white">Title 8 U.S.C.</Link></li>
-                <li><Link href="/legal/cfr" className="hover:text-white">8 CFR Regulations</Link></li>
-                <li><Link href="/legal/uscis" className="hover:text-white">USCIS Policy</Link></li>
+                <li><a href="https://uscode.house.gov/browse/prelim@title8&edition=prelim" target="_blank" rel="noopener noreferrer" className="hover:text-white">U.S. Code (Official)</a></li>
+                <li><a href="https://www.ecfr.gov/current/title-8" target="_blank" rel="noopener noreferrer" className="hover:text-white">8 CFR (eCFR)</a></li>
+                <li><a href="https://www.uscis.gov/policy-manual" target="_blank" rel="noopener noreferrer" className="hover:text-white">USCIS Policy Manual</a></li>
+                <li><Link href="/sources" className="hover:text-white">All Sources →</Link></li>
               </ul>
             </div>
             <div>
@@ -419,11 +419,25 @@ export default function Home() {
               ⚠️ <strong>Legal Disclaimer:</strong> This website provides general information based on federal law.
               It is not legal advice. Consult a licensed immigration attorney for your specific situation.
             </p>
-            <p>
-              © {new Date().getFullYear()} CitizenApproved. Information sourced from public law at{' '}
+            <p className="mb-2">
+              © {new Date().getFullYear()} CitizenApproved. Information sourced from official government sources including{' '}
+              <a href="https://uscode.house.gov/" target="_blank" rel="noopener noreferrer" className="text-[var(--primary)]">
+                U.S. Code
+              </a>,{' '}
+              <a href="https://www.ecfr.gov/" target="_blank" rel="noopener noreferrer" className="text-[var(--primary)]">
+                eCFR
+              </a>,{' '}
+              <a href="https://www.uscis.gov/" target="_blank" rel="noopener noreferrer" className="text-[var(--primary)]">
+                USCIS
+              </a>, and{' '}
               <a href="https://www.law.cornell.edu/uscode/text/8" target="_blank" rel="noopener noreferrer" className="text-[var(--primary)]">
-                law.cornell.edu
-              </a>
+                Cornell LII
+              </a>.
+            </p>
+            <p>
+              <Link href="/sources" className="text-[var(--primary)] hover:text-cyan-300">
+                View all legal sources and authority hierarchy →
+              </Link>
             </p>
           </div>
         </div>
