@@ -7,10 +7,13 @@ import {
   ALL_SOURCES,
   TOPIC_SOURCES,
   LegalSource,
-  getOfficialSourcesOnly
+  getOfficialSourcesOnly,
+  LANDMARK_CASES,
+  AUTHORITY_HIERARCHY,
+  VERIFICATION_TIPS
 } from '@/lib/legal/sources'
 
-type ViewMode = 'hierarchy' | 'all' | 'topics' | 'official'
+type ViewMode = 'hierarchy' | 'all' | 'topics' | 'official' | 'cases'
 
 export default function LegalSourcesPage() {
   const [viewMode, setViewMode] = useState<ViewMode>('hierarchy')
@@ -51,6 +54,7 @@ export default function LegalSourcesPage() {
           {[
             { id: 'hierarchy', label: 'Authority Hierarchy', icon: '📊' },
             { id: 'official', label: 'Official Sources Only', icon: '✓' },
+            { id: 'cases', label: 'Landmark Cases', icon: '⚖️' },
             { id: 'topics', label: 'By Topic', icon: '🏷️' },
             { id: 'all', label: 'All Sources', icon: '📋' }
           ].map(tab => (
@@ -80,6 +84,10 @@ export default function LegalSourcesPage() {
 
         {viewMode === 'official' && (
           <OfficialSourcesView sources={getOfficialSourcesOnly()} />
+        )}
+
+        {viewMode === 'cases' && (
+          <CaseLawView />
         )}
 
         {viewMode === 'topics' && (
@@ -247,8 +255,14 @@ function TopicSourcesView({ topics }: { topics: typeof TOPIC_SOURCES }) {
     { key: 'birthright', name: 'Citizenship at Birth', icon: '👶', color: 'yellow' },
     { key: 'derivative', name: 'Derivative Citizenship', icon: '👨‍👩‍👧', color: 'purple' },
     { key: 'military', name: 'Military Naturalization', icon: '🎖️', color: 'green' },
-    { key: 'fees', name: 'Fees & Waivers', icon: '💰', color: 'orange' },
-    { key: 'processingTimes', name: 'Processing Times', icon: '⏱️', color: 'blue' }
+    { key: 'marriage', name: 'Marriage to U.S. Citizen', icon: '💍', color: 'pink' },
+    { key: 'lossOfCitizenship', name: 'Loss of Citizenship', icon: '⚠️', color: 'red' },
+    { key: 'denaturalization', name: 'Denaturalization', icon: '🚫', color: 'orange' },
+    { key: 'fees', name: 'Fees & Waivers', icon: '💰', color: 'emerald' },
+    { key: 'processingTimes', name: 'Processing Times', icon: '⏱️', color: 'blue' },
+    { key: 'civicsTest', name: 'Civics Test', icon: '📖', color: 'violet' },
+    { key: 'oathCeremony', name: 'Oath Ceremony', icon: '🏛️', color: 'amber' },
+    { key: 'backlogsAndReports', name: 'Backlogs & Reports', icon: '📊', color: 'slate' }
   ]
 
   return (
@@ -432,6 +446,97 @@ function SourceCard({
           </div>
         </div>
       )}
+    </div>
+  )
+}
+
+function CaseLawView() {
+  return (
+    <div className="space-y-6">
+      <div className="p-4 bg-purple-500/10 border border-purple-500/30 rounded-lg mb-6">
+        <h3 className="text-purple-400 font-semibold mb-2">⚖️ Landmark Supreme Court Cases</h3>
+        <p className="text-gray-300 text-sm">
+          These Supreme Court decisions define the constitutional foundations of U.S. citizenship law.
+          They are binding precedent that guides how all citizenship cases are decided.
+        </p>
+      </div>
+
+      <div className="grid gap-4">
+        {LANDMARK_CASES.map((caseItem) => (
+          <div key={caseItem.citation} className="glass-panel rounded-xl p-6">
+            <div className="flex items-start justify-between mb-3">
+              <div>
+                <h4 className="font-semibold text-lg text-white">{caseItem.name}</h4>
+                <code className="text-cyan-400 text-sm">{caseItem.citation}</code>
+              </div>
+              <span className="text-xs bg-purple-500/20 text-purple-400 px-2 py-1 rounded">
+                {caseItem.court} • {caseItem.year}
+              </span>
+            </div>
+            
+            <div className="space-y-3 mb-4">
+              <div>
+                <h5 className="text-sm font-medium text-yellow-400 mb-1">Holding</h5>
+                <p className="text-gray-300 text-sm">{caseItem.holding}</p>
+              </div>
+              <div>
+                <h5 className="text-sm font-medium text-green-400 mb-1">Significance</h5>
+                <p className="text-gray-300 text-sm">{caseItem.significance}</p>
+              </div>
+            </div>
+            
+            <div className="flex items-center justify-between">
+              <div className="flex flex-wrap gap-2">
+                {caseItem.topics.map((topic) => (
+                  <span key={topic} className="text-xs bg-gray-700 text-gray-400 px-2 py-0.5 rounded">
+                    {topic}
+                  </span>
+                ))}
+              </div>
+              <a
+                href={caseItem.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-cyan-400 hover:text-cyan-300 flex items-center gap-1"
+              >
+                Read Full Case ↗
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Verification Tips */}
+      <div className="glass-panel rounded-xl p-6 mt-8">
+        <h3 className="text-lg font-semibold text-cyan-400 mb-4">✅ Verification Tips</h3>
+        <div className="grid md:grid-cols-2 gap-3">
+          {VERIFICATION_TIPS.map((tip, i) => (
+            <div key={i} className="flex items-start gap-2 text-sm">
+              <span className="text-green-400 mt-0.5">•</span>
+              <span className="text-gray-300">{tip}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Authority Hierarchy Reminder */}
+      <div className="glass-panel rounded-xl p-6">
+        <h3 className="text-lg font-semibold text-cyan-400 mb-4">📊 Remember: Authority Hierarchy</h3>
+        <p className="text-gray-400 mb-4">{AUTHORITY_HIERARCHY.description}</p>
+        <div className="space-y-2">
+          {AUTHORITY_HIERARCHY.levels.map((level) => (
+            <div key={level.level} className="flex items-center gap-3 p-2 bg-gray-800/50 rounded">
+              <span className="w-6 h-6 bg-cyan-500/20 text-cyan-400 rounded flex items-center justify-center text-sm font-bold">
+                {level.level}
+              </span>
+              <div>
+                <span className="text-white font-medium">{level.name}</span>
+                <span className="text-gray-400 text-sm ml-2">- {level.description}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }
