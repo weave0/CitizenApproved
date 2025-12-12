@@ -43,18 +43,48 @@ export function LanguageSelector() {
 
     // Define the callback function that Google Translate will call
     window.googleTranslateElementInit = () => {
-      if (window.google?.translate?.TranslateElement) {
-        new window.google.translate.TranslateElement(
-          {
-            pageLanguage: 'en',
-            // Most common languages for immigration information
-            includedLanguages: 'en,es,zh-CN,zh-TW,tl,vi,ko,ar,ru,pt,hi,fa,ur,bn,ja,fr,de,it,pl,uk,th,id,tr,he,am,sw,so,my,km,ne,pa,gu,ta,te,ml,mr,kn',
-            layout: window.google.translate.InlineLayout.SIMPLE,
-            autoDisplay: false
-          },
-          'google_translate_element'
-        )
-        setIsLoaded(true)
+      // Check that all required properties exist before initializing
+      if (window.google?.translate?.TranslateElement && window.google?.translate?.InlineLayout) {
+        try {
+          new window.google.translate.TranslateElement(
+            {
+              pageLanguage: 'en',
+              // Most common languages for immigration information
+              includedLanguages: 'en,es,zh-CN,zh-TW,tl,vi,ko,ar,ru,pt,hi,fa,ur,bn,ja,fr,de,it,pl,uk,th,id,tr,he,am,sw,so,my,km,ne,pa,gu,ta,te,ml,mr,kn',
+              layout: window.google.translate.InlineLayout.SIMPLE,
+              autoDisplay: false
+            },
+            'google_translate_element'
+          )
+          setIsLoaded(true)
+        } catch (error) {
+          // Fallback: initialize without layout option if InlineLayout fails
+          console.warn('Google Translate layout option failed, using default:', error)
+          new window.google.translate.TranslateElement(
+            {
+              pageLanguage: 'en',
+              includedLanguages: 'en,es,zh-CN,zh-TW,tl,vi,ko,ar,ru,pt,hi,fa,ur,bn,ja,fr,de,it,pl,uk,th,id,tr,he,am,sw,so,my,km,ne,pa,gu,ta,te,ml,mr,kn',
+              autoDisplay: false
+            },
+            'google_translate_element'
+          )
+          setIsLoaded(true)
+        }
+      } else if (window.google?.translate?.TranslateElement) {
+        // InlineLayout not available, initialize without it
+        try {
+          new window.google.translate.TranslateElement(
+            {
+              pageLanguage: 'en',
+              includedLanguages: 'en,es,zh-CN,zh-TW,tl,vi,ko,ar,ru,pt,hi,fa,ur,bn,ja,fr,de,it,pl,uk,th,id,tr,he,am,sw,so,my,km,ne,pa,gu,ta,te,ml,mr,kn',
+              autoDisplay: false
+            },
+            'google_translate_element'
+          )
+          setIsLoaded(true)
+        } catch (error) {
+          console.error('Google Translate initialization failed:', error)
+        }
       }
     }
 
