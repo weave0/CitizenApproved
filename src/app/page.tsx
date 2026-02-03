@@ -3,6 +3,17 @@
 import { Shield, BookOpen, Users, Scale, Clock, Award, ChevronRight, Star, FileText } from 'lucide-react'
 import Link from 'next/link'
 import { Navbar } from '@/components/Navbar'
+import { 
+  GlowingCheckmark, 
+  GlowingBook, 
+  GlowingClipboard, 
+  GlowingDollar, 
+  GlowingClock, 
+  GlowingHourglass, 
+  GlowingMap, 
+  GlowingSearch,
+  AnimatedScales 
+} from '@/components/GlowingIcons'
 
 const pathways = [
   {
@@ -215,40 +226,60 @@ export default function Home() {
                   </li>
                 </ul>
               </div>
-              <div className="bg-gradient-to-br from-[var(--bg-medium)] to-[var(--bg-deep)] rounded-2xl p-8 font-mono text-sm border border-[var(--glass-border)] relative overflow-hidden">
+              {/* Visual pathway cards instead of code */}
+              <div className="bg-gradient-to-br from-[var(--bg-medium)] to-[var(--bg-deep)] rounded-2xl p-8 border border-[var(--glass-border)] relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-[var(--primary)]/5 to-transparent" />
                 <div className="relative">
-                  <div className="text-[var(--text-muted)] mb-6 flex items-center space-x-2">
-                    <span className="w-3 h-3 rounded-full bg-red-500/80" />
-                    <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                    <span className="w-3 h-3 rounded-full bg-green-500/80" />
-                    <span className="ml-4">// Primary Legal Foundation</span>
+                  <div className="text-center mb-6">
+                    <span className="text-lg font-semibold text-white">5 Paths to Citizenship</span>
+                    <p className="text-sm text-[var(--text-muted)] mt-1">Each backed by federal law</p>
                   </div>
-                  <div className="space-y-2">
-                    <div>
-                      <span className="text-[var(--secondary)]">const</span>{' '}
-                      <span className="text-[var(--primary)]">INA</span> = {'{'}
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3 p-3 rounded-xl bg-gradient-to-r from-yellow-500/10 to-transparent border border-yellow-500/20">
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center flex-shrink-0">
+                        <Star className="w-5 h-5 text-white" />
+                      </div>
+                      <div>
+                        <span className="font-medium text-white">Born a Citizen</span>
+                        <p className="text-xs text-[var(--text-muted)]">Birth in U.S. or to U.S. parents</p>
+                      </div>
                     </div>
-                    <div className="pl-4">
-                      <span className="text-[var(--accent)]">chapter</span>:{' '}
-                      <span className="text-green-400">&quot;12&quot;</span>,
+                    <div className="flex items-center gap-3 p-3 rounded-xl bg-gradient-to-r from-cyan-500/10 to-transparent border border-cyan-500/20">
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center flex-shrink-0">
+                        <Award className="w-5 h-5 text-white" />
+                      </div>
+                      <div>
+                        <span className="font-medium text-white">Naturalization</span>
+                        <p className="text-xs text-[var(--text-muted)]">Green card holders after 5 years</p>
+                      </div>
                     </div>
-                    <div className="pl-4">
-                      <span className="text-[var(--accent)]">subchapter</span>:{' '}
-                      <span className="text-green-400">&quot;III - Nationality&quot;</span>,
+                    <div className="flex items-center gap-3 p-3 rounded-xl bg-gradient-to-r from-pink-500/10 to-transparent border border-pink-500/20">
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-pink-400 to-rose-500 flex items-center justify-center flex-shrink-0">
+                        <Users className="w-5 h-5 text-white" />
+                      </div>
+                      <div>
+                        <span className="font-medium text-white">Marriage</span>
+                        <p className="text-xs text-[var(--text-muted)]">Spouse of U.S. citizen (3 years)</p>
+                      </div>
                     </div>
-                    <div className="pl-4">
-                      <span className="text-[var(--accent)]">sections</span>: [
+                    <div className="flex items-center gap-3 p-3 rounded-xl bg-gradient-to-r from-green-500/10 to-transparent border border-green-500/20">
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center flex-shrink-0">
+                        <Shield className="w-5 h-5 text-white" />
+                      </div>
+                      <div>
+                        <span className="font-medium text-white">Military Service</span>
+                        <p className="text-xs text-[var(--text-muted)]">Expedited for service members</p>
+                      </div>
                     </div>
-                    <div className="pl-8 text-green-400 space-y-1">
-                      <div>&quot;§1401 - Birth&quot;,</div>
-                      <div>&quot;§1427 - Requirements&quot;,</div>
-                      <div>&quot;§1430 - Marriage&quot;,</div>
-                      <div>&quot;§1439 - Military&quot;,</div>
-                      <div>&quot;§1431 - Derivative&quot;</div>
+                    <div className="flex items-center gap-3 p-3 rounded-xl bg-gradient-to-r from-purple-500/10 to-transparent border border-purple-500/20">
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-400 to-violet-500 flex items-center justify-center flex-shrink-0">
+                        <BookOpen className="w-5 h-5 text-white" />
+                      </div>
+                      <div>
+                        <span className="font-medium text-white">Through Parents</span>
+                        <p className="text-xs text-[var(--text-muted)]">Children of naturalized citizens</p>
+                      </div>
                     </div>
-                    <div className="pl-4">]</div>
-                    <div>{'}'}</div>
                   </div>
                 </div>
               </div>
@@ -271,51 +302,51 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Link href="/eligibility" className="glass-panel p-6 hover:border-cyan-500/30 transition-all group">
-              <div className="text-3xl mb-4">✓</div>
-              <h3 className="text-lg font-semibold text-cyan-400 mb-2 group-hover:text-cyan-300">Eligibility Wizard</h3>
+            <Link href="/eligibility" className="glass-panel p-6 hover:border-cyan-500/30 transition-all duration-300 group">
+              <GlowingCheckmark />
+              <h3 className="text-lg font-semibold text-cyan-400 mb-2 mt-4 group-hover:text-cyan-300 transition-colors">Eligibility Wizard</h3>
               <p className="text-sm text-[var(--text-secondary)]">Answer questions to find which pathway fits your situation</p>
             </Link>
 
-            <Link href="/civics" className="glass-panel p-6 hover:border-cyan-500/30 transition-all group">
-              <div className="text-3xl mb-4">📚</div>
-              <h3 className="text-lg font-semibold text-cyan-400 mb-2 group-hover:text-cyan-300">Civics Test Practice</h3>
+            <Link href="/civics" className="glass-panel p-6 hover:border-cyan-500/30 transition-all duration-300 group">
+              <GlowingBook />
+              <h3 className="text-lg font-semibold text-cyan-400 mb-2 mt-4 group-hover:text-cyan-300 transition-colors">Civics Test Practice</h3>
               <p className="text-sm text-[var(--text-secondary)]">All 128 official questions with study mode and practice tests</p>
             </Link>
 
-            <Link href="/documents" className="glass-panel p-6 hover:border-cyan-500/30 transition-all group">
-              <div className="text-3xl mb-4">📋</div>
-              <h3 className="text-lg font-semibold text-cyan-400 mb-2 group-hover:text-cyan-300">Document Checklist</h3>
+            <Link href="/documents" className="glass-panel p-6 hover:border-cyan-500/30 transition-all duration-300 group">
+              <GlowingClipboard />
+              <h3 className="text-lg font-semibold text-cyan-400 mb-2 mt-4 group-hover:text-cyan-300 transition-colors">Document Checklist</h3>
               <p className="text-sm text-[var(--text-secondary)]">Know exactly what documents you need for your pathway</p>
             </Link>
 
-            <Link href="/costs" className="glass-panel p-6 hover:border-cyan-500/30 transition-all group">
-              <div className="text-3xl mb-4">💰</div>
-              <h3 className="text-lg font-semibold text-cyan-400 mb-2 group-hover:text-cyan-300">Cost Calculator</h3>
+            <Link href="/costs" className="glass-panel p-6 hover:border-emerald-500/30 transition-all duration-300 group">
+              <GlowingDollar />
+              <h3 className="text-lg font-semibold text-emerald-400 mb-2 mt-4 group-hover:text-emerald-300 transition-colors">Cost Calculator</h3>
               <p className="text-sm text-[var(--text-secondary)]">Calculate fees and check if you qualify for a fee waiver</p>
             </Link>
 
-            <Link href="/processing" className="glass-panel p-6 hover:border-cyan-500/30 transition-all group">
-              <div className="text-3xl mb-4">⏱️</div>
-              <h3 className="text-lg font-semibold text-cyan-400 mb-2 group-hover:text-cyan-300">Processing Times</h3>
+            <Link href="/processing" className="glass-panel p-6 hover:border-cyan-500/30 transition-all duration-300 group">
+              <GlowingClock />
+              <h3 className="text-lg font-semibold text-cyan-400 mb-2 mt-4 group-hover:text-cyan-300 transition-colors">Processing Times</h3>
               <p className="text-sm text-[var(--text-secondary)]">Current wait times and what to expect at each step</p>
             </Link>
 
-            <Link href="/why-so-long" className="glass-panel p-6 hover:border-orange-500/30 transition-all group border-orange-500/20">
-              <div className="text-3xl mb-4">⏳</div>
-              <h3 className="text-lg font-semibold text-orange-400 mb-2 group-hover:text-orange-300">Why So Long?</h3>
+            <Link href="/why-so-long" className="glass-panel p-6 hover:border-orange-500/30 transition-all duration-300 group border-orange-500/20">
+              <GlowingHourglass />
+              <h3 className="text-lg font-semibold text-orange-400 mb-2 mt-4 group-hover:text-orange-300 transition-colors">Why So Long?</h3>
               <p className="text-sm text-[var(--text-secondary)]">Plain English explanation of delays and how to speed up your case</p>
             </Link>
 
-            <Link href="/flowchart" className="glass-panel p-6 hover:border-cyan-500/30 transition-all group">
-              <div className="text-3xl mb-4">🗺️</div>
-              <h3 className="text-lg font-semibold text-cyan-400 mb-2 group-hover:text-cyan-300">Visual Flowchart</h3>
+            <Link href="/flowchart" className="glass-panel p-6 hover:border-cyan-500/30 transition-all duration-300 group">
+              <GlowingMap />
+              <h3 className="text-lg font-semibold text-cyan-400 mb-2 mt-4 group-hover:text-cyan-300 transition-colors">Visual Flowchart</h3>
               <p className="text-sm text-[var(--text-secondary)]">Interactive map of the naturalization process</p>
             </Link>
 
-            <Link href="/bottlenecks" className="glass-panel p-6 hover:border-cyan-500/30 transition-all group">
-              <div className="text-3xl mb-4">🔍</div>
-              <h3 className="text-lg font-semibold text-cyan-400 mb-2 group-hover:text-cyan-300">Bottleneck Analysis</h3>
+            <Link href="/bottlenecks" className="glass-panel p-6 hover:border-cyan-500/30 transition-all duration-300 group">
+              <GlowingSearch />
+              <h3 className="text-lg font-semibold text-cyan-400 mb-2 mt-4 group-hover:text-cyan-300 transition-colors">Bottleneck Analysis</h3>
               <p className="text-sm text-[var(--text-secondary)]">System-level issues and what is being done about them</p>
             </Link>
           </div>
