@@ -1,74 +1,84 @@
-'use client'
+"use client";
 
-import { Shield, BookOpen, Users, Scale, Clock, Award, ChevronRight, Star, FileText } from 'lucide-react'
-import Link from 'next/link'
-import { Navbar } from '@/components/Navbar'
-import { 
-  GlowingCheckmark, 
-  GlowingBook, 
-  GlowingClipboard, 
-  GlowingDollar, 
-  GlowingClock, 
-  GlowingHourglass, 
-  GlowingMap, 
+import {
+  Shield,
+  BookOpen,
+  Users,
+  Scale,
+  Clock,
+  Award,
+  ChevronRight,
+  Star,
+  FileText,
+} from "lucide-react";
+import Link from "next/link";
+import { Navbar } from "@/components/Navbar";
+import {
+  GlowingCheckmark,
+  GlowingBook,
+  GlowingClipboard,
+  GlowingDollar,
+  GlowingClock,
+  GlowingHourglass,
+  GlowingMap,
   GlowingSearch,
-  AnimatedScales 
-} from '@/components/GlowingIcons'
+  AnimatedScales,
+} from "@/components/GlowingIcons";
 
 const pathways = [
   {
-    id: 'birthright',
-    title: 'Citizenship at Birth',
+    id: "birthright",
+    title: "Citizenship at Birth",
     icon: Star,
-    description: 'Born in the U.S. or to U.S. citizen parents',
-    legalBasis: '8 U.S.C. § 1401',
-    color: 'from-yellow-400 to-orange-500',
-    href: '/pathways/birthright'
+    description: "Born in the U.S. or to U.S. citizen parents",
+    legalBasis: "8 U.S.C. § 1401",
+    color: "from-yellow-400 to-orange-500",
+    href: "/pathways/birthright",
   },
   {
-    id: 'naturalization',
-    title: 'Naturalization',
+    id: "naturalization",
+    title: "Naturalization",
     icon: Award,
-    description: 'Standard pathway for permanent residents',
-    legalBasis: '8 U.S.C. § 1427',
-    color: 'from-cyan-400 to-blue-500',
-    href: '/pathways/naturalization'
+    description: "Standard pathway for permanent residents",
+    legalBasis: "8 U.S.C. § 1427",
+    color: "from-cyan-400 to-blue-500",
+    href: "/pathways/naturalization",
   },
   {
-    id: 'marriage',
-    title: 'Marriage to U.S. Citizen',
+    id: "marriage",
+    title: "Marriage to U.S. Citizen",
     icon: Users,
-    description: 'Expedited pathway through marriage',
-    legalBasis: '8 U.S.C. § 1430',
-    color: 'from-pink-400 to-rose-500',
-    href: '/pathways/marriage'
+    description: "Expedited pathway through marriage",
+    legalBasis: "8 U.S.C. § 1430",
+    color: "from-pink-400 to-rose-500",
+    href: "/pathways/marriage",
   },
   {
-    id: 'military',
-    title: 'Military Service',
+    id: "military",
+    title: "Military Service",
     icon: Shield,
-    description: 'Naturalization through armed forces service',
-    legalBasis: '8 U.S.C. § 1439-1440',
-    color: 'from-green-400 to-emerald-500',
-    href: '/pathways/military'
+    description: "Naturalization through armed forces service",
+    legalBasis: "8 U.S.C. § 1439-1440",
+    color: "from-green-400 to-emerald-500",
+    href: "/pathways/military",
   },
   {
-    id: 'derivative',
-    title: 'Derivative Citizenship',
+    id: "derivative",
+    title: "Derivative Citizenship",
     icon: BookOpen,
-    description: 'Automatic citizenship for qualifying children',
-    legalBasis: '8 U.S.C. § 1431-1433',
-    color: 'from-purple-400 to-violet-500',
-    href: '/pathways/derivative'
+    description: "Automatic citizenship for qualifying children",
+    legalBasis: "8 U.S.C. § 1431-1433",
+    color: "from-purple-400 to-violet-500",
+    href: "/pathways/derivative",
   },
-]
+];
 
 const stats = [
-  { label: 'Pathways Documented', value: '5+' },
-  { label: 'Legal Citations', value: '100+' },
-  { label: 'USC Sections Referenced', value: '50+' },
-  { label: 'CFR Regulations', value: '8 CFR' },
-]
+  { label: "Pathways Documented", value: "5+" },
+  { label: "Legal Citations", value: "100+" },
+  { label: "USC Sections Referenced", value: "50+" },
+  { label: "CFR Regulations", value: "8 CFR" },
+];
 
 export default function Home() {
   return (
@@ -95,21 +105,24 @@ export default function Home() {
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 tracking-tight">
               <span className="gradient-text">Your Path to</span>
               <br />
-              <span className="text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.2)]">U.S. Citizenship</span>
+              <span className="text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+                U.S. Citizenship
+              </span>
             </h1>
             <p className="text-xl md:text-2xl text-[var(--text-secondary)] max-w-3xl mx-auto mb-10 leading-relaxed">
-              Comprehensive, legally accurate documentation of every pathway to becoming
-              a United States citizen. Built on the foundation of federal law.
+              Comprehensive, legally accurate documentation of every pathway to
+              becoming a United States citizen. Built on the foundation of
+              federal law.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
-              <Link 
+              <Link
                 href="/pathways"
                 className="group px-10 py-4 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-500 to-cyan-500 bg-[length:200%_auto] text-white font-semibold hover:shadow-[0_0_50px_rgba(0,240,255,0.4)] transition-all duration-500 flex items-center space-x-3 hover:bg-right"
               >
                 <span>Explore Pathways</span>
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link 
+              <Link
                 href="/legal"
                 className="px-10 py-4 rounded-xl border border-[var(--glass-border)] text-white font-semibold hover:bg-[var(--bg-medium)] hover:border-[var(--primary)]/30 transition-all duration-300 backdrop-blur-sm"
               >
@@ -121,9 +134,16 @@ export default function Home() {
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
             {stats.map((stat) => (
-              <div key={stat.label} className="glass-panel p-8 text-center group hover:scale-105 transition-all duration-300">
-                <div className="text-4xl font-bold gradient-text mb-3 group-hover:scale-110 transition-transform">{stat.value}</div>
-                <div className="text-sm text-[var(--text-secondary)] font-medium">{stat.label}</div>
+              <div
+                key={stat.label}
+                className="glass-panel p-8 text-center group hover:scale-105 transition-all duration-300"
+              >
+                <div className="text-4xl font-bold gradient-text mb-3 group-hover:scale-110 transition-transform">
+                  {stat.value}
+                </div>
+                <div className="text-sm text-[var(--text-secondary)] font-medium">
+                  {stat.label}
+                </div>
               </div>
             ))}
           </div>
@@ -138,19 +158,21 @@ export default function Home() {
               <span className="gradient-text">Citizenship Pathways</span>
             </h2>
             <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
-              Each pathway is governed by specific sections of Title 8 of the United States Code
-              and corresponding regulations in 8 CFR.
+              Each pathway is governed by specific sections of Title 8 of the
+              United States Code and corresponding regulations in 8 CFR.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {pathways.map((pathway) => (
-              <Link 
+              <Link
                 key={pathway.id}
                 href={pathway.href}
                 className="group gradient-border p-8 hover:scale-[1.02] transition-all duration-500"
               >
-                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${pathway.color} flex items-center justify-center mb-6 group-hover:shadow-lg group-hover:scale-110 transition-all duration-300`}>
+                <div
+                  className={`w-14 h-14 rounded-xl bg-gradient-to-br ${pathway.color} flex items-center justify-center mb-6 group-hover:shadow-lg group-hover:scale-110 transition-all duration-300`}
+                >
                   <pathway.icon className="w-7 h-7 text-white" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3 text-white group-hover:text-[var(--primary)] transition-colors">
@@ -180,15 +202,16 @@ export default function Home() {
             {/* Decorative elements */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--neon-cyan)] opacity-5 blur-[100px] rounded-full" />
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-[var(--neon-magenta)] opacity-5 blur-[100px] rounded-full" />
-            
+
             <div className="grid md:grid-cols-2 gap-14 items-center relative">
               <div>
                 <h2 className="text-3xl md:text-4xl font-bold mb-8">
                   <span className="gradient-text">Built on Legal Accuracy</span>
                 </h2>
                 <p className="text-[var(--text-secondary)] mb-8 text-lg leading-relaxed">
-                  Every piece of information on this platform is directly sourced from and 
-                  cross-referenced with federal law. Our primary sources include:
+                  Every piece of information on this platform is directly
+                  sourced from and cross-referenced with federal law. Our
+                  primary sources include:
                 </p>
                 <ul className="space-y-6">
                   <li className="flex items-start space-x-4 group">
@@ -196,9 +219,12 @@ export default function Home() {
                       <Scale className="w-5 h-5 text-[var(--bg-deepest)]" />
                     </div>
                     <div>
-                      <span className="font-semibold text-white text-lg">Immigration and Nationality Act (INA)</span>
+                      <span className="font-semibold text-white text-lg">
+                        Immigration and Nationality Act (INA)
+                      </span>
                       <p className="text-[var(--text-secondary)] mt-1">
-                        The primary federal immigration statute of the United States
+                        The primary federal immigration statute of the United
+                        States
                       </p>
                     </div>
                   </li>
@@ -207,7 +233,9 @@ export default function Home() {
                       <BookOpen className="w-5 h-5 text-white" />
                     </div>
                     <div>
-                      <span className="font-semibold text-white text-lg">Title 8 U.S. Code</span>
+                      <span className="font-semibold text-white text-lg">
+                        Title 8 U.S. Code
+                      </span>
                       <p className="text-[var(--text-secondary)] mt-1">
                         Aliens and Nationality - Sections 1101-1537
                       </p>
@@ -218,7 +246,9 @@ export default function Home() {
                       <FileText className="w-5 h-5 text-[var(--bg-deepest)]" />
                     </div>
                     <div>
-                      <span className="font-semibold text-white text-lg">8 CFR (Code of Federal Regulations)</span>
+                      <span className="font-semibold text-white text-lg">
+                        8 CFR (Code of Federal Regulations)
+                      </span>
                       <p className="text-[var(--text-secondary)] mt-1">
                         DHS and USCIS implementation regulations
                       </p>
@@ -231,8 +261,12 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-br from-[var(--primary)]/5 to-transparent" />
                 <div className="relative">
                   <div className="text-center mb-6">
-                    <span className="text-lg font-semibold text-white">5 Paths to Citizenship</span>
-                    <p className="text-sm text-[var(--text-muted)] mt-1">Each backed by federal law</p>
+                    <span className="text-lg font-semibold text-white">
+                      5 Paths to Citizenship
+                    </span>
+                    <p className="text-sm text-[var(--text-muted)] mt-1">
+                      Each backed by federal law
+                    </p>
                   </div>
                   <div className="space-y-3">
                     <div className="flex items-center gap-3 p-3 rounded-xl bg-gradient-to-r from-yellow-500/10 to-transparent border border-yellow-500/20">
@@ -240,8 +274,12 @@ export default function Home() {
                         <Star className="w-5 h-5 text-white" />
                       </div>
                       <div>
-                        <span className="font-medium text-white">Born a Citizen</span>
-                        <p className="text-xs text-[var(--text-muted)]">Birth in U.S. or to U.S. parents</p>
+                        <span className="font-medium text-white">
+                          Born a Citizen
+                        </span>
+                        <p className="text-xs text-[var(--text-muted)]">
+                          Birth in U.S. or to U.S. parents
+                        </p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3 p-3 rounded-xl bg-gradient-to-r from-cyan-500/10 to-transparent border border-cyan-500/20">
@@ -249,8 +287,12 @@ export default function Home() {
                         <Award className="w-5 h-5 text-white" />
                       </div>
                       <div>
-                        <span className="font-medium text-white">Naturalization</span>
-                        <p className="text-xs text-[var(--text-muted)]">Green card holders after 5 years</p>
+                        <span className="font-medium text-white">
+                          Naturalization
+                        </span>
+                        <p className="text-xs text-[var(--text-muted)]">
+                          Green card holders after 5 years
+                        </p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3 p-3 rounded-xl bg-gradient-to-r from-pink-500/10 to-transparent border border-pink-500/20">
@@ -259,7 +301,9 @@ export default function Home() {
                       </div>
                       <div>
                         <span className="font-medium text-white">Marriage</span>
-                        <p className="text-xs text-[var(--text-muted)]">Spouse of U.S. citizen (3 years)</p>
+                        <p className="text-xs text-[var(--text-muted)]">
+                          Spouse of U.S. citizen (3 years)
+                        </p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3 p-3 rounded-xl bg-gradient-to-r from-green-500/10 to-transparent border border-green-500/20">
@@ -267,8 +311,12 @@ export default function Home() {
                         <Shield className="w-5 h-5 text-white" />
                       </div>
                       <div>
-                        <span className="font-medium text-white">Military Service</span>
-                        <p className="text-xs text-[var(--text-muted)]">Expedited for service members</p>
+                        <span className="font-medium text-white">
+                          Military Service
+                        </span>
+                        <p className="text-xs text-[var(--text-muted)]">
+                          Expedited for service members
+                        </p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3 p-3 rounded-xl bg-gradient-to-r from-purple-500/10 to-transparent border border-purple-500/20">
@@ -276,8 +324,12 @@ export default function Home() {
                         <BookOpen className="w-5 h-5 text-white" />
                       </div>
                       <div>
-                        <span className="font-medium text-white">Through Parents</span>
-                        <p className="text-xs text-[var(--text-muted)]">Children of naturalized citizens</p>
+                        <span className="font-medium text-white">
+                          Through Parents
+                        </span>
+                        <p className="text-xs text-[var(--text-muted)]">
+                          Children of naturalized citizens
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -296,64 +348,123 @@ export default function Home() {
               <span className="gradient-text">Interactive Tools</span>
             </h2>
             <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
-              Free tools to help you understand, prepare, and navigate your citizenship journey.
-              All information written in plain English for easy translation.
+              Free tools to help you understand, prepare, and navigate your
+              citizenship journey. All information written in plain English for
+              easy translation.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Link href="/eligibility" className="glass-panel p-6 hover:border-cyan-500/30 transition-all duration-300 group">
+            <Link
+              href="/eligibility"
+              className="glass-panel p-6 hover:border-cyan-500/30 transition-all duration-300 group"
+            >
               <GlowingCheckmark />
-              <h3 className="text-lg font-semibold text-cyan-400 mb-2 mt-4 group-hover:text-cyan-300 transition-colors">Eligibility Wizard</h3>
-              <p className="text-sm text-[var(--text-secondary)]">Answer questions to find which pathway fits your situation</p>
+              <h3 className="text-lg font-semibold text-cyan-400 mb-2 mt-4 group-hover:text-cyan-300 transition-colors">
+                Eligibility Wizard
+              </h3>
+              <p className="text-sm text-[var(--text-secondary)]">
+                Answer questions to find which pathway fits your situation
+              </p>
             </Link>
 
-            <Link href="/civics" className="glass-panel p-6 hover:border-cyan-500/30 transition-all duration-300 group">
+            <Link
+              href="/civics"
+              className="glass-panel p-6 hover:border-cyan-500/30 transition-all duration-300 group"
+            >
               <GlowingBook />
-              <h3 className="text-lg font-semibold text-cyan-400 mb-2 mt-4 group-hover:text-cyan-300 transition-colors">Civics Test Practice</h3>
-              <p className="text-sm text-[var(--text-secondary)]">All 128 official questions with study mode and practice tests</p>
+              <h3 className="text-lg font-semibold text-cyan-400 mb-2 mt-4 group-hover:text-cyan-300 transition-colors">
+                Civics Test Practice
+              </h3>
+              <p className="text-sm text-[var(--text-secondary)]">
+                All 128 official questions with study mode and practice tests
+              </p>
             </Link>
 
-            <Link href="/documents" className="glass-panel p-6 hover:border-cyan-500/30 transition-all duration-300 group">
+            <Link
+              href="/documents"
+              className="glass-panel p-6 hover:border-cyan-500/30 transition-all duration-300 group"
+            >
               <GlowingClipboard />
-              <h3 className="text-lg font-semibold text-cyan-400 mb-2 mt-4 group-hover:text-cyan-300 transition-colors">Document Checklist</h3>
-              <p className="text-sm text-[var(--text-secondary)]">Know exactly what documents you need for your pathway</p>
+              <h3 className="text-lg font-semibold text-cyan-400 mb-2 mt-4 group-hover:text-cyan-300 transition-colors">
+                Document Checklist
+              </h3>
+              <p className="text-sm text-[var(--text-secondary)]">
+                Know exactly what documents you need for your pathway
+              </p>
             </Link>
 
-            <Link href="/costs" className="glass-panel p-6 hover:border-emerald-500/30 transition-all duration-300 group">
+            <Link
+              href="/costs"
+              className="glass-panel p-6 hover:border-emerald-500/30 transition-all duration-300 group"
+            >
               <GlowingDollar />
-              <h3 className="text-lg font-semibold text-emerald-400 mb-2 mt-4 group-hover:text-emerald-300 transition-colors">Cost Calculator</h3>
-              <p className="text-sm text-[var(--text-secondary)]">Calculate fees and check if you qualify for a fee waiver</p>
+              <h3 className="text-lg font-semibold text-emerald-400 mb-2 mt-4 group-hover:text-emerald-300 transition-colors">
+                Cost Calculator
+              </h3>
+              <p className="text-sm text-[var(--text-secondary)]">
+                Calculate fees and check if you qualify for a fee waiver
+              </p>
             </Link>
 
-            <Link href="/processing" className="glass-panel p-6 hover:border-cyan-500/30 transition-all duration-300 group">
+            <Link
+              href="/processing"
+              className="glass-panel p-6 hover:border-cyan-500/30 transition-all duration-300 group"
+            >
               <GlowingClock />
-              <h3 className="text-lg font-semibold text-cyan-400 mb-2 mt-4 group-hover:text-cyan-300 transition-colors">Processing Times</h3>
-              <p className="text-sm text-[var(--text-secondary)]">Current wait times and what to expect at each step</p>
+              <h3 className="text-lg font-semibold text-cyan-400 mb-2 mt-4 group-hover:text-cyan-300 transition-colors">
+                Processing Times
+              </h3>
+              <p className="text-sm text-[var(--text-secondary)]">
+                Current wait times and what to expect at each step
+              </p>
             </Link>
 
-            <Link href="/why-so-long" className="glass-panel p-6 hover:border-orange-500/30 transition-all duration-300 group border-orange-500/20">
+            <Link
+              href="/why-so-long"
+              className="glass-panel p-6 hover:border-orange-500/30 transition-all duration-300 group border-orange-500/20"
+            >
               <GlowingHourglass />
-              <h3 className="text-lg font-semibold text-orange-400 mb-2 mt-4 group-hover:text-orange-300 transition-colors">Why So Long?</h3>
-              <p className="text-sm text-[var(--text-secondary)]">Plain English explanation of delays and how to speed up your case</p>
+              <h3 className="text-lg font-semibold text-orange-400 mb-2 mt-4 group-hover:text-orange-300 transition-colors">
+                Why So Long?
+              </h3>
+              <p className="text-sm text-[var(--text-secondary)]">
+                Plain English explanation of delays and how to speed up your
+                case
+              </p>
             </Link>
 
-            <Link href="/flowchart" className="glass-panel p-6 hover:border-cyan-500/30 transition-all duration-300 group">
+            <Link
+              href="/flowchart"
+              className="glass-panel p-6 hover:border-cyan-500/30 transition-all duration-300 group"
+            >
               <GlowingMap />
-              <h3 className="text-lg font-semibold text-cyan-400 mb-2 mt-4 group-hover:text-cyan-300 transition-colors">Visual Flowchart</h3>
-              <p className="text-sm text-[var(--text-secondary)]">Interactive map of the naturalization process</p>
+              <h3 className="text-lg font-semibold text-cyan-400 mb-2 mt-4 group-hover:text-cyan-300 transition-colors">
+                Visual Flowchart
+              </h3>
+              <p className="text-sm text-[var(--text-secondary)]">
+                Interactive map of the naturalization process
+              </p>
             </Link>
 
-            <Link href="/bottlenecks" className="glass-panel p-6 hover:border-cyan-500/30 transition-all duration-300 group">
+            <Link
+              href="/bottlenecks"
+              className="glass-panel p-6 hover:border-cyan-500/30 transition-all duration-300 group"
+            >
               <GlowingSearch />
-              <h3 className="text-lg font-semibold text-cyan-400 mb-2 mt-4 group-hover:text-cyan-300 transition-colors">Bottleneck Analysis</h3>
-              <p className="text-sm text-[var(--text-secondary)]">System-level issues and what is being done about them</p>
+              <h3 className="text-lg font-semibold text-cyan-400 mb-2 mt-4 group-hover:text-cyan-300 transition-colors">
+                Bottleneck Analysis
+              </h3>
+              <p className="text-sm text-[var(--text-secondary)]">
+                System-level issues and what is being done about them
+              </p>
             </Link>
           </div>
 
           <div className="mt-10 text-center">
             <p className="text-[var(--text-muted)] text-sm">
-              🌐 All tools are free and available in 100+ languages via translation
+              🌐 All tools are free and available in 100+ languages via
+              translation
             </p>
           </div>
         </div>
@@ -366,10 +477,11 @@ export default function Home() {
             <span className="gradient-text">Ready to Begin Your Journey?</span>
           </h2>
           <p className="text-[var(--text-secondary)] mb-8 max-w-2xl mx-auto">
-            Explore our comprehensive documentation of citizenship pathways, 
-            requirements, and timelines—all backed by authoritative legal sources.
+            Explore our comprehensive documentation of citizenship pathways,
+            requirements, and timelines—all backed by authoritative legal
+            sources.
           </p>
-          <Link 
+          <Link
             href="/pathways"
             className="inline-flex items-center space-x-2 px-8 py-4 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300"
           >
@@ -391,59 +503,172 @@ export default function Home() {
                 <span className="font-bold gradient-text">CitizenApproved</span>
               </div>
               <p className="text-sm text-[var(--text-secondary)]">
-                Legally accurate citizenship pathway information based on federal law.
+                Legally accurate citizenship pathway information based on
+                federal law.
               </p>
             </div>
             <div>
               <h4 className="font-semibold mb-4 text-white">Pathways</h4>
               <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
-                <li><Link href="/pathways/naturalization" className="hover:text-white">Naturalization</Link></li>
-                <li><Link href="/pathways/birthright" className="hover:text-white">Citizenship at Birth</Link></li>
-                <li><Link href="/pathways/marriage" className="hover:text-white">Marriage</Link></li>
-                <li><Link href="/pathways/military" className="hover:text-white">Military Service</Link></li>
+                <li>
+                  <Link
+                    href="/pathways/naturalization"
+                    className="hover:text-white"
+                  >
+                    Naturalization
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/pathways/birthright"
+                    className="hover:text-white"
+                  >
+                    Citizenship at Birth
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/pathways/marriage" className="hover:text-white">
+                    Marriage
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/pathways/military" className="hover:text-white">
+                    Military Service
+                  </Link>
+                </li>
               </ul>
             </div>
             <div>
               <h4 className="font-semibold mb-4 text-white">Legal Sources</h4>
               <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
-                <li><a href="https://uscode.house.gov/browse/prelim@title8&edition=prelim" target="_blank" rel="noopener noreferrer" className="hover:text-white">U.S. Code (Official)</a></li>
-                <li><a href="https://www.ecfr.gov/current/title-8" target="_blank" rel="noopener noreferrer" className="hover:text-white">8 CFR (eCFR)</a></li>
-                <li><a href="https://www.uscis.gov/policy-manual" target="_blank" rel="noopener noreferrer" className="hover:text-white">USCIS Policy Manual</a></li>
-                <li><Link href="/sources" className="hover:text-white">All Sources →</Link></li>
+                <li>
+                  <a
+                    href="https://uscode.house.gov/browse/prelim@title8&edition=prelim"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white"
+                  >
+                    U.S. Code (Official)
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.ecfr.gov/current/title-8"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white"
+                  >
+                    8 CFR (eCFR)
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.uscis.gov/policy-manual"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white"
+                  >
+                    USCIS Policy Manual
+                  </a>
+                </li>
+                <li>
+                  <Link href="/sources" className="hover:text-white">
+                    All Sources →
+                  </Link>
+                </li>
               </ul>
             </div>
             <div>
               <h4 className="font-semibold mb-4 text-white">Resources</h4>
               <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
-                <li><Link href="/resources/timeline" className="hover:text-white">Timeline Calculator</Link></li>
-                <li><Link href="/resources/checklist" className="hover:text-white">Requirements Checklist</Link></li>
-                <li><Link href="/resources/forms" className="hover:text-white">Forms Guide</Link></li>
-                <li><Link href="/about" className="hover:text-white">About Us</Link></li>
+                <li>
+                  <a
+                    href="https://goodflippindesign.com/donate.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-purple-400 hover:text-purple-300 font-semibold"
+                  >
+                    ❤️ Support Ecosystem
+                  </a>
+                </li>
+                <li>
+                  <Link href="/resources/timeline" className="hover:text-white">
+                    Timeline Calculator
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/resources/checklist"
+                    className="hover:text-white"
+                  >
+                    Requirements Checklist
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/resources/forms" className="hover:text-white">
+                    Forms Guide
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/about" className="hover:text-white">
+                    About Us
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
           <div className="pt-8 border-t border-[var(--glass-border)] text-center text-sm text-[var(--text-muted)]">
             <p className="mb-2">
-              ⚠️ <strong>Legal Disclaimer:</strong> This website provides general information based on federal law.
-              It is not legal advice. Consult a licensed immigration attorney for your specific situation.
+              ⚠️ <strong>Legal Disclaimer:</strong> This website provides
+              general information based on federal law. It is not legal advice.
+              Consult a licensed immigration attorney for your specific
+              situation.
             </p>
             <p className="mb-2">
-              © {new Date().getFullYear()} CitizenApproved. Information sourced from official government sources including{' '}
-              <a href="https://uscode.house.gov/" target="_blank" rel="noopener noreferrer" className="text-[var(--primary)]">
+              © {new Date().getFullYear()} CitizenApproved. Information sourced
+              from official government sources including{" "}
+              <a
+                href="https://uscode.house.gov/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[var(--primary)]"
+              >
                 U.S. Code
-              </a>,{' '}
-              <a href="https://www.ecfr.gov/" target="_blank" rel="noopener noreferrer" className="text-[var(--primary)]">
+              </a>
+              ,{" "}
+              <a
+                href="https://www.ecfr.gov/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[var(--primary)]"
+              >
                 eCFR
-              </a>,{' '}
-              <a href="https://www.uscis.gov/" target="_blank" rel="noopener noreferrer" className="text-[var(--primary)]">
+              </a>
+              ,{" "}
+              <a
+                href="https://www.uscis.gov/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[var(--primary)]"
+              >
                 USCIS
-              </a>, and{' '}
-              <a href="https://www.law.cornell.edu/uscode/text/8" target="_blank" rel="noopener noreferrer" className="text-[var(--primary)]">
+              </a>
+              , and{" "}
+              <a
+                href="https://www.law.cornell.edu/uscode/text/8"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[var(--primary)]"
+              >
                 Cornell LII
-              </a>.
+              </a>
+              .
             </p>
             <p>
-              <Link href="/sources" className="text-[var(--primary)] hover:text-cyan-300">
+              <Link
+                href="/sources"
+                className="text-[var(--primary)] hover:text-cyan-300"
+              >
                 View all legal sources and authority hierarchy →
               </Link>
             </p>
@@ -451,5 +676,5 @@ export default function Home() {
         </div>
       </footer>
     </main>
-  )
+  );
 }
