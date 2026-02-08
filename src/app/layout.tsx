@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import EcosystemNav from "@/components/EcosystemNav";
+import ConversionFeatures from "@/components/ConversionFeatures";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -193,150 +195,10 @@ export default function RootLayout({
             `,
           }}
         />
-        {/* GFD Ecosystem Navigation */}
-        <link rel="stylesheet" href="/shared/ecosystem-nav.css" />
       </head>
       <body className={`${inter.className} antialiased`}>
-        {/* GFD Ecosystem Navigation */}
-        <nav className="gfd-ecosystem-nav" aria-label="Ecosystem navigation">
-          <div className="ecosystem-nav-container">
-            <div className="ecosystem-brand">
-              <img
-                src="/assets/logo-vector.png"
-                alt="Good Flippin Design Logo"
-                className="ecosystem-logo"
-              />
-              </svg>
-              <span className="ecosystem-title">GFD Ecosystem</span>
-            </div>
-            <button
-              className="ecosystem-toggle"
-              aria-label="Open ecosystem menu"
-              aria-expanded="false"
-              aria-controls="ecosystem-dropdown"
-            >
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <line x1="3" y1="12" x2="21" y2="12"></line>
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <line x1="3" y1="18" x2="21" y2="18"></line>
-              </svg>
-            </button>
-          </div>
-          <div
-            className="ecosystem-dropdown"
-            id="ecosystem-dropdown"
-            role="menu"
-            aria-hidden="true"
-          >
-            <div className="dropdown-content">
-              <div className="nav-section">
-                <h3 className="nav-section-title">Production Platforms</h3>
-                <a
-                  href="https://goodflippindesign.com"
-                  className="nav-link"
-                  role="menuitem"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <span className="nav-icon" aria-hidden="true">
-                    🎨
-                  </span>
-                  <div className="nav-link-content">
-                    <strong className="nav-link-title">
-                      Good Flippin Design
-                    </strong>
-                    <small className="nav-link-subtitle">
-                      Strategic Web Development
-                    </small>
-                  </div>
-                </a>
-                <a
-                  href="https://aiaimate.com"
-                  className="nav-link"
-                  role="menuitem"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <span className="nav-icon" aria-hidden="true">
-                    🧠
-                  </span>
-                  <div className="nav-link-content">
-                    <strong className="nav-link-title">AI Aimate</strong>
-                    <small className="nav-link-subtitle">
-                      AI Education Platform
-                    </small>
-                  </div>
-                </a>
-                <a
-                  href="https://culturesherpa.org"
-                  className="nav-link"
-                  role="menuitem"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <span className="nav-icon" aria-hidden="true">
-                    🌍
-                  </span>
-                  <div className="nav-link-content">
-                    <strong className="nav-link-title">CultureSherpa</strong>
-                    <small className="nav-link-subtitle">
-                      Interactive Cultural Atlas
-                    </small>
-                  </div>
-                </a>
-                <a
-                  href="https://goodflippinvibes.com"
-                  className="nav-link"
-                  role="menuitem"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <span className="nav-icon" aria-hidden="true">
-                    ✨
-                  </span>
-                  <div className="nav-link-content">
-                    <strong className="nav-link-title">
-                      Good Flippin Vibes
-                    </strong>
-                    <small className="nav-link-subtitle">
-                      Holistic Wellness Platform
-                    </small>
-                  </div>
-                </a>
-              </div>
-              <div className="nav-section">
-                <h3 className="nav-section-title">Research & Intelligence</h3>
-                <a
-                  href="https://globaldeets.com"
-                  className="nav-link"
-                  role="menuitem"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <span className="nav-icon" aria-hidden="true">
-                    📊
-                  </span>
-                  <div className="nav-link-content">
-                    <strong className="nav-link-title">GlobalDeets</strong>
-                    <small className="nav-link-subtitle">
-                      Visualization & Research Platform
-                    </small>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </nav>
+        {/* GFD Ecosystem Navigation - React Component */}
+        <EcosystemNav />
 
         {/* Background grid effect */}
         <div className="cyber-grid" aria-hidden="true"></div>
@@ -344,8 +206,8 @@ export default function RootLayout({
         {/* Main content */}
         <div className="relative z-10 min-h-screen">{children}</div>
 
-        {/* Ecosystem Navigation Script */}
-        <script src="/shared/ecosystem-nav.js" />
+        {/* Conversion Optimization Features */}
+        <ConversionFeatures />
       </body>
     </html>
   );
