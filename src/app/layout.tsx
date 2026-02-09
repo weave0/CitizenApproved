@@ -47,6 +47,9 @@ export const metadata: Metadata = {
   verification: {
     google: "pending", // Add Google Search Console verification code
   },
+  other: {
+    "facebook-domain-verification": "lplvdum3bgelnyx0u5ycpe2wgt9ffi",
+  },
 };
 
 // Schema.org structured data for SEO
