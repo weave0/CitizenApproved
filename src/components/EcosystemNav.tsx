@@ -152,7 +152,9 @@ export default function EcosystemNav() {
                       className="flex items-start gap-3 p-2 rounded-lg bg-blue-950/30 border border-blue-800/30"
                       aria-current="page"
                     >
-                      <span className="text-2xl" aria-hidden="true">🗳️</span>
+                      <span className="inline-flex w-8 h-8 items-center justify-center rounded-full overflow-hidden flex-shrink-0" aria-hidden="true">
+                        <img src="/ca-logo.png" alt="" width={32} height={32} className="w-full h-full object-cover" />
+                      </span>
                       <div>
                         <div className="font-semibold text-blue-300 text-sm">CitizenApproved</div>
                         <div className="text-xs text-blue-400">U.S. Citizenship Pathways</div>

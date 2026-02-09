@@ -1,8 +1,9 @@
 'use client'
 
+import Image from 'next/image'
 import { useState } from 'react'
 import Link from 'next/link'
-import { Scale, Menu, X, Globe, ChevronDown } from 'lucide-react'
+import { Menu, X, Globe, ChevronDown } from 'lucide-react'
 
 const navLinks = [
   { href: '/pathways', label: 'Pathways' },
@@ -34,8 +35,8 @@ export function Navbar() {
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity" />
-              <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center">
-                <Scale className="w-5 h-5 text-white" />
+              <div className="relative w-10 h-10 rounded-xl overflow-hidden">
+                <Image src="/ca-logo.png" alt="CitizenApproved" width={40} height={40} className="w-full h-full object-cover" priority />
               </div>
             </div>
             <span className="text-lg font-bold bg-gradient-to-r from-white via-white to-white/60 bg-clip-text text-transparent">
