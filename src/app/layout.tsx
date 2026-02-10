@@ -19,6 +19,17 @@ export const metadata: Metadata = {
     "Title 8",
   ],
   authors: [{ name: "CitizenApproved" }],
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/citizenapproved-icon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/citizenapproved-icon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/citizenapproved-icon-48x48.png', sizes: '48x48', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
   openGraph: {
     title: "CitizenApproved | Your Path to U.S. Citizenship",
     description:

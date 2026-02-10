@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 export default function ConversionFeatures() {
   // Exit Intent State
   const [showExitIntent, setShowExitIntent] = useState(false);
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const [emailSubmitted, setEmailSubmitted] = useState(false);
   const [emailLoading, setEmailLoading] = useState(false);
 
@@ -19,22 +19,26 @@ export default function ConversionFeatures() {
   const [socialDismissed, setSocialDismissed] = useState(false);
 
   const activities = [
-    { icon: '🗳️', text: 'Someone just checked eligibility requirements' },
-    { icon: '📋', text: 'Naturalization pathway viewed' },
-    { icon: '💚', text: 'New supporter joined our mission' },
-    { icon: '🌐', text: 'Citizenship flowchart explored' },
-    { icon: '👥', text: 'Community member shared our resource' },
-    { icon: '✉️', text: 'Newsletter subscriber received updates' }
+    { icon: "🗳️", text: "Someone just checked eligibility requirements" },
+    { icon: "📋", text: "Naturalization pathway viewed" },
+    { icon: "💚", text: "New supporter joined our mission" },
+    { icon: "🌐", text: "Citizenship flowchart explored" },
+    { icon: "👥", text: "Community member shared our resource" },
+    { icon: "✉️", text: "Newsletter subscriber received updates" },
   ];
 
   // Check sessionStorage on mount
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-    
-    const exitSeen = sessionStorage.getItem('citizenapproved_exit_intent_seen');
-    const stickyDism = sessionStorage.getItem('citizenapproved_sticky_dismissed');
-    const socialDism = sessionStorage.getItem('citizenapproved_social_dismissed');
-    
+    if (typeof window === "undefined") return;
+
+    const exitSeen = sessionStorage.getItem("citizenapproved_exit_intent_seen");
+    const stickyDism = sessionStorage.getItem(
+      "citizenapproved_sticky_dismissed",
+    );
+    const socialDism = sessionStorage.getItem(
+      "citizenapproved_social_dismissed",
+    );
+
     if (stickyDism) setStickyDismissed(true);
     if (socialDism) setSocialDismissed(true);
 
@@ -43,64 +47,72 @@ export default function ConversionFeatures() {
       const handleMouseLeave = (e: MouseEvent) => {
         if (e.clientY < 10 && !showExitIntent) {
           setShowExitIntent(true);
-          sessionStorage.setItem('citizenapproved_exit_intent_seen', 'true');
+          sessionStorage.setItem("citizenapproved_exit_intent_seen", "true");
         }
       };
 
       // Mobile: scroll velocity detection
       let lastScrollY = window.scrollY;
       let lastScrollTime = Date.now();
-      
+
       const handleScroll = () => {
         const currentScrollY = window.scrollY;
         const currentTime = Date.now();
         const scrollDelta = lastScrollY - currentScrollY;
         const timeDelta = currentTime - lastScrollTime;
-        
+
         // Detect rapid upward scroll
-        if (scrollDelta > 50 && timeDelta < 100 && currentScrollY > 200 && !showExitIntent) {
+        if (
+          scrollDelta > 50 &&
+          timeDelta < 100 &&
+          currentScrollY > 200 &&
+          !showExitIntent
+        ) {
           setShowExitIntent(true);
-          sessionStorage.setItem('citizenapproved_exit_intent_seen', 'true');
+          sessionStorage.setItem("citizenapproved_exit_intent_seen", "true");
         }
-        
+
         lastScrollY = currentScrollY;
         lastScrollTime = currentTime;
       };
 
-      document.addEventListener('mouseleave', handleMouseLeave);
-      window.addEventListener('scroll', handleScroll);
+      document.addEventListener("mouseleave", handleMouseLeave);
+      window.addEventListener("scroll", handleScroll);
 
       return () => {
-        document.removeEventListener('mouseleave', handleMouseLeave);
-        window.removeEventListener('scroll', handleScroll);
+        document.removeEventListener("mouseleave", handleMouseLeave);
+        window.removeEventListener("scroll", handleScroll);
       };
     }
   }, [showExitIntent]);
 
   // Sticky CTA Timer & Scroll Detection
   useEffect(() => {
-    if (stickyDismissed || typeof window === 'undefined') return;
+    if (stickyDismissed || typeof window === "undefined") return;
 
     const timer = setTimeout(() => setShowStickyCTA(true), 10000);
 
     const handleScroll = () => {
-      const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+      const scrollPercent =
+        (window.scrollY /
+          (document.documentElement.scrollHeight - window.innerHeight)) *
+        100;
       if (scrollPercent > 50) setShowStickyCTA(true);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
       clearTimeout(timer);
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [stickyDismissed]);
 
   // Social Proof Rotation
   useEffect(() => {
-    if (socialDismissed || typeof window === 'undefined') return;
+    if (socialDismissed || typeof window === "undefined") return;
 
     const initialTimer = setTimeout(() => setShowSocialProof(true), 15000);
-    
+
     const rotationInterval = setInterval(() => {
       setShowSocialProof(false);
       setTimeout(() => {
@@ -123,21 +135,21 @@ export default function ConversionFeatures() {
     setEmailLoading(true);
 
     try {
-      await fetch('https://formspree.io/f/xanyedqp', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          email, 
-          source: 'exit_intent', 
-          site: 'CitizenApproved' 
-        })
+      await fetch("https://formspree.io/f/xanyedqp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          source: "exit_intent",
+          site: "CitizenApproved",
+        }),
       });
-      
+
       setEmailSubmitted(true);
       setTimeout(() => setShowExitIntent(false), 3000);
     } catch (error) {
-      console.error('Email submission error:', error);
-      alert('Failed to subscribe. Please try again.');
+      console.error("Email submission error:", error);
+      alert("Failed to subscribe. Please try again.");
     } finally {
       setEmailLoading(false);
     }
@@ -151,27 +163,27 @@ export default function ConversionFeatures() {
   const handleStickyDismiss = () => {
     setShowStickyCTA(false);
     setStickyDismissed(true);
-    sessionStorage.setItem('citizenapproved_sticky_dismissed', 'true');
+    sessionStorage.setItem("citizenapproved_sticky_dismissed", "true");
   };
 
   const handleSocialDismiss = () => {
     setShowSocialProof(false);
     setSocialDismissed(true);
-    sessionStorage.setItem('citizenapproved_social_dismissed', 'true');
+    sessionStorage.setItem("citizenapproved_social_dismissed", "true");
   };
 
   // Escape key handling
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
+      if (e.key === "Escape") {
         if (showExitIntent) handleExitClose();
         if (showStickyCTA) handleStickyDismiss();
         if (showSocialProof) handleSocialDismiss();
       }
     };
 
-    document.addEventListener('keydown', handleEscape);
-    return () => document.removeEventListener('keydown', handleEscape);
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
   }, [showExitIntent, showStickyCTA, showSocialProof]);
 
   return (
@@ -179,8 +191,8 @@ export default function ConversionFeatures() {
       {/* Exit Intent Popup */}
       {showExitIntent && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-200 animate-fadeIn">
-          <div 
-            className="fixed inset-0" 
+          <div
+            className="fixed inset-0"
             onClick={handleExitClose}
             aria-hidden="true"
           />
@@ -190,8 +202,14 @@ export default function ConversionFeatures() {
               className="absolute top-4 right-4 text-blue-300 hover:text-white transition-colors"
               aria-label="Close"
             >
-              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M18 6L6 18M6 6l12 12"/>
+              <svg
+                width="24"
+                height="24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path d="M18 6L6 18M6 6l12 12" />
               </svg>
             </button>
 
@@ -201,7 +219,8 @@ export default function ConversionFeatures() {
                   Before you go... 🗳️
                 </h3>
                 <p className="text-blue-200 mb-6">
-                  Get citizenship updates, legal pathway changes, and civic engagement resources delivered to your inbox.
+                  Get citizenship updates, legal pathway changes, and civic
+                  engagement resources delivered to your inbox.
                 </p>
 
                 <form onSubmit={handleEmailSubmit} className="space-y-4">
@@ -218,7 +237,7 @@ export default function ConversionFeatures() {
                     disabled={emailLoading}
                     className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-all disabled:opacity-50"
                   >
-                    {emailLoading ? 'Subscribing...' : 'Stay Informed 📬'}
+                    {emailLoading ? "Subscribing..." : "Stay Informed 📬"}
                   </button>
                 </form>
 
@@ -229,7 +248,9 @@ export default function ConversionFeatures() {
             ) : (
               <div className="text-center py-4">
                 <div className="text-5xl mb-4">✅</div>
-                <h3 className="text-2xl font-bold text-white mb-2">You're subscribed!</h3>
+                <h3 className="text-2xl font-bold text-white mb-2">
+                  You're subscribed!
+                </h3>
                 <p className="text-blue-200">Check your inbox for updates.</p>
               </div>
             )}
@@ -242,14 +263,18 @@ export default function ConversionFeatures() {
         <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-r from-blue-900 to-indigo-900 text-white py-4 px-6 shadow-2xl z-100 border-t-2 border-blue-400 animate-slideUp">
           <div className="max-w-screen-xl mx-auto flex items-center justify-between gap-4 flex-wrap">
             <div className="flex-1 min-w-0">
-              <p className="font-bold text-lg">Help Others Find Their Path to Citizenship 🗳️</p>
-              <p className="text-sm text-blue-200">Support our mission to  make civic resources accessible to all</p>
+              <p className="font-bold text-lg">
+                Help Others Find Their Path to Citizenship 🗳️
+              </p>
+              <p className="text-sm text-blue-200">
+                Support our mission to make civic resources accessible to all
+              </p>
             </div>
-            
+
             <div className="flex items-center gap-3">
-              <a 
-                href="https://gofund.me/f07ea3faf" 
-                target="_blank" 
+              <a
+                href="https://gofund.me/f07ea3faf"
+                target="_blank"
                 rel="noopener"
                 className="bg-white text-blue-900 font-bold py-2 px-6 rounded-lg hover:bg-blue-50 transition-all whitespace-nowrap"
               >
@@ -260,8 +285,14 @@ export default function ConversionFeatures() {
                 className="text-blue-200 hover:text-white transition-colors p-2"
                 aria-label="Dismiss"
               >
-                <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M18 6L6 18M6 6l12 12"/>
+                <svg
+                  width="20"
+                  height="20"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path d="M18 6L6 18M6 6l12 12" />
                 </svg>
               </button>
             </div>
@@ -277,7 +308,9 @@ export default function ConversionFeatures() {
               {activities[currentActivity].icon}
             </span>
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium">{activities[currentActivity].text}</p>
+              <p className="text-sm font-medium">
+                {activities[currentActivity].text}
+              </p>
               <p className="text-xs text-blue-400 mt-1">Just now</p>
             </div>
             <button
@@ -285,8 +318,14 @@ export default function ConversionFeatures() {
               className="text-blue-300 hover:text-white transition-colors flex-shrink-0"
               aria-label="Dismiss"
             >
-              <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M12 4L4 12M4 4l8 8"/>
+              <svg
+                width="16"
+                height="16"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path d="M12 4L4 12M4 4l8 8" />
               </svg>
             </button>
           </div>
@@ -295,20 +334,42 @@ export default function ConversionFeatures() {
 
       <style jsx>{`
         @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
         }
         @keyframes slideUp {
-          from { transform: translateY(20px); opacity: 0; }
-          to { transform: translateY(0); opacity: 1; }
+          from {
+            transform: translateY(20px);
+            opacity: 0;
+          }
+          to {
+            transform: translateY(0);
+            opacity: 1;
+          }
         }
         @keyframes slideInLeft {
-          from { transform: translateX(-100%); opacity: 0; }
-          to { transform: translateX(0); opacity: 1; }
+          from {
+            transform: translateX(-100%);
+            opacity: 0;
+          }
+          to {
+            transform: translateX(0);
+            opacity: 1;
+          }
         }
-        .animate-fadeIn { animation: fadeIn 0.3s ease-out; }
-        .animate-slideUp { animation: slideUp 0.3s ease-out; }
-        .animate-slideInLeft { animation: slideInLeft 0.4s ease-out; }
+        .animate-fadeIn {
+          animation: fadeIn 0.3s ease-out;
+        }
+        .animate-slideUp {
+          animation: slideUp 0.3s ease-out;
+        }
+        .animate-slideInLeft {
+          animation: slideInLeft 0.4s ease-out;
+        }
       `}</style>
     </>
   );
