@@ -1,0 +1,67 @@
+name: CI - Build & Type Check
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    name: Build & Type Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: TypeScript Type Check
+        run: npm run type-check
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build Static Export
+        run: npm run build
+
+      - name: Flatten RSC Payloads
+        run: node scripts/flatten-rsc.js
+
+      - name: Verify Flattened Files
+        run: |
+          if [ ! -d "out" ]; then
+            echo "ERROR: out/ directory not found after build"
+            exit 1
+          fi
+          
+          # Check for at least one flattened RSC file (__next.*.txt)
+          flattened_count=$(find out -name "__next.*.txt" -type f 2>/dev/null | wc -l)
+          
+          if [ "$flattened_count" -eq 0 ]; then
+            echo "WARNING: No flattened RSC payloads found. This may be expected if no pages use RSC."
+            echo "Build completed successfully."
+          else
+            echo "SUCCESS: Found $flattened_count flattened RSC payload files"
+            echo "Sample files:"
+            find out -name "__next.*.txt" -type f | head -5
+          fi
+
+      - name: CI Summary
+        run: |
+          echo "✅ TypeScript type check passed"
+          echo "✅ Linting passed"
+          echo "✅ Static build completed"
+          echo "✅ RSC payloads flattened"
+          echo ""
+          echo "Build artifact size:"
+          du -sh out/

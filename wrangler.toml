@@ -1,0 +1,14 @@
+name = "citizenapproved"
+compatibility_date = "2026-02-09"
+
+# Cloudflare Pages configuration
+pages_build_output_dir = "out"
+
+# Build command for Cloudflare Pages
+[build]
+command = "npm run build:static"
+
+# Environment variables (configure in Cloudflare Pages dashboard)
+[env.production]
+
+[env.preview]

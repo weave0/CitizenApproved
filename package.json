@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
+    "build:static": "npm run build && node scripts/flatten-rsc.js",
     "start": "next start",
+    "type-check": "tsc --noEmit",
     "lint": "next lint"
   },
   "dependencies": {
