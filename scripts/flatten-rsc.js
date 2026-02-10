@@ -4,11 +4,11 @@
  * Next.js App Router generates RSC payloads in nested subdirectories:
  *   out/legal/__next.legal/__PAGE__.txt
  *   out/pathways/birthright/__next.pathways/birthright/__PAGE__.txt
- * 
+ *
  * But the client-side JS requests them with dot-notation:
- *   /legal/__next.legal.__PAGE__.txt  
+ *   /legal/__next.legal.__PAGE__.txt
  *   /pathways/birthright/__next.pathways.birthright.__PAGE__.txt
- * 
+ *
  * This script recursively copies nested RSC files into the expected flat format.
  */
 const fs = require('fs');
