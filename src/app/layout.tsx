@@ -58,6 +58,19 @@ export const metadata: Metadata = {
   verification: {
     google: "pending", // Add Google Search Console verification code
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
+  other: {
+    "facebook-domain-verification": "lplvdum3bgelnyx0u5ycpe2wgt9ffi",
+  },
 };
 
 // Schema.org structured data for SEO
@@ -194,7 +207,7 @@ export default function RootLayout({
         {/* Google Analytics */}
         <script
           async
-          src="https://www.googletagmanager.com/gtag/js?id=G-QPPVJM1B60"
+          src="https://www.googletagmanager.com/gtag/js?id=G-WM6Q66W9W0"
         />
         <script
           dangerouslySetInnerHTML={{
@@ -202,7 +215,7 @@ export default function RootLayout({
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-QPPVJM1B60');
+              gtag('config', 'G-WM6Q66W9W0');
             `,
           }}
         />
