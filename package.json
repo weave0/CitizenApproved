@@ -8,7 +8,7 @@
     "build:static": "npm run build && node scripts/flatten-rsc.js",
     "start": "next start",
     "type-check": "tsc --noEmit",
-    "lint": "next lint"
+    "lint": "eslint ."
   },
   "dependencies": {
     "@types/node": "^25.0.1",
@@ -25,7 +25,10 @@
     "typescript": "^5.9.3"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.3",
     "autoprefixer": "^10.4.22",
+    "eslint": "^9.11.0",
+    "eslint-config-next": "latest",
     "postcss": "^8.5.6"
   }
 }
