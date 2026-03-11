@@ -1,8 +1,9 @@
 import js from "@eslint/js";
 
 export default [
-  js.configs.recommended,
   {
+    ...js.configs.recommended,
+    files: ["**/*.js", "**/*.mjs", "**/*.cjs"],
     ignores: [
       ".next/**",
       "out/**",
@@ -10,8 +11,8 @@ export default [
       "scripts/**",
     ],
     rules: {
+      ...js.configs.recommended.rules,
       "no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
-      "no-undef": "off", // TypeScript handles this
     },
   },
 ];
