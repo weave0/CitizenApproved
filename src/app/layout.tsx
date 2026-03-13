@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import EcosystemNav from "@/components/EcosystemNav";
 import ConversionFeatures from "@/components/ConversionFeatures";
+import { ErrorMonitor } from "@/components/ErrorMonitor";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -213,6 +214,8 @@ export default function RootLayout({
       <body className={`${inter.className} antialiased`}>
         {/* GFD Ecosystem Navigation - React Component */}
         <EcosystemNav />
+        {/* Error monitoring */}
+        <ErrorMonitor />
 
         {/* Background grid effect */}
         <div className="cyber-grid" aria-hidden="true"></div>
