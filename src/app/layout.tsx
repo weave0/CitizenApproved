@@ -4,6 +4,7 @@ import "./globals.css";
 import EcosystemNav from "@/components/EcosystemNav";
 import ConversionFeatures from "@/components/ConversionFeatures";
 import { ErrorMonitor } from "@/components/ErrorMonitor";
+import SentryInit from "@/components/SentryInit";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,13 +23,25 @@ export const metadata: Metadata = {
   authors: [{ name: "CitizenApproved" }],
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: 'any' },
-      { url: '/citizenapproved-icon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/citizenapproved-icon-32x32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/citizenapproved-icon-48x48.png', sizes: '48x48', type: 'image/png' },
+      { url: "/favicon.ico", sizes: "any" },
+      {
+        url: "/citizenapproved-icon-16x16.png",
+        sizes: "16x16",
+        type: "image/png",
+      },
+      {
+        url: "/citizenapproved-icon-32x32.png",
+        sizes: "32x32",
+        type: "image/png",
+      },
+      {
+        url: "/citizenapproved-icon-48x48.png",
+        sizes: "48x48",
+        type: "image/png",
+      },
     ],
     apple: [
-      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     ],
   },
   openGraph: {
@@ -206,6 +219,8 @@ export default function RootLayout({
 
         {/* Conversion Optimization Features */}
         <ConversionFeatures />
+        {/* Sentry: activate by setting NEXT_PUBLIC_SENTRY_DSN env var */}
+        <SentryInit />
       </body>
     </html>
   );
