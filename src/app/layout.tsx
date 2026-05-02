@@ -64,121 +64,95 @@ export const metadata: Metadata = {
   },
 };
 
-// Schema.org structured data for SEO
-const structuredData = [
-  // Government Organization Schema
-  {
-    "@context": "https://schema.org",
-    "@type": "GovernmentOrganization",
-    "@id": "https://citizenapproved.org/#organization",
-    name: "CitizenApproved",
-    alternateName: "CitizenApproved.org",
-    url: "https://citizenapproved.org",
-    description:
-      "Comprehensive, legally accurate guide to all pathways to United States citizenship based on the Immigration and Nationality Act (INA)",
-    knowsAbout: [
-      "U.S. Citizenship",
-      "Naturalization Process",
-      "Immigration Law",
-      "Green Card",
-      "INA Title 8",
-      "USCIS Procedures",
-      "Civic Integration",
-    ],
-    areaServed: {
-      "@type": "Country",
-      name: "United States",
+// Schema.org @graph — single context, stable @id anchors linked to GFD ecosystem
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://citizenapproved.org/#site",
+      "url": "https://citizenapproved.org",
+      "name": "CitizenApproved",
+      "description": "Comprehensive, legally accurate guide to all pathways to United States citizenship. Based on the Immigration and Nationality Act (INA) - Title 8 U.S. Code.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://goodflippindesign.com/#studio" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://citizenapproved.org/search?q={search_term_string}",
+        },
+        "query-input": "required name=search_term_string",
+      },
     },
-    founder: {
-      "@type": "Person",
-      name: "Brett Weaver",
-      url: "https://goodflippindesign.com",
+    {
+      "@type": "WebApplication",
+      "@id": "https://citizenapproved.org/#app",
+      "name": "CitizenApproved",
+      "alternateName": "CitizenApproved.org",
+      "url": "https://citizenapproved.org",
+      "applicationCategory": "GovernmentApplication",
+      "operatingSystem": "Web",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "description": "Comprehensive, legally accurate guide to all pathways to United States citizenship based on the Immigration and Nationality Act (INA)",
+      "knowsAbout": [
+        "U.S. Citizenship",
+        "Naturalization Process",
+        "Immigration Law",
+        "Green Card",
+        "INA Title 8",
+        "USCIS Procedures",
+        "Civic Integration",
+      ],
+      "areaServed": { "@type": "Country", "name": "United States" },
+      "creator": {
+        "@type": "Person",
+        "@id": "https://goodflippindesign.com/#brett",
+        "name": "Brett Weaver",
+        "url": "https://goodflippindesign.com",
+      },
+      "publisher": { "@id": "https://goodflippindesign.com/#studio" },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Citizenship Pathways",
+        "itemListElement": [
+          {
+            "@type": "HowTo",
+            "name": "Naturalization",
+            "description": "Standard path to U.S. citizenship through lawful permanent residence",
+          },
+          {
+            "@type": "HowTo",
+            "name": "Citizenship Through Parents",
+            "description": "Automatic or derived citizenship for children of U.S. citizens",
+          },
+          {
+            "@type": "HowTo",
+            "name": "Military Service Naturalization",
+            "description": "Expedited citizenship for U.S. military service members",
+          },
+        ],
+      },
     },
-    parentOrganization: {
+    {
       "@type": "Organization",
-      name: "GFV LLC DBA Good Flippin Design",
-      url: "https://goodflippindesign.com",
+      "@id": "https://goodflippindesign.com/#studio",
+      "name": "Good Flippin Design",
+      "url": "https://goodflippindesign.com",
+      "sameAs": ["https://goodflippinvibes.com"],
     },
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Citizenship Pathways",
-      itemListElement: [
-        {
-          "@type": "HowTo",
-          name: "Naturalization",
-          description:
-            "Standard path to U.S. citizenship through lawful permanent residence",
-        },
-        {
-          "@type": "HowTo",
-          name: "Citizenship Through Parents",
-          description:
-            "Automatic or derived citizenship for children of U.S. citizens",
-        },
-        {
-          "@type": "HowTo",
-          name: "Military Service Naturalization",
-          description:
-            "Expedited citizenship for U.S. military service members",
-        },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://citizenapproved.org/#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://citizenapproved.org" },
+        { "@type": "ListItem", "position": 2, "name": "Pathways", "item": "https://citizenapproved.org/pathways" },
+        { "@type": "ListItem", "position": 3, "name": "Resources", "item": "https://citizenapproved.org/resources" },
+        { "@type": "ListItem", "position": 4, "name": "About", "item": "https://citizenapproved.org/about" },
       ],
     },
-  },
-  // WebSite Schema with SearchAction
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "@id": "https://citizenapproved.org/#website",
-    name: "CitizenApproved",
-    url: "https://citizenapproved.org",
-    description: "Comprehensive guide to U.S. citizenship pathways",
-    publisher: {
-      "@type": "GovernmentOrganization",
-      name: "CitizenApproved",
-    },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate:
-          "https://citizenapproved.org/search?q={search_term_string}",
-      },
-      "query-input": "required name=search_term_string",
-    },
-  },
-  // BreadcrumbList Schema
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "@id": "https://citizenapproved.org/#breadcrumb",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://citizenapproved.org",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Pathways",
-        item: "https://citizenapproved.org/pathways",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "Resources",
-        item: "https://citizenapproved.org/resources",
-      },
-      {
-        "@type": "ListItem",
-        position: 4,
-        name: "About",
-        item: "https://citizenapproved.org/about",
-      },
-    ],
-  },
-];
+  ],
+};
 
 export default function RootLayout({
   children,
@@ -188,7 +162,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
-        {/* Schema.org structured data */}
+        {/* Schema.org @graph structured data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -208,6 +182,13 @@ export default function RootLayout({
               gtag('js', new Date());
               gtag('config', 'G-WM6Q66W9W0');
             `,
+          }}
+        />
+        {/* Web Vitals reporter — PerformanceObserver only, zero CDN deps.
+            Reports CLS, LCP, FID, TTFB, INP to GA4 when gtag is available. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(()=>{if(!window.PerformanceObserver)return;function r(n,v,i){if(window.gtag)gtag('event',n,{value:Math.round('CLS'===n?1e3*v:v),metric_id:i||'',non_interaction:!0,event_category:'Web Vitals'});}const ob=(t,cb,opts)=>{try{new PerformanceObserver(l=>{l.getEntries().forEach(cb)}).observe(Object.assign({type:t,buffered:!0},opts||{}));}catch(e){}};ob('largest-contentful-paint',e=>r('LCP',e.startTime,e.id));ob('first-input',e=>r('FID',e.processingStart-e.startTime,e.id));ob('layout-shift',e=>{if(!e.hadRecentInput)r('CLS',e.value,e.id);},{durationThreshold:0});ob('event',e=>{if(e.interactionId)r('INP',e.duration,e.id);},{durationThreshold:40});const np=(performance.getEntriesByType('navigation')||[])[0];if(np)r('TTFB',np.responseStart,np.name);})();`,
           }}
         />
       </head>
