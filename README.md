@@ -18,12 +18,12 @@ npm run dev        # http://localhost:3000
 
 ## Scripts
 
-| Command | Purpose |
-|---------|---------|
-| `npm run dev` | Local dev server (Turbopack) |
-| `npm run build` | Static export → `out/` |
-| `npm run lint` | ESLint check |
-| `npm start` | Serve production build locally |
+| Command         | Purpose                        |
+| --------------- | ------------------------------ |
+| `npm run dev`   | Local dev server (Turbopack)   |
+| `npm run build` | Static export → `out/`         |
+| `npm run lint`  | ESLint check                   |
+| `npm start`     | Serve production build locally |
 
 ## Environment Variables
 
@@ -33,11 +33,11 @@ Copy `.env.example` to `.env.local`:
 cp .env.example .env.local
 ```
 
-| Variable | Required | Purpose |
-|----------|----------|---------|
-| `NEXT_PUBLIC_SENTRY_DSN` | No | Sentry error tracking DSN |
-| `NEXT_PUBLIC_GA_ID` | No | Google Analytics 4 measurement ID |
-| `NEXT_PUBLIC_SITE_URL` | No | Canonical site URL (defaults to citizensapproved.com) |
+| Variable                 | Required | Purpose                                               |
+| ------------------------ | -------- | ----------------------------------------------------- |
+| `NEXT_PUBLIC_SENTRY_DSN` | No       | Sentry error tracking DSN                             |
+| `NEXT_PUBLIC_GA_ID`      | No       | Google Analytics 4 measurement ID                     |
+| `NEXT_PUBLIC_SITE_URL`   | No       | Canonical site URL (defaults to citizensapproved.com) |
 
 ## Deployment
 

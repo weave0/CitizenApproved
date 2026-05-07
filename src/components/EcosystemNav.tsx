@@ -187,10 +187,13 @@ export default function EcosystemNav() {
                       className="flex items-start gap-3 p-2 rounded-lg bg-blue-950/30 border border-blue-800/30"
                       aria-current="page"
                     >
-                      <div className="flex-shrink-0 w-8 h-8 rounded-full overflow-hidden bg-gradient-to-br from-cyan-500/20 to-blue-500/20 p-1.5 flex items-center justify-center" aria-hidden="true">
-                        <img 
-                          src="/logos/citizenapproved-logo.png" 
-                          alt="" 
+                      <div
+                        className="flex-shrink-0 w-8 h-8 rounded-full overflow-hidden bg-gradient-to-br from-cyan-500/20 to-blue-500/20 p-1.5 flex items-center justify-center"
+                        aria-hidden="true"
+                      >
+                        <img
+                          src="/logos/citizenapproved-logo.png"
+                          alt=""
                           className="w-full h-full object-contain"
                         />
                       </div>
