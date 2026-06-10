@@ -23,7 +23,7 @@ jobs:
           cache: "npm"
 
       - name: Install Dependencies
-        run: npm install --no-audit
+        run: npm ci --no-audit
 
       - name: TypeScript Type Check
         run: npm run type-check
