@@ -100,7 +100,7 @@ export function Navbar() {
             <a
               href="https://aiaimate.com?utm_source=citizenapproved&utm_medium=nav&utm_campaign=learn_ai"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               className="flex items-center gap-1 px-4 py-2 text-sm text-cyan-400/90 hover:text-cyan-300 rounded-lg hover:bg-white/[0.06] transition-all duration-200"
             >
               Learn AI
@@ -164,7 +164,7 @@ export function Navbar() {
             <a
               href="https://aiaimate.com?utm_source=citizenapproved&utm_medium=mobile_nav&utm_campaign=learn_ai"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}
               className="flex items-center gap-1 mt-2 px-4 py-3 text-cyan-400/90 hover:text-cyan-300 hover:bg-white/[0.06] rounded-lg transition-colors"
             >
