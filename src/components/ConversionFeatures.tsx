@@ -3,12 +3,6 @@
 import { useState, useEffect } from "react";
 
 export default function ConversionFeatures() {
-  // Exit Intent State
-  const [showExitIntent, setShowExitIntent] = useState(false);
-  const [email, setEmail] = useState("");
-  const [emailSubmitted, setEmailSubmitted] = useState(false);
-  const [emailLoading, setEmailLoading] = useState(false);
-
   // Sticky CTA State
   const [showStickyCTA, setShowStickyCTA] = useState(false);
   const [stickyDismissed, setStickyDismissed] = useState(false);
@@ -31,7 +25,6 @@ export default function ConversionFeatures() {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    const exitSeen = sessionStorage.getItem("citizenapproved_exit_intent_seen");
     const stickyDism = sessionStorage.getItem(
       "citizenapproved_sticky_dismissed",
     );
@@ -41,50 +34,7 @@ export default function ConversionFeatures() {
 
     if (stickyDism) setStickyDismissed(true);
     if (socialDism) setSocialDismissed(true);
-
-    if (!exitSeen) {
-      // Desktop: mouse leave detection
-      const handleMouseLeave = (e: MouseEvent) => {
-        if (e.clientY < 10 && !showExitIntent) {
-          setShowExitIntent(true);
-          sessionStorage.setItem("citizenapproved_exit_intent_seen", "true");
-        }
-      };
-
-      // Mobile: scroll velocity detection
-      let lastScrollY = window.scrollY;
-      let lastScrollTime = Date.now();
-
-      const handleScroll = () => {
-        const currentScrollY = window.scrollY;
-        const currentTime = Date.now();
-        const scrollDelta = lastScrollY - currentScrollY;
-        const timeDelta = currentTime - lastScrollTime;
-
-        // Detect rapid upward scroll
-        if (
-          scrollDelta > 50 &&
-          timeDelta < 100 &&
-          currentScrollY > 200 &&
-          !showExitIntent
-        ) {
-          setShowExitIntent(true);
-          sessionStorage.setItem("citizenapproved_exit_intent_seen", "true");
-        }
-
-        lastScrollY = currentScrollY;
-        lastScrollTime = currentTime;
-      };
-
-      document.addEventListener("mouseleave", handleMouseLeave);
-      window.addEventListener("scroll", handleScroll);
-
-      return () => {
-        document.removeEventListener("mouseleave", handleMouseLeave);
-        window.removeEventListener("scroll", handleScroll);
-      };
-    }
-  }, [showExitIntent]);
+  }, []);
 
   // Sticky CTA Timer & Scroll Detection
   useEffect(() => {
@@ -128,38 +78,6 @@ export default function ConversionFeatures() {
   }, [socialDismissed, activities.length]);
 
   // Email Form Submit
-  const handleEmailSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email || emailLoading) return;
-
-    setEmailLoading(true);
-
-    try {
-      await fetch("https://formspree.io/f/xanyedqp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email,
-          source: "exit_intent",
-          site: "CitizenApproved",
-        }),
-      });
-
-      setEmailSubmitted(true);
-      setTimeout(() => setShowExitIntent(false), 3000);
-    } catch (error) {
-      console.error("Email submission error:", error);
-      alert("Failed to subscribe. Please try again.");
-    } finally {
-      setEmailLoading(false);
-    }
-  };
-
-  // Close handlers
-  const handleExitClose = () => {
-    setShowExitIntent(false);
-  };
-
   const handleStickyDismiss = () => {
     setShowStickyCTA(false);
     setStickyDismissed(true);
@@ -176,7 +94,6 @@ export default function ConversionFeatures() {
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        if (showExitIntent) handleExitClose();
         if (showStickyCTA) handleStickyDismiss();
         if (showSocialProof) handleSocialDismiss();
       }
@@ -184,83 +101,13 @@ export default function ConversionFeatures() {
 
     document.addEventListener("keydown", handleEscape);
     return () => document.removeEventListener("keydown", handleEscape);
-  }, [showExitIntent, showStickyCTA, showSocialProof]);
+  }, [showStickyCTA, showSocialProof]);
 
   return (
     <>
-      {/* Exit Intent Popup */}
-      {showExitIntent && (
-        <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-200 animate-fadeIn">
-          <div
-            className="fixed inset-0"
-            onClick={handleExitClose}
-            aria-hidden="true"
-          />
-          <div className="relative bg-gradient-to-br from-blue-950 to-slate-900 rounded-2xl p-8 max-w-md mx-4 shadow-2xl border border-blue-800/50 animate-slideUp">
-            <button
-              onClick={handleExitClose}
-              className="absolute top-4 right-4 text-blue-300 hover:text-white transition-colors"
-              aria-label="Close"
-            >
-              <svg
-                width="24"
-                height="24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path d="M18 6L6 18M6 6l12 12" />
-              </svg>
-            </button>
-
-            {!emailSubmitted ? (
-              <>
-                <h3 className="text-2xl font-bold text-white mb-2">
-                  Before you go... 🗳️
-                </h3>
-                <p className="text-blue-200 mb-6">
-                  Get citizenship updates, legal pathway changes, and civic
-                  engagement resources delivered to your inbox.
-                </p>
-
-                <form onSubmit={handleEmailSubmit} className="space-y-4">
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email"
-                    required
-                    className="w-full px-4 py-3 rounded-lg bg-slate-800 border border-blue-700 text-white placeholder-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                  <button
-                    type="submit"
-                    disabled={emailLoading}
-                    className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-all disabled:opacity-50"
-                  >
-                    {emailLoading ? "Subscribing..." : "Stay Informed 📬"}
-                  </button>
-                </form>
-
-                <p className="text-xs text-blue-400 mt-4 text-center">
-                  No spam. Unsubscribe anytime. Privacy respected.
-                </p>
-              </>
-            ) : (
-              <div className="text-center py-4">
-                <div className="text-5xl mb-4">✅</div>
-                <h3 className="text-2xl font-bold text-white mb-2">
-                  You're subscribed!
-                </h3>
-                <p className="text-blue-200">Check your inbox for updates.</p>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
-
       {/* Sticky CTA Bar */}
       {showStickyCTA && !stickyDismissed && (
-        <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-r from-blue-900 to-indigo-900 text-white py-4 px-6 shadow-2xl z-100 border-t-2 border-blue-400 animate-slideUp">
+        <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-r from-blue-900 to-indigo-900 text-white py-4 px-6 shadow-2xl z-[100] border-t-2 border-blue-400 animate-slideUp">
           <div className="max-w-screen-xl mx-auto flex items-center justify-between gap-4 flex-wrap">
             <div className="flex-1 min-w-0">
               <p className="font-bold text-lg">
@@ -302,7 +149,7 @@ export default function ConversionFeatures() {
 
       {/* Social Proof Activity Feed */}
       {showSocialProof && !socialDismissed && (
-        <div className="fixed bottom-6 left-6 bg-gradient-to-r from-slate-800 to-slate-900 text-white rounded-lg shadow-2xl p-4 max-w-sm border border-blue-700/50 z-90 animate-slideInLeft">
+        <div className="fixed bottom-6 left-6 bg-gradient-to-r from-slate-800 to-slate-900 text-white rounded-lg shadow-2xl p-4 max-w-sm border border-blue-700/50 z-[90] animate-slideInLeft">
           <div className="flex items-start gap-3">
             <span className="text-2xl flex-shrink-0" aria-hidden="true">
               {activities[currentActivity].icon}
