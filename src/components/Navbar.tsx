@@ -101,8 +101,16 @@ export function Navbar() {
               href="https://aiaimate.com?utm_source=citizenapproved&utm_medium=nav&utm_campaign=learn_ai"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1 px-4 py-2 text-sm text-cyan-400/90 hover:text-cyan-300 rounded-lg hover:bg-white/[0.06] transition-all duration-200"
+              className="flex items-center gap-1.5 px-4 py-2 text-sm text-cyan-400/90 hover:text-cyan-300 rounded-lg hover:bg-white/[0.06] transition-all duration-200"
             >
+              <Image
+                src="/aiaimate-icon.png"
+                alt=""
+                width={20}
+                height={20}
+                className="rounded-full"
+                aria-hidden="true"
+              />
               Learn AI
               <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
             </a>
@@ -166,8 +174,16 @@ export function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-1 mt-2 px-4 py-3 text-cyan-400/90 hover:text-cyan-300 hover:bg-white/[0.06] rounded-lg transition-colors"
+              className="flex items-center gap-2 mt-2 px-4 py-3 text-cyan-400/90 hover:text-cyan-300 hover:bg-white/[0.06] rounded-lg transition-colors"
             >
+              <Image
+                src="/aiaimate-icon.png"
+                alt=""
+                width={22}
+                height={22}
+                className="rounded-full"
+                aria-hidden="true"
+              />
               Learn AI
               <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
             </a>
