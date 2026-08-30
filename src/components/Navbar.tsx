@@ -43,7 +43,7 @@ export function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#050508] border-b border-white/15" aria-label="Primary navigation">
+      <nav className="fixed top-12 left-0 right-0 z-50 bg-[#050508] border-b border-white/15" aria-label="Primary navigation">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-16 md:h-20">
             <Link href="/" className="flex min-h-11 items-center gap-3 rounded-lg px-1 text-white hover:bg-white/[0.06]" aria-label="CitizenApproved home">
@@ -104,7 +104,7 @@ export function Navbar() {
         </div>
 
         {isOpen && (
-          <div id="mobile-navigation" className="xl:hidden absolute top-full left-0 right-0 bg-[#050508] border-b border-white/15 max-h-[calc(100vh-4rem)] overflow-y-auto">
+          <div id="mobile-navigation" className="xl:hidden absolute top-full left-0 right-0 bg-[#050508] border-b border-white/15 max-h-[calc(100vh-8rem)] overflow-y-auto">
             <div className="px-4 py-4 space-y-1">
               {navLinks.map((link) => (
                 <Link key={link.href} href={link.href} onClick={() => setIsOpen(false)} className="flex min-h-11 items-center rounded-lg px-4 py-2 text-zinc-100 hover:text-white hover:bg-white/[0.08]">{link.label}</Link>
