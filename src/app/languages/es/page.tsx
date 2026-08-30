@@ -1,8 +1,21 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight, ExternalLink, FileSearch, Globe2, Scale, ShieldCheck } from 'lucide-react'
 import { Navbar } from '@/components/Navbar'
 import { formatReviewDate } from '@/lib/policy/current-policy'
 import { LAST_RESOURCE_REVIEW } from '@/lib/resources/official-resources'
+
+export const metadata: Metadata = {
+  title: 'Orientación sobre ciudadanía en español',
+  description: 'Orientación en español para encontrar la ruta correcta, conservar términos jurídicos importantes en inglés y llegar a fuentes oficiales de ciudadanía y naturalización.',
+  alternates: {
+    canonical: '/languages/es',
+    languages: {
+      en: '/languages',
+      es: '/languages/es',
+    },
+  },
+}
 
 const terms = [
   ['naturalización', 'naturalization', 'Proceso mediante el cual una persona que no nació ciudadana adquiere la ciudadanía conforme a la ley aplicable.'],
