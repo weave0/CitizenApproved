@@ -1,4 +1,4 @@
-export type PolicyStatus = 'current-law' | 'current-policy' | 'proposed' | 'guidance'
+export type PolicyStatus = 'current-law' | 'current-regulation' | 'current-policy' | 'proposed' | 'guidance'
 
 export interface PolicySource {
   label: string
@@ -48,6 +48,14 @@ export const CITIZENSHIP_FORM_FEES = {
     paper: 760,
     reducedPaper: 380,
     military: 0,
+    source: 'https://www.uscis.gov/g-1055',
+  },
+  N336: {
+    name: 'Request for a Hearing on a Decision in Naturalization Proceedings Under Section 336',
+    online: 780,
+    paper: 830,
+    military: 0,
+    feeWaiverMayApply: true,
     source: 'https://www.uscis.gov/g-1055',
   },
   N426: {
@@ -118,7 +126,7 @@ export const POLICY_UPDATES: PolicyUpdate[] = [
   {
     id: 'mandatory-efiling-2026',
     title: 'USCIS may now require electronic filing for eligible benefit requests',
-    status: 'current-policy',
+    status: 'current-regulation',
     effectiveDate: '2026-08-11',
     publishedDate: '2026-08-11',
     lastVerified: LAST_POLICY_REVIEW,
@@ -310,6 +318,8 @@ export function statusLabel(status: PolicyStatus): string {
   switch (status) {
     case 'current-law':
       return 'CURRENT LAW'
+    case 'current-regulation':
+      return 'CURRENT REGULATION'
     case 'current-policy':
       return 'CURRENT POLICY'
     case 'proposed':
