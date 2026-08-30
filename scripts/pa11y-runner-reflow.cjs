@@ -39,6 +39,32 @@ exports.run = async function run(options, pa11y) {
     })
   }
 
+  const ecosystemNav = document.querySelector('nav[aria-label="GFD ecosystem"]')
+  const primaryNav = document.querySelector('nav[aria-label="Primary navigation"]')
+  if (ecosystemNav && primaryNav) {
+    const ecosystemRect = ecosystemNav.getBoundingClientRect()
+    const primaryRect = primaryNav.getBoundingClientRect()
+    const horizontalOverlap = Math.min(ecosystemRect.right, primaryRect.right) - Math.max(ecosystemRect.left, primaryRect.left)
+    const verticalOverlap = Math.min(ecosystemRect.bottom, primaryRect.bottom) - Math.max(ecosystemRect.top, primaryRect.top)
+
+    if (horizontalOverlap > 1 && verticalOverlap > 1) {
+      issues.push({
+        code: 'CitizenApproved.Layout.NavigationOverlap',
+        element: primaryNav,
+        message: 'The primary CitizenApproved navigation must not geometrically overlap the GFD ecosystem navigation.',
+        type: 'error',
+        runnerExtras: {
+          ecosystemBottom: ecosystemRect.bottom,
+          primaryTop: primaryRect.top,
+          overlapWidth: horizontalOverlap,
+          overlapHeight: verticalOverlap,
+          selector: pa11y.getElementSelector(primaryNav),
+          context: pa11y.getElementContext(primaryNav),
+        },
+      })
+    }
+  }
+
   const positiveTabindex = Array.from(document.querySelectorAll('[tabindex]')).filter((element) => {
     const value = Number(element.getAttribute('tabindex'))
     return Number.isFinite(value) && value > 0
