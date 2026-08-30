@@ -69,6 +69,15 @@ jobs:
       - name: Rendered Accessibility Audit
         run: NODE_PATH="$(npm root --global)" node scripts/check-rendered-accessibility.cjs
 
+      - name: Preserve Rendered Accessibility Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rendered-accessibility-${{ github.run_id }}
+          path: artifacts/accessibility/rendered-a11y.json
+          if-no-files-found: warn
+          retention-days: 14
+
       - name: CI Summary
         run: |
           echo "✅ Policy freshness guard passed"
