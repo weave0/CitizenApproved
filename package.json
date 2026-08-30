@@ -8,7 +8,8 @@
     "build:static": "npm run build && node scripts/flatten-rsc.js",
     "start": "next start",
     "type-check": "tsc --noEmit",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "freshness": "node scripts/check-policy-freshness.mjs"
   },
   "dependencies": {
     "@sentry/browser": "^10.44.0",

@@ -5,6 +5,7 @@ import { CITIZENSHIP_FORM_FEES, formatReviewDate } from '@/lib/policy/current-po
 
 const forms = [
   ['N-400', 'Application for Naturalization', 'Naturalization under INA 316, 319, 328, 329 and other provisions.', 'https://www.uscis.gov/n-400'],
+  ['N-336', 'Request for a Hearing on a Decision in Naturalization Proceedings', 'Administrative review of a denied Form N-400 under INA 336.', 'https://www.uscis.gov/n-336'],
   ['N-470', 'Application to Preserve Residence for Naturalization Purposes', 'For certain permanent residents employed abroad who seek to preserve continuous residence for naturalization.', 'https://www.uscis.gov/n-470'],
   ['N-565', 'Application for Replacement Naturalization/Citizenship Document', 'Replace or correct certain naturalization/citizenship documents or request a special certificate.', 'https://www.uscis.gov/n-565'],
   ['N-600', 'Application for Certificate of Citizenship', 'Evidence of citizenship acquired or derived through a parent; the certificate documents citizenship rather than creating it.', 'https://www.uscis.gov/n-600'],
@@ -55,7 +56,7 @@ export default function FormsGuidePage() {
               <li>Open the current USCIS form page and confirm the accepted edition date.</li>
               <li>Read the current form instructions, not a saved copy from an earlier filing.</li>
               <li>Use Form G-1055 for the current fee and exemption category.</li>
-              <li>Confirm whether online filing is available for your filing category.</li>
+              <li>Confirm whether online filing is available or required for your filing category.</li>
               <li>Keep a complete copy of what you submit and every USCIS notice.</li>
             </ul>
           </div>
@@ -72,6 +73,7 @@ export default function FormsGuidePage() {
         <div className="max-w-6xl mx-auto flex flex-wrap gap-5 text-sm">
           <Link href="/costs" className="text-cyan-300">Current fees <ArrowRight className="inline w-4 h-4" /></Link>
           <Link href="/documents" className="text-cyan-300">Evidence guide <ArrowRight className="inline w-4 h-4" /></Link>
+          <Link href="/topics/review" className="text-cyan-300">N-400 denial review <ArrowRight className="inline w-4 h-4" /></Link>
           <a href="https://www.uscis.gov/forms/all-forms" target="_blank" rel="noreferrer" className="text-cyan-300">All USCIS forms <ArrowRight className="inline w-4 h-4" /></a>
         </div>
       </section>

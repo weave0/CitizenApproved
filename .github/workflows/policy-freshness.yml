@@ -1,0 +1,36 @@
+name: Policy Freshness Watch
+
+on:
+  schedule:
+    - cron: "17 13 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  freshness:
+    name: Verify policy review age
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install Dependencies
+        run: npm ci --no-audit
+
+      - name: Require a recent policy review
+        env:
+          POLICY_MAX_AGE_DAYS: "14"
+        run: npm run freshness
+
+      - name: Freshness Summary
+        if: success()
+        run: echo "✅ CitizenApproved volatile policy facts were reviewed within the last 14 days."

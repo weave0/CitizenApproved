@@ -8,8 +8,9 @@ import { Menu, X, Globe, ChevronDown } from "lucide-react";
 const navLinks = [
   { href: "/updates", label: "Current Policy" },
   { href: "/pathways", label: "Pathways" },
+  { href: "/topics", label: "Topics" },
   { href: "/resources", label: "Resources" },
-  { href: "/legal", label: "Legal Basis" },
+  { href: "/legal", label: "Legal" },
   { href: "/about", label: "About" },
 ];
 
