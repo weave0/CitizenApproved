@@ -18,6 +18,8 @@ const routes = [
   '/flowchart',
   '/glossary',
   '/help',
+  '/languages',
+  '/languages/es',
   '/legal',
   '/pathways',
   '/pathways/birthright',
@@ -53,9 +55,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ? 1
         : path === '/updates' || path === '/help'
           ? 0.95
-          : path === '/accessibility' || path === '/resources' || path === '/glossary'
+          : path === '/accessibility' || path === '/languages' || path === '/resources' || path === '/glossary'
             ? 0.9
-            : path.startsWith('/pathways') || path.startsWith('/topics')
+            : path.startsWith('/pathways') || path.startsWith('/topics') || path.startsWith('/languages/')
               ? 0.85
               : 0.7,
   }))
