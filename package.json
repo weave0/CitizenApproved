@@ -9,7 +9,8 @@
     "start": "next start",
     "type-check": "tsc --noEmit",
     "lint": "eslint .",
-    "freshness": "node scripts/check-policy-freshness.mjs"
+    "freshness": "node scripts/check-policy-freshness.mjs",
+    "accessibility": "node scripts/check-accessibility-basics.mjs"
   },
   "dependencies": {
     "@sentry/browser": "^10.44.0",
