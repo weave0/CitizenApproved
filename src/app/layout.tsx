@@ -30,9 +30,6 @@ export const metadata: Metadata = {
     "Title 8",
   ],
   authors: [{ name: "CitizenApproved" }],
-  alternates: {
-    canonical: "/",
-  },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
