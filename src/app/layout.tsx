@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "./accessibility.css";
 import EcosystemNav from "@/components/EcosystemNav";
 import { ErrorMonitor } from "@/components/ErrorMonitor";
 import SentryInit from "@/components/SentryInit";
@@ -134,10 +135,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className={`${inter.className} antialiased`}>
+        <a className="skip-link" href="#main-content">
+          Skip to main content
+        </a>
         <EcosystemNav />
         <ErrorMonitor />
         <div className="cyber-grid" aria-hidden="true"></div>
-        <div className="relative z-10 min-h-screen">{children}</div>
+        <div id="main-content" tabIndex={-1} className="relative z-10 min-h-screen">
+          {children}
+        </div>
         <SentryInit />
       </body>
     </html>
