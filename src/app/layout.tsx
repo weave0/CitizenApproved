@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import EcosystemNav from "@/components/EcosystemNav";
-import ConversionFeatures from "@/components/ConversionFeatures";
 import { ErrorMonitor } from "@/components/ErrorMonitor";
 import SentryInit from "@/components/SentryInit";
 
@@ -139,7 +138,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ErrorMonitor />
         <div className="cyber-grid" aria-hidden="true"></div>
         <div className="relative z-10 min-h-screen">{children}</div>
-        <ConversionFeatures />
         <SentryInit />
       </body>
     </html>
