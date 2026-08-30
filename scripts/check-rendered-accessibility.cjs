@@ -74,8 +74,16 @@ function routesFromSitemap() {
   if (!fs.existsSync(sitemapPath)) throw new Error('out/sitemap.xml is missing; run the static build first')
 
   const xml = fs.readFileSync(sitemapPath, 'utf8')
-  const matches = [...xml.matchAll(/<loc>https:\/\/citizenapproved\.org([^<]*)<\/loc>/g)]
-  const routes = matches.map((match) => match[1] || '/')
+  const locValues = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1].trim())
+  const routes = locValues.map((value) => {
+    try {
+      const url = new URL(value)
+      return `${url.pathname}${url.search}` || '/'
+    } catch {
+      throw new Error(`Invalid sitemap URL: ${value}`)
+    }
+  })
+
   return [...new Set(routes)].filter((route) => !route.endsWith('.xml') && !route.endsWith('.txt'))
 }
 
