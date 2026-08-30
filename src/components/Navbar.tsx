@@ -52,7 +52,7 @@ export function Navbar() {
               <div className="relative" aria-hidden="true">
                 <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity" />
                 <div className="relative w-10 h-10 rounded-xl overflow-hidden">
-                  <Image src="/ca-logo.png" alt="" width={40} height={40} className="w-full h-full object-cover" priority />
+                  <Image src="/citizenapproved-icon-48x48.png" alt="" width={48} height={48} className="w-full h-full object-cover" priority />
                 </div>
               </div>
               <span className="text-lg font-bold bg-gradient-to-r from-white via-white to-white/60 bg-clip-text text-transparent">CitizenApproved</span>
