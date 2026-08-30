@@ -22,6 +22,9 @@ const routes = [
   '/pathways/naturalization',
   '/processing',
   '/resources',
+  '/resources/checklist',
+  '/resources/forms',
+  '/resources/timeline',
   '/right-to-repair',
   '/sources',
   '/updates',
@@ -34,7 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((path) => ({
     url: `${baseUrl}${path}`,
     lastModified: new Date(),
-    changeFrequency: 'weekly',
-    priority: path === '' ? 1 : path === '/updates' ? 0.9 : 0.7,
+    changeFrequency: path === '/updates' ? 'daily' : 'weekly',
+    priority: path === '' ? 1 : path === '/updates' ? 0.95 : path.startsWith('/pathways') ? 0.85 : 0.7,
   }))
 }
