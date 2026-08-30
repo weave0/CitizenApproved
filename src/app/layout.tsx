@@ -8,56 +8,56 @@ import SentryInit from "@/components/SentryInit";
 
 const inter = Inter({ subsets: ["latin"] });
 
+const siteDescription =
+  "A source-first, current guide to U.S. citizenship and naturalization law: citizenship at birth, citizenship through parents, naturalization, USCIS policy, fees, evidence, testing, processing, and legal changes.";
+
 export const metadata: Metadata = {
-  title: "CitizenApproved | Your Path to U.S. Citizenship",
-  description:
-    "Comprehensive, legally accurate guide to all pathways to United States citizenship. Based on the Immigration and Nationality Act (INA) - Title 8 U.S. Code.",
+  metadataBase: new URL("https://citizenapproved.org"),
+  title: {
+    default: "CitizenApproved | Current U.S. Citizenship Law & Policy",
+    template: "%s | CitizenApproved",
+  },
+  description: siteDescription,
   keywords: [
     "U.S. citizenship",
     "naturalization",
-    "immigration",
-    "green card",
+    "birthright citizenship",
+    "citizenship through parents",
+    "military naturalization",
+    "USCIS policy",
+    "citizenship law",
     "INA",
     "Title 8",
   ],
   authors: [{ name: "CitizenApproved" }],
+  alternates: {
+    canonical: "/",
+  },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
-      {
-        url: "/citizenapproved-icon-16x16.png",
-        sizes: "16x16",
-        type: "image/png",
-      },
-      {
-        url: "/citizenapproved-icon-32x32.png",
-        sizes: "32x32",
-        type: "image/png",
-      },
-      {
-        url: "/citizenapproved-icon-48x48.png",
-        sizes: "48x48",
-        type: "image/png",
-      },
+      { url: "/citizenapproved-icon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/citizenapproved-icon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/citizenapproved-icon-48x48.png", sizes: "48x48", type: "image/png" },
     ],
     apple: [
       { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     ],
   },
   openGraph: {
-    title: "CitizenApproved | Your Path to U.S. Citizenship",
-    description:
-      "Comprehensive, legally accurate guide to all pathways to United States citizenship.",
+    title: "CitizenApproved | Current U.S. Citizenship Law & Policy",
+    description: siteDescription,
     type: "website",
     url: "https://citizenapproved.org",
     siteName: "CitizenApproved",
     locale: "en_US",
+    images: [{ url: "/og-image.png", alt: "CitizenApproved" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "CitizenApproved | Your Path to U.S. Citizenship",
-    description:
-      "Comprehensive, legally accurate guide to all pathways to United States citizenship.",
+    title: "CitizenApproved | Current U.S. Citizenship Law & Policy",
+    description: siteDescription,
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
@@ -69,120 +69,54 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "pending", // Add Google Search Console verification code
-  },
   other: {
     "facebook-domain-verification": "lplvdum3bgelnyx0u5ycpe2wgt9ffi",
   },
 };
 
-// Schema.org @graph — single context, stable @id anchors linked to GFD ecosystem
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "WebSite",
       "@id": "https://citizenapproved.org/#site",
-      "url": "https://citizenapproved.org",
-      "name": "CitizenApproved",
-      "description": "Comprehensive, legally accurate guide to all pathways to United States citizenship. Based on the Immigration and Nationality Act (INA) - Title 8 U.S. Code.",
-      "inLanguage": "en",
-      "publisher": { "@id": "https://goodflippindesign.com/#studio" },
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": "https://citizenapproved.org/search?q={search_term_string}",
-        },
-        "query-input": "required name=search_term_string",
-      },
-    },
-    {
-      "@type": "WebApplication",
-      "@id": "https://citizenapproved.org/#app",
-      "name": "CitizenApproved",
-      "alternateName": "CitizenApproved.org",
-      "url": "https://citizenapproved.org",
-      "applicationCategory": "GovernmentApplication",
-      "operatingSystem": "Web",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-      "description": "Comprehensive, legally accurate guide to all pathways to United States citizenship based on the Immigration and Nationality Act (INA)",
-      "knowsAbout": [
-        "U.S. Citizenship",
-        "Naturalization Process",
-        "Immigration Law",
-        "Green Card",
-        "INA Title 8",
-        "USCIS Procedures",
-        "Civic Integration",
+      url: "https://citizenapproved.org",
+      name: "CitizenApproved",
+      description: siteDescription,
+      inLanguage: "en",
+      isAccessibleForFree: true,
+      publisher: { "@id": "https://goodflippindesign.com/#studio" },
+      about: [
+        "United States citizenship",
+        "United States nationality law",
+        "Naturalization",
+        "USCIS policy",
+        "Citizenship at birth",
+        "Citizenship through parents",
       ],
-      "areaServed": { "@type": "Country", "name": "United States" },
-      "creator": {
-        "@type": "Person",
-        "@id": "https://goodflippindesign.com/#brett",
-        "name": "Brett Weaver",
-        "url": "https://goodflippindesign.com",
-      },
-      "publisher": { "@id": "https://goodflippindesign.com/#studio" },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Citizenship Pathways",
-        "itemListElement": [
-          {
-            "@type": "HowTo",
-            "name": "Naturalization",
-            "description": "Standard path to U.S. citizenship through lawful permanent residence",
-          },
-          {
-            "@type": "HowTo",
-            "name": "Citizenship Through Parents",
-            "description": "Automatic or derived citizenship for children of U.S. citizens",
-          },
-          {
-            "@type": "HowTo",
-            "name": "Military Service Naturalization",
-            "description": "Expedited citizenship for U.S. military service members",
-          },
-        ],
+      audience: {
+        "@type": "Audience",
+        audienceType: "Applicants, families, educators, researchers, and international readers",
       },
     },
     {
       "@type": "Organization",
       "@id": "https://goodflippindesign.com/#studio",
-      "name": "Good Flippin Design",
-      "url": "https://goodflippindesign.com",
-      "sameAs": ["https://goodflippinvibes.com"],
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://citizenapproved.org/#breadcrumb",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://citizenapproved.org" },
-        { "@type": "ListItem", "position": 2, "name": "Pathways", "item": "https://citizenapproved.org/pathways" },
-        { "@type": "ListItem", "position": 3, "name": "Resources", "item": "https://citizenapproved.org/resources" },
-        { "@type": "ListItem", "position": 4, "name": "About", "item": "https://citizenapproved.org/about" },
-      ],
+      name: "Good Flippin Design",
+      url: "https://goodflippindesign.com",
+      sameAs: ["https://goodflippinvibes.com"],
     },
   ],
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="dark">
       <head>
-        {/* Schema.org @graph structured data */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(structuredData),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
-        {/* Google Analytics */}
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-WM6Q66W9W0"
@@ -197,8 +131,6 @@ export default function RootLayout({
             `,
           }}
         />
-        {/* Web Vitals reporter — PerformanceObserver only, zero CDN deps.
-            Reports CLS, LCP, FID, TTFB, INP to GA4 when gtag is available. */}
         <script
           dangerouslySetInnerHTML={{
             __html: `(()=>{if(!window.PerformanceObserver)return;function r(n,v,i){if(window.gtag)gtag('event',n,{value:Math.round('CLS'===n?1e3*v:v),metric_id:i||'',non_interaction:!0,event_category:'Web Vitals'});}const ob=(t,cb,opts)=>{try{new PerformanceObserver(l=>{l.getEntries().forEach(cb)}).observe(Object.assign({type:t,buffered:!0},opts||{}));}catch(e){}};ob('largest-contentful-paint',e=>r('LCP',e.startTime,e.id));ob('first-input',e=>r('FID',e.processingStart-e.startTime,e.id));ob('layout-shift',e=>{if(!e.hadRecentInput)r('CLS',e.value,e.id);},{durationThreshold:0});ob('event',e=>{if(e.interactionId)r('INP',e.duration,e.id);},{durationThreshold:40});const np=(performance.getEntriesByType('navigation')||[])[0];if(np)r('TTFB',np.responseStart,np.name);})();`,
@@ -206,20 +138,11 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.className} antialiased`}>
-        {/* GFD Ecosystem Navigation - React Component */}
         <EcosystemNav />
-        {/* Error monitoring */}
         <ErrorMonitor />
-
-        {/* Background grid effect */}
         <div className="cyber-grid" aria-hidden="true"></div>
-
-        {/* Main content */}
         <div className="relative z-10 min-h-screen">{children}</div>
-
-        {/* Conversion Optimization Features */}
         <ConversionFeatures />
-        {/* Sentry: activate by setting NEXT_PUBLIC_SENTRY_DSN env var */}
         <SentryInit />
       </body>
     </html>
