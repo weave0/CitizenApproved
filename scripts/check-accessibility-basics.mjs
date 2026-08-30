@@ -22,17 +22,25 @@ function walk(dir) {
 }
 
 const layout = read('src/app/layout.tsx')
+const navbar = read('src/components/Navbar.tsx')
 const accessibilityCss = read('src/app/accessibility.css')
 const sitemap = read('src/app/sitemap.ts')
 
 const requiredLayoutPatterns = [
-  [/<html\s+lang=["']en["']/, 'root document must declare its language'],
-  [/href=["']#main-content["']/, 'root layout must provide a skip-to-content link'],
-  [/id=["']main-content["']/, 'root layout must provide the skip-link target'],
+  [/<html\b[^>]*\blang=["']en["'][^>]*>/, 'root document must declare its language'],
+  [/href=["']#page-content["']/, 'root layout must provide a skip-to-content link'],
 ]
 
 for (const [pattern, message] of requiredLayoutPatterns) {
   if (!pattern.test(layout)) fail(message)
+}
+
+if (!/id=["']page-content["'][^>]*tabIndex=\{-1\}/.test(navbar)) {
+  fail('primary navigation must provide a focusable skip-link target immediately after navigation')
+}
+
+if (/id=["']page-content["'][^>]*aria-hidden/.test(navbar)) {
+  fail('skip-link target must not be hidden from assistive technology')
 }
 
 const requiredCssPatterns = [
