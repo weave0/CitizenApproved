@@ -53,6 +53,17 @@ main li {
   min-height: 2.75rem;
 }
 
+/*
+ * Legacy pages used very-low-contrast utility classes as decorative "muted"
+ * text. Those values can fall below WCAG AA against the near-black theme.
+ * Normalize only the known failing muted classes; semantic emphasis colors are
+ * left untouched.
+ */
+:where(main, nav) :where(.text-gray-500, .text-zinc-500),
+:where(main, nav) [class~="text-white/40"] {
+  color: #b8bdc7 !important;
+}
+
 /* Respect system motion preferences throughout the existing animated visual system. */
 @media (prefers-reduced-motion: reduce) {
   html {
