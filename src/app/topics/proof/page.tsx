@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight, BadgeCheck, FileBadge2, IdCard, Landmark, Passport, TriangleAlert } from 'lucide-react'
+import { ArrowRight, BadgeCheck, FileBadge2, Globe2, IdCard, Landmark, TriangleAlert } from 'lucide-react'
 import { Navbar } from '@/components/Navbar'
 import { CITIZENSHIP_FORM_FEES, formatReviewDate } from '@/lib/policy/current-policy'
 
@@ -38,7 +38,7 @@ export default function ProofPage() {
       <section className="py-16 px-6 bg-white/[0.02]">
         <div className="max-w-6xl mx-auto grid lg:grid-cols-3 gap-6">
           <div className="glass-panel p-7">
-            <Passport className="w-7 h-7 text-cyan-400 mb-4" />
+            <Globe2 className="w-7 h-7 text-cyan-400 mb-4" />
             <h2 className="text-xl font-semibold mb-3">Passport</h2>
             <p className="text-gray-400 mb-4">The Department of State adjudicates passport applications. A passport can prove citizenship and permits international travel, but it expires and must be renewed.</p>
             <a href="https://travel.state.gov/content/travel/en/passports.html" target="_blank" rel="noreferrer" className="text-cyan-300">State Department passports <ArrowRight className="inline w-4 h-4" /></a>
