@@ -3,7 +3,7 @@ name: CD - Deploy to Cloudflare Pages
 on:
   push:
     branches: [main]
-  workflow_dispatch: # Manual trigger
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -16,16 +16,19 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
-          node-version: "20"
+          node-version: "22"
           cache: "npm"
 
       - name: Install Dependencies
         run: npm ci --no-audit
+
+      - name: Policy Freshness Guard
+        run: npm run freshness
 
       - name: Build Static Export
         run: npm run build:static
@@ -38,10 +41,11 @@ jobs:
           projectName: citizenapproved
           directory: out
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          wranglerVersion: '3'
+          wranglerVersion: '4'
 
       - name: Deployment Summary
         run: |
+          echo "✅ Freshness guard passed"
           echo "✅ Build completed with RSC payload flattening"
           echo "✅ Deployed to Cloudflare Pages"
           echo ""
