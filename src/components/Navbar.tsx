@@ -22,6 +22,7 @@ const tools = [
   { href: "/documents", label: "Evidence Guide" },
   { href: "/processing", label: "Processing Guide" },
   { href: "/glossary", label: "Plain-Language Glossary" },
+  { href: "/languages", label: "Language Guides" },
   { href: "/accessibility", label: "Language & Accessibility" },
 ];
 
@@ -88,9 +89,9 @@ export function Navbar() {
             </div>
 
             <div className="flex items-center gap-3">
-              <Link href="/accessibility" className="hidden sm:flex items-center gap-2 px-3 py-2 rounded-full bg-white/[0.04] border border-white/[0.08] text-white/70 hover:text-white" aria-label="Language and accessibility options">
+              <Link href="/languages" className="hidden sm:flex items-center gap-2 px-3 py-2 rounded-full bg-white/[0.04] border border-white/[0.08] text-white/70 hover:text-white" aria-label="Language guides and accessibility options">
                 <Globe className="w-3.5 h-3.5 text-cyan-400" aria-hidden="true" />
-                <span className="text-xs">Language & access</span>
+                <span className="text-xs">Languages & access</span>
               </Link>
 
               <button
