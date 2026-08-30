@@ -1,4 +1,4 @@
-name: CI - Build, Freshness & Type Check
+name: CI - Build, Freshness, Accessibility & Type Check
 
 on:
   pull_request:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   validate:
-    name: Build, Freshness & Type Check
+    name: Build, Freshness, Accessibility & Type Check
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -27,6 +27,9 @@ jobs:
 
       - name: Policy Freshness Guard
         run: npm run freshness
+
+      - name: Accessibility Baseline Guard
+        run: npm run accessibility
 
       - name: TypeScript Type Check
         run: npm run type-check
@@ -60,6 +63,7 @@ jobs:
       - name: CI Summary
         run: |
           echo "✅ Policy freshness guard passed"
+          echo "✅ Accessibility baseline guard passed"
           echo "✅ TypeScript type check passed"
           echo "✅ Linting passed"
           echo "✅ Static build completed"
