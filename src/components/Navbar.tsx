@@ -72,9 +72,9 @@ export function Navbar() {
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.06]">
+            <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.06]" title="Written to work cleanly with browser and assistive translation tools">
               <Globe className="w-3.5 h-3.5 text-cyan-400" />
-              <span className="text-xs text-white/50">100+ languages</span>
+              <span className="text-xs text-white/50">Translation-friendly</span>
             </div>
 
             <button
