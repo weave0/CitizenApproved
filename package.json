@@ -10,7 +10,8 @@
     "type-check": "tsc --noEmit",
     "lint": "eslint .",
     "freshness": "node scripts/check-policy-freshness.mjs",
-    "accessibility": "node scripts/check-accessibility-basics.mjs"
+    "accessibility": "node scripts/check-accessibility-basics.mjs",
+    "resources": "node scripts/check-official-resources.mjs"
   },
   "dependencies": {
     "@sentry/browser": "^10.44.0",
