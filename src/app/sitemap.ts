@@ -9,12 +9,15 @@ const reviewedAt = new Date(`${LAST_POLICY_REVIEW}T00:00:00Z`)
 const routes = [
   '',
   '/about',
+  '/accessibility',
   '/bottlenecks',
   '/civics',
   '/costs',
   '/documents',
   '/eligibility',
   '/flowchart',
+  '/glossary',
+  '/help',
   '/legal',
   '/pathways',
   '/pathways/birthright',
@@ -48,10 +51,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority:
       path === ''
         ? 1
-        : path === '/updates'
+        : path === '/updates' || path === '/help'
           ? 0.95
-          : path.startsWith('/pathways') || path.startsWith('/topics')
-            ? 0.85
-            : 0.7,
+          : path === '/accessibility' || path === '/resources' || path === '/glossary'
+            ? 0.9
+            : path.startsWith('/pathways') || path.startsWith('/topics')
+              ? 0.85
+              : 0.7,
   }))
 }
