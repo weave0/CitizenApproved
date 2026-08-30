@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { CheckCircle2, ExternalLink, Heart, Users } from 'lucide-react'
 import { Navbar } from '@/components/Navbar'
-import { LAST_POLICY_REVIEW, N400_FEES } from '@/lib/policy/current-policy'
+import { N400_FEES, formatReviewDate } from '@/lib/policy/current-policy'
 
 const requirements = [
   'Be at least 18 years old when filing Form N-400.',
@@ -22,7 +22,7 @@ export default function MarriagePage() {
           <div className="flex items-start gap-5 mb-10">
             <div className="w-16 h-16 rounded-2xl bg-pink-400/15 border border-pink-400/20 flex items-center justify-center shrink-0"><Users className="w-8 h-8 text-pink-300" /></div>
             <div>
-              <div className="text-sm text-pink-300 mb-2">8 U.S.C. § 1430 · INA § 319(a)</div>
+              <div className="text-sm text-pink-300 mb-2">8 U.S.C. § 1430 · INA § 319(a) · verified {formatReviewDate()}</div>
               <h1 className="text-4xl md:text-6xl font-bold mb-4"><span className="gradient-text">Naturalization through marriage</span></h1>
               <p className="text-xl text-[var(--text-secondary)] leading-relaxed">A qualifying spouse of a U.S. citizen may use a 3-year statutory period instead of the standard 5-year period. Marriage alone does not confer citizenship, and the marital requirements are specific.</p>
             </div>
@@ -50,7 +50,7 @@ export default function MarriagePage() {
               <div className="space-y-3 text-white/75">
                 <div className="flex justify-between"><span>Online</span><strong className="text-white">${N400_FEES.online}</strong></div>
                 <div className="flex justify-between"><span>Paper</span><strong className="text-white">${N400_FEES.paper}</strong></div>
-                <div className="flex justify-between"><span>Separate biometrics fee</span><strong className="text-emerald-300">$0</strong></div>
+                <div className="flex justify-between"><span>Separate biometrics fee</span><strong className="text-emerald-300">${N400_FEES.separateBiometricsFee}</strong></div>
               </div>
               <Link href="/costs" className="inline-block mt-5 text-cyan-300 hover:text-cyan-200">Reduced fees, waivers, and proposed changes →</Link>
             </div>
@@ -65,7 +65,7 @@ export default function MarriagePage() {
             </div>
           </div>
 
-          <p className="text-xs text-white/40">Educational information, not legal advice. Last policy review: {LAST_POLICY_REVIEW}.</p>
+          <p className="text-xs text-white/40">Educational information, not legal advice. Last policy review: {formatReviewDate()}.</p>
         </div>
       </section>
     </main>
