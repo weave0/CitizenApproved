@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight, ExternalLink, Globe2, Languages, Scale, ShieldCheck } from 'lucide-react'
 import { Navbar } from '@/components/Navbar'
@@ -8,6 +9,18 @@ import {
   USCIS_LANGUAGE_ACCESS_PLAN_URL,
   USCIS_MULTILINGUAL_CENTER_URL,
 } from '@/lib/languages/citizenship-languages'
+
+export const metadata: Metadata = {
+  title: 'Citizenship Language Guides',
+  description: 'Language-access routes for U.S. citizenship information, grounded in USCIS multilingual resources and maintained translations where CitizenApproved can support them responsibly.',
+  alternates: {
+    canonical: '/languages',
+    languages: {
+      en: '/languages',
+      es: '/languages/es',
+    },
+  },
+}
 
 const translationRules = [
   ['Keep the controlling English legal term', 'Translate the explanation, but preserve terms such as continuous residence, physical presence, good moral character, acquisition, and derivation beside the translation.'],
@@ -58,8 +71,8 @@ export default function LanguagesPage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {CITIZENSHIP_OUTREACH_LANGUAGES.map((language) => (
-              <article key={language.code} className="glass-panel p-6" dir={language.direction}>
-                <div className="text-sm text-cyan-300 mb-2" lang={language.code}>{language.nativeName}</div>
+              <article key={language.code} className="glass-panel p-6">
+                <div className="text-sm text-cyan-300 mb-2" lang={language.code} dir={language.direction}>{language.nativeName}</div>
                 <h3 className="text-xl font-semibold mb-2">{language.name}</h3>
                 <p className="text-sm text-gray-400 mb-5">{language.citizenApprovedPath ? 'Maintained orientation plus official government links.' : 'Official USCIS multilingual resources while CitizenApproved translation remains under review.'}</p>
                 {language.citizenApprovedPath ? (
