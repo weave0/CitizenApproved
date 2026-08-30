@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import "./accessibility.css";
 import EcosystemNav from "@/components/EcosystemNav";
@@ -114,25 +115,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-WM6Q66W9W0"
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-WM6Q66W9W0');
-            `,
-          }}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(()=>{if(!window.PerformanceObserver)return;function r(n,v,i){if(window.gtag)gtag('event',n,{value:Math.round('CLS'===n?1e3*v:v),metric_id:i||'',non_interaction:!0,event_category:'Web Vitals'});}const ob=(t,cb,opts)=>{try{new PerformanceObserver(l=>{l.getEntries().forEach(cb)}).observe(Object.assign({type:t,buffered:!0},opts||{}));}catch(e){}};ob('largest-contentful-paint',e=>r('LCP',e.startTime,e.id));ob('first-input',e=>r('FID',e.processingStart-e.startTime,e.id));ob('layout-shift',e=>{if(!e.hadRecentInput)r('CLS',e.value,e.id);},{durationThreshold:0});ob('event',e=>{if(e.interactionId)r('INP',e.duration,e.id);},{durationThreshold:40});const np=(performance.getEntriesByType('navigation')||[])[0];if(np)r('TTFB',np.responseStart,np.name);})();`,
-          }}
-        />
       </head>
       <body className={`${inter.className} antialiased`}>
         <a className="skip-link" href="#main-content">
@@ -145,6 +127,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </div>
         <SentryInit />
+
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-WM6Q66W9W0"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-WM6Q66W9W0');`}
+        </Script>
+        <Script id="web-vitals-reporter" strategy="afterInteractive">
+          {`(()=>{if(!window.PerformanceObserver)return;function r(n,v,i){if(window.gtag)gtag('event',n,{value:Math.round('CLS'===n?1e3*v:v),metric_id:i||'',non_interaction:!0,event_category:'Web Vitals'});}const ob=(t,cb,opts)=>{try{new PerformanceObserver(l=>{l.getEntries().forEach(cb)}).observe(Object.assign({type:t,buffered:!0},opts||{}));}catch(e){}};ob('largest-contentful-paint',e=>r('LCP',e.startTime,e.id));ob('first-input',e=>r('FID',e.processingStart-e.startTime,e.id));ob('layout-shift',e=>{if(!e.hadRecentInput)r('CLS',e.value,e.id);},{durationThreshold:0});ob('event',e=>{if(e.interactionId)r('INP',e.duration,e.id);},{durationThreshold:40});const np=(performance.getEntriesByType('navigation')||[])[0];if(np)r('TTFB',np.responseStart,np.name);})();`}
+        </Script>
       </body>
     </html>
   );
