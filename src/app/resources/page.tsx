@@ -11,11 +11,11 @@ const guides = [
   ['Processing Guide', 'Use live USCIS processing data and understand what it can—and cannot—predict.', Clock3, '/processing'],
   ['Timeline Guide', 'Separate statutory eligibility clocks from agency processing time.', Map, '/resources/timeline'],
   ['Forms Guide', 'Current citizenship-related forms with live USCIS form-page links.', FileText, '/resources/forms'],
-  ['Source Methodology', 'Understand statutes, courts, regulations, agency policy and proposed rules.', Gavel, '/sources'],
+  ['Advanced Topics', 'Proof of citizenship, dual nationality, denial review, testing exceptions, and historical nationality law.', Gavel, '/topics'],
 ] as const
 
 const pathways = [
-  ['Citizenship at Birth', '8 U.S.C. § 1401', '/pathways/birthright'],
+  ['Citizenship at Birth', '8 U.S.C. §§ 1401–1409', '/pathways/birthright'],
   ['Standard Naturalization', '8 U.S.C. § 1427 / INA 316', '/pathways/naturalization'],
   ['Marriage Route', '8 U.S.C. § 1430 / INA 319', '/pathways/marriage'],
   ['Military Naturalization', '8 U.S.C. §§ 1439–1440 / INA 328–329', '/pathways/military'],
