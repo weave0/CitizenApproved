@@ -43,31 +43,26 @@ export function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50" aria-label="Primary navigation">
-        <div className="absolute inset-0 bg-[#050508]/80 backdrop-blur-xl border-b border-white/[0.06]" />
-
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#050508] border-b border-white/15" aria-label="Primary navigation">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-16 md:h-20">
-            <Link href="/" className="flex items-center gap-3 group" aria-label="CitizenApproved home">
-              <div className="relative" aria-hidden="true">
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity" />
-                <div className="relative w-10 h-10 rounded-xl overflow-hidden">
-                  <Image src="/citizenapproved-icon-48x48.png" alt="" width={48} height={48} className="w-full h-full object-cover" priority />
-                </div>
+            <Link href="/" className="flex min-h-11 items-center gap-3 rounded-lg px-1 text-white hover:bg-white/[0.06]" aria-label="CitizenApproved home">
+              <div className="relative w-10 h-10 rounded-xl overflow-hidden" aria-hidden="true">
+                <Image src="/citizenapproved-icon-48x48.png" alt="" width={48} height={48} className="w-full h-full object-cover" priority />
               </div>
-              <span className="text-lg font-bold bg-gradient-to-r from-white via-white to-white/60 bg-clip-text text-transparent">CitizenApproved</span>
+              <span className="text-lg font-bold text-white">CitizenApproved</span>
             </Link>
 
             <div className="hidden xl:flex items-center gap-1">
               {navLinks.map((link) => (
-                <Link key={link.href} href={link.href} className="px-3 py-2 text-sm text-white/70 hover:text-white rounded-lg hover:bg-white/[0.06] transition-all duration-200">{link.label}</Link>
+                <Link key={link.href} href={link.href} className="flex min-h-11 items-center rounded-lg px-3 text-sm font-medium text-zinc-100 hover:bg-white/[0.08] hover:text-white">{link.label}</Link>
               ))}
 
               <div className="relative">
                 <button
                   type="button"
                   onClick={() => setToolsOpen(!toolsOpen)}
-                  className="flex items-center gap-1 px-3 py-2 text-sm text-white/70 hover:text-white rounded-lg hover:bg-white/[0.06] transition-all duration-200"
+                  className="flex min-h-11 items-center gap-1 rounded-lg px-3 text-sm font-medium text-zinc-100 hover:bg-white/[0.08] hover:text-white"
                   aria-expanded={toolsOpen}
                   aria-controls="tools-navigation"
                 >
@@ -78,9 +73,9 @@ export function Navbar() {
                 {toolsOpen && (
                   <>
                     <div className="fixed inset-0 z-10" onClick={() => setToolsOpen(false)} aria-hidden="true" />
-                    <div id="tools-navigation" aria-label="Research tools" className="absolute right-0 mt-2 w-64 py-2 bg-[#0a0a0f]/95 backdrop-blur-xl border border-white/[0.12] rounded-xl shadow-2xl shadow-black/50 z-20">
+                    <div id="tools-navigation" aria-label="Research tools" className="absolute right-0 mt-2 w-64 py-2 bg-[#0a0a0f] border border-white/20 rounded-xl shadow-2xl shadow-black/50 z-20">
                       {tools.map((tool) => (
-                        <Link key={tool.href} href={tool.href} onClick={() => setToolsOpen(false)} className="block px-4 py-3 text-sm text-white/80 hover:text-white hover:bg-white/[0.06] transition-colors">{tool.label}</Link>
+                        <Link key={tool.href} href={tool.href} onClick={() => setToolsOpen(false)} className="flex min-h-11 items-center px-4 py-2 text-sm text-zinc-100 hover:text-white hover:bg-white/[0.08]">{tool.label}</Link>
                       ))}
                     </div>
                   </>
@@ -89,15 +84,15 @@ export function Navbar() {
             </div>
 
             <div className="flex items-center gap-3">
-              <Link href="/languages" className="hidden sm:flex items-center gap-2 px-3 py-2 rounded-full bg-white/[0.04] border border-white/[0.08] text-white/70 hover:text-white" aria-label="Language guides and accessibility options">
-                <Globe className="w-3.5 h-3.5 text-cyan-400" aria-hidden="true" />
-                <span className="text-xs">Languages & access</span>
+              <Link href="/languages" className="hidden sm:flex min-h-11 items-center gap-2 rounded-full border border-white/20 bg-white/[0.06] px-3 text-white hover:bg-white/[0.1]" aria-label="Language guides and accessibility options">
+                <Globe className="w-4 h-4 text-cyan-300" aria-hidden="true" />
+                <span className="text-xs font-medium text-white">Languages & access</span>
               </Link>
 
               <button
                 type="button"
                 onClick={() => setIsOpen(!isOpen)}
-                className="xl:hidden p-2 text-white/70 hover:text-white rounded-lg hover:bg-white/[0.06] transition-colors"
+                className="xl:hidden min-h-11 min-w-11 rounded-lg p-2 text-white hover:bg-white/[0.08]"
                 aria-label={isOpen ? "Close navigation" : "Open navigation"}
                 aria-expanded={isOpen}
                 aria-controls="mobile-navigation"
@@ -109,15 +104,15 @@ export function Navbar() {
         </div>
 
         {isOpen && (
-          <div id="mobile-navigation" className="xl:hidden absolute top-full left-0 right-0 bg-[#050508]/98 backdrop-blur-xl border-b border-white/[0.08] max-h-[calc(100vh-4rem)] overflow-y-auto">
+          <div id="mobile-navigation" className="xl:hidden absolute top-full left-0 right-0 bg-[#050508] border-b border-white/15 max-h-[calc(100vh-4rem)] overflow-y-auto">
             <div className="px-4 py-4 space-y-1">
               {navLinks.map((link) => (
-                <Link key={link.href} href={link.href} onClick={() => setIsOpen(false)} className="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/[0.06] rounded-lg transition-colors">{link.label}</Link>
+                <Link key={link.href} href={link.href} onClick={() => setIsOpen(false)} className="flex min-h-11 items-center rounded-lg px-4 py-2 text-zinc-100 hover:text-white hover:bg-white/[0.08]">{link.label}</Link>
               ))}
-              <div className="pt-2 mt-2 border-t border-white/[0.08]">
-                <p className="px-4 py-2 text-xs text-white/60 uppercase tracking-wider">Tools and access</p>
+              <div className="pt-2 mt-2 border-t border-white/15">
+                <p className="px-4 py-2 text-xs font-semibold text-zinc-300 uppercase tracking-wider">Tools and access</p>
                 {tools.map((tool) => (
-                  <Link key={tool.href} href={tool.href} onClick={() => setIsOpen(false)} className="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/[0.06] rounded-lg transition-colors">{tool.label}</Link>
+                  <Link key={tool.href} href={tool.href} onClick={() => setIsOpen(false)} className="flex min-h-11 items-center rounded-lg px-4 py-2 text-zinc-100 hover:text-white hover:bg-white/[0.08]">{tool.label}</Link>
                 ))}
               </div>
             </div>
