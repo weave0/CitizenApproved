@@ -33,6 +33,9 @@ jobs:
       - name: Accessibility Baseline Guard
         run: npm run accessibility
 
+      - name: Official Resource Integrity Guard
+        run: npm run resources
+
       - name: Build Static Export
         run: npm run build:static
 
@@ -48,6 +51,7 @@ jobs:
         run: |
           echo "✅ Freshness guard passed"
           echo "✅ Accessibility baseline guard passed"
+          echo "✅ Official government resource integrity passed"
           echo "✅ Build completed with RSC payload flattening"
           echo "✅ Deployed to Cloudflare Pages with Wrangler v4"
           echo ""
