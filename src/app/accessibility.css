@@ -1,5 +1,10 @@
 /* Global accessibility layer. Keep this file small, explicit, and design-system agnostic. */
 
+:root {
+  --text-secondary: #d4d4dc;
+  --text-muted: #c4c7cf;
+}
+
 html {
   text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
