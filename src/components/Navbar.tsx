@@ -123,7 +123,7 @@ export function Navbar() {
           </div>
         )}
       </nav>
-      <div id="page-content" tabIndex={-1} aria-hidden="true" />
+      <div id="page-content" tabIndex={-1} />
     </>
   );
 }
