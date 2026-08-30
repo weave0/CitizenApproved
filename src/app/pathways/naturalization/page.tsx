@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { Award, CheckCircle2, Clock3, ExternalLink, FileText, Scale } from 'lucide-react'
 import { Navbar } from '@/components/Navbar'
-import { LAST_POLICY_REVIEW, N400_FEES } from '@/lib/policy/current-policy'
+import { N400_FEES, formatReviewDate } from '@/lib/policy/current-policy'
 
 const requirements = [
   ['Age', 'Generally at least 18 when filing Form N-400.'],
@@ -23,7 +23,7 @@ export default function NaturalizationPage() {
           <div className="flex items-start gap-5 mb-10">
             <div className="w-16 h-16 rounded-2xl bg-cyan-400/15 border border-cyan-400/20 flex items-center justify-center shrink-0"><Award className="w-8 h-8 text-cyan-300" /></div>
             <div>
-              <div className="text-sm text-cyan-300 mb-2">8 U.S.C. § 1427 · INA § 316</div>
+              <div className="text-sm text-cyan-300 mb-2">8 U.S.C. § 1427 · INA § 316 · verified {formatReviewDate()}</div>
               <h1 className="text-4xl md:text-6xl font-bold mb-4"><span className="gradient-text">Standard naturalization</span></h1>
               <p className="text-xl text-[var(--text-secondary)] leading-relaxed">The usual 5-year route to citizenship for lawful permanent residents. This page separates durable statutory requirements from filing fees, testing rules, and processing information that change over time.</p>
             </div>
@@ -44,15 +44,16 @@ export default function NaturalizationPage() {
                 <div className="flex justify-between"><span>Online</span><strong className="text-white">${N400_FEES.online}</strong></div>
                 <div className="flex justify-between"><span>Paper</span><strong className="text-white">${N400_FEES.paper}</strong></div>
                 <div className="flex justify-between"><span>Reduced paper fee</span><strong className="text-emerald-300">${N400_FEES.reducedPaper}</strong></div>
-                <div className="flex justify-between border-t border-white/10 pt-3"><span>Separate biometrics fee</span><strong className="text-emerald-300">$0</strong></div>
+                <div className="flex justify-between border-t border-white/10 pt-3"><span>Separate biometrics fee</span><strong className="text-emerald-300">${N400_FEES.separateBiometricsFee}</strong></div>
               </div>
               <Link href="/costs" className="inline-block mt-5 text-cyan-300 hover:text-cyan-200">See current fee rules and the 2026 proposal →</Link>
             </div>
 
             <div className="glass-panel p-7">
               <div className="flex items-center gap-3 mb-4"><Clock3 className="w-5 h-5 text-cyan-300" /><h2 className="text-xl font-semibold text-white">Processing time</h2></div>
-              <p className="text-[var(--text-secondary)] leading-relaxed mb-4">CitizenApproved no longer publishes a fixed “8–14 month” estimate as if it were current. USCIS processing times vary by office and are based on recently completed cases.</p>
-              <a href="https://egov.uscis.gov/processing-times/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-cyan-300 hover:text-cyan-200">Check USCIS processing times <ExternalLink className="w-4 h-4" /></a>
+              <p className="text-[var(--text-secondary)] leading-relaxed mb-4">CitizenApproved does not publish a fixed month range as if it were a forecast. USCIS processing times change by form, category and office; use the live government tool for the current service indicator.</p>
+              <Link href="/processing" className="inline-block mr-5 text-cyan-300 hover:text-cyan-200">How to read processing times →</Link>
+              <a href="https://egov.uscis.gov/processing-times/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-cyan-300 hover:text-cyan-200">USCIS live tool <ExternalLink className="w-4 h-4" /></a>
             </div>
           </div>
 
@@ -65,7 +66,7 @@ export default function NaturalizationPage() {
             </div>
           </div>
 
-          <p className="text-xs text-white/40">Educational information, not legal advice. Last policy review: {LAST_POLICY_REVIEW}.</p>
+          <p className="text-xs text-white/40">Educational information, not legal advice. Last policy review: {formatReviewDate()}.</p>
         </div>
       </section>
     </main>
