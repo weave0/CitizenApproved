@@ -1,4 +1,4 @@
-name: CI - Build, Freshness, Accessibility & Type Check
+name: CI - Build, Freshness, Accessibility & Source Integrity
 
 on:
   pull_request:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   validate:
-    name: Build, Freshness, Accessibility & Type Check
+    name: Build, Freshness, Accessibility & Source Integrity
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -31,10 +31,13 @@ jobs:
       - name: Accessibility Baseline Guard
         run: npm run accessibility
 
+      - name: Official Resource Integrity Guard
+        run: npm run resources
+
       - name: TypeScript Type Check
         run: npm run type-check
 
-      - name: Lint
+      - name: Lint React and Next.js
         run: npm run lint
 
       - name: Build Static Export
@@ -64,8 +67,9 @@ jobs:
         run: |
           echo "✅ Policy freshness guard passed"
           echo "✅ Accessibility baseline guard passed"
+          echo "✅ Official government resource integrity passed"
           echo "✅ TypeScript type check passed"
-          echo "✅ Linting passed"
+          echo "✅ React/Next.js linting passed"
           echo "✅ Static build completed"
           echo "✅ RSC payloads flattened"
           echo ""
