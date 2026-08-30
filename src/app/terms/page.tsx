@@ -34,7 +34,7 @@ export default function TermsPage() {
           <div>
             <h2 className="text-xl font-semibold text-white mb-2">Accuracy and Availability</h2>
             <p className="text-gray-400">
-              We strive for accuracy, but laws and procedures can change. Content is provided "as is" without
+              We strive for accuracy, but laws and procedures can change. Content is provided “as is” without
               warranties of any kind.
             </p>
           </div>
