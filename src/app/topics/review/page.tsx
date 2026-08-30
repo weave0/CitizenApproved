@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { ArrowRight, Clock3, FileWarning, Gavel, Scale, ShieldCheck } from 'lucide-react'
 import { Navbar } from '@/components/Navbar'
-import { formatReviewDate } from '@/lib/policy/current-policy'
+import { CITIZENSHIP_FORM_FEES, formatReviewDate } from '@/lib/policy/current-policy'
 
 const steps = [
   ['N-400 decision', 'USCIS must give written reasons when it denies a naturalization application. The denial notice identifies the factual and legal basis and explains the hearing right.'],
@@ -11,6 +11,8 @@ const steps = [
 ] as const
 
 export default function ReviewPage() {
+  const n336 = CITIZENSHIP_FORM_FEES.N336
+
   return (
     <main className="min-h-screen">
       <Navbar />
@@ -43,7 +45,7 @@ export default function ReviewPage() {
           <div className="glass-panel p-7">
             <FileWarning className="w-7 h-7 text-violet-400 mb-4" />
             <h2 className="text-xl font-semibold mb-3">Current general fee</h2>
-            <p className="text-gray-400">The current G-1055 lists Form N-336 at $780 online or $830 on paper. A $0 military-service category and fee-waiver categories may apply.</p>
+            <p className="text-gray-400">The current G-1055 lists Form N-336 at ${n336.online.toLocaleString()} online or ${n336.paper.toLocaleString()} on paper. The current military-service category is ${n336.military}, and fee-waiver categories may also apply.</p>
           </div>
           <div className="glass-panel p-7">
             <Gavel className="w-7 h-7 text-green-400 mb-4" />
