@@ -116,6 +116,25 @@ export const CIVICS_TEST_VERSIONS = {
 
 export const POLICY_UPDATES: PolicyUpdate[] = [
   {
+    id: 'mandatory-efiling-2026',
+    title: 'USCIS may now require electronic filing for eligible benefit requests',
+    status: 'current-policy',
+    effectiveDate: '2026-08-11',
+    publishedDate: '2026-08-11',
+    lastVerified: LAST_POLICY_REVIEW,
+    summary:
+      'An interim final rule effective August 11, 2026 amended DHS regulations to let USCIS require electronic filing for a benefit request that has been available for e-filing for at least 180 days. USCIS must announce a form-specific mandate on its website and provide a 60-day grace period.',
+    whatItMeans:
+      'The rule creates authority and a process for future mandatory e-filing; it did not automatically make every USCIS form online-only on August 11. When USCIS mandates e-filing for a specific eligible benefit request, the rule also provides a process to request a waiver when electronic filing would cause undue hardship.',
+    sources: [
+      {
+        label: 'Mandatory Electronic Filing (e-Filing), 91 Fed. Reg. 51924',
+        url: 'https://www.federalregister.gov/documents/2026/08/11/2026-16313/mandatory-electronic-filing-e-filing',
+        authority: 'Federal Register',
+      },
+    ],
+  },
+  {
     id: 'birthright-barbara',
     title: 'Birthright citizenship after Trump v. Barbara',
     status: 'current-law',
@@ -147,7 +166,7 @@ export const POLICY_UPDATES: PolicyUpdate[] = [
     summary:
       'The current general Form N-400 fee is $710 online or $760 on paper. There is no separate biometrics fee. A $380 reduced paper fee remains available for qualifying applicants, and fee waivers remain available under current rules.',
     whatItMeans:
-      'Applicants requesting the reduced fee or a fee waiver generally must file on paper and document eligibility. The reduced fee and the full fee waiver are different requests with different eligibility standards.',
+      'Applicants requesting the reduced fee or a fee waiver generally must file on paper and document eligibility. The reduced fee and the full fee waiver are different requests with different eligibility standards. Filing-method rules should also be checked against any form-specific mandatory e-filing notice issued under the August 2026 rule.',
     sources: [
       {
         label: 'USCIS Form N-400 fee fact sheet',
