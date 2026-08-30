@@ -26,12 +26,16 @@ exports.run = async function run(options, pa11y) {
 
   const target = document.querySelector('#page-content')
   if (!target || target.getAttribute('tabindex') !== '-1') {
+    const fallbackElement = target || document.documentElement
     issues.push({
       code: 'CitizenApproved.Keyboard.SkipTarget',
-      element: target,
+      element: fallbackElement,
       message: 'The shared post-navigation skip target must exist and remain programmatically focusable with tabindex="-1".',
       type: 'error',
-      runnerExtras: {},
+      runnerExtras: {
+        selector: pa11y.getElementSelector(fallbackElement),
+        context: pa11y.getElementContext(fallbackElement),
+      },
     })
   }
 
