@@ -14,6 +14,7 @@ const guides = [
   ['Forms Guide', 'Current citizenship-related forms with live USCIS form-page links.', FileText, '/resources/forms'],
   ['Advanced Topics', 'Proof of citizenship, dual nationality, denial review, testing exceptions, and historical nationality law.', Gavel, '/topics'],
   ['Plain-Language Glossary', 'Understand technical terms that are easy to mistranslate or confuse, such as residence, physical presence, acquisition, derivation, and policy.', BookOpen, '/glossary'],
+  ['Language Guides', 'USCIS-grounded language priorities, official multilingual routes, and maintained CitizenApproved orientation where we can support it responsibly.', Globe2, '/languages'],
   ['Language & Accessibility', 'Official multilingual resources plus CitizenApproved keyboard, reduced-motion, zoom, print, and translation guidance.', Accessibility, '/accessibility'],
   ['Source Methodology', 'Understand what statutes, regulations, court decisions, agency policy, guidance, and proposed rules can—and cannot—do.', ShieldCheck, '/sources'],
 ] as const
@@ -63,8 +64,9 @@ export default function ResourcesPage() {
           </div>
           <div className="glass-panel p-8">
             <Globe2 className="w-7 h-7 text-violet-400 mb-4" aria-hidden="true" />
-            <h2 className="text-2xl font-bold mb-4">Multilingual official sources</h2>
+            <h2 className="text-2xl font-bold mb-4">Multilingual routes</h2>
             <div className="space-y-3 text-sm">
+              <Link href="/languages" className="block text-cyan-200 underline underline-offset-4">CitizenApproved language guides <ArrowRight className="inline w-4 h-4" aria-hidden="true" /></Link>
               <a href="https://www.uscis.gov/tools/multilingual-resource-center" target="_blank" rel="noreferrer" className="block text-cyan-200 underline underline-offset-4">USCIS Multilingual Resource Center <ExternalLink className="inline w-4 h-4" aria-hidden="true" /></a>
               <a href="https://www.usa.gov/es/naturalizacion-ciudadania-estados-unidos" target="_blank" rel="noreferrer" className="block text-cyan-200 underline underline-offset-4">USAGov en Español <ExternalLink className="inline w-4 h-4" aria-hidden="true" /></a>
             </div>
