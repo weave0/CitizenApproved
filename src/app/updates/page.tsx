@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import { ExternalLink, Scale, Clock3, AlertTriangle, CheckCircle2 } from 'lucide-react'
 import { Navbar } from '@/components/Navbar'
-import { LAST_POLICY_REVIEW, POLICY_UPDATES, statusLabel } from '@/lib/policy/current-policy'
+import { LAST_POLICY_REVIEW, POLICY_UPDATES, PolicyStatus, formatReviewDate, statusLabel } from '@/lib/policy/current-policy'
 
-function badgeClasses(status: string) {
+function badgeClasses(status: PolicyStatus) {
   if (status === 'proposed') return 'border-amber-400/30 bg-amber-400/10 text-amber-300'
   if (status === 'current-law') return 'border-emerald-400/30 bg-emerald-400/10 text-emerald-300'
   return 'border-cyan-400/30 bg-cyan-400/10 text-cyan-300'
@@ -18,7 +18,7 @@ export default function UpdatesPage() {
           <div className="mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-400/20 bg-cyan-400/10 text-cyan-300 text-sm mb-6">
               <Clock3 className="w-4 h-4" />
-              Last policy review: August 29, 2026
+              Last policy review: {formatReviewDate()}
             </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               <span className="gradient-text">What changed — and what did not</span>
@@ -59,9 +59,9 @@ export default function UpdatesPage() {
                     <h2 className="text-2xl font-bold text-white mt-4">{update.title}</h2>
                   </div>
                   <div className="text-xs text-[var(--text-muted)] md:text-right whitespace-nowrap">
-                    Verified {update.lastVerified}
-                    {update.effectiveDate && <div>Effective {update.effectiveDate}</div>}
-                    {update.publishedDate && <div>Published {update.publishedDate}</div>}
+                    Verified {formatReviewDate(update.lastVerified)}
+                    {update.effectiveDate && <div>Effective {formatReviewDate(update.effectiveDate)}</div>}
+                    {update.publishedDate && <div>Published {formatReviewDate(update.publishedDate)}</div>}
                   </div>
                 </div>
 
