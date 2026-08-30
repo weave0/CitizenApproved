@@ -11,6 +11,7 @@ function fail(message) {
 }
 
 function walk(dir) {
+  if (!fs.existsSync(dir)) return []
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
     const full = path.join(dir, entry.name)
     if (entry.isDirectory()) return walk(full)
@@ -41,7 +42,7 @@ if (!reviewMatch) {
 
 const publicFiles = [
   ...walk(path.join(root, 'src/app')),
-  path.join(root, 'src/components/Navbar.tsx'),
+  ...walk(path.join(root, 'src/components')),
 ]
 
 const forbidden = [
@@ -55,10 +56,11 @@ const forbidden = [
   { re: /slowest\s+(field\s+)?office/i, reason: 'unsupported field-office ranking' },
   { re: /\$1,?170\b/, reason: 'obsolete general N-600/N-600K fee' },
   { re: /comprehensive,\s+legally\s+accurate\s+guide\s+to\s+all\s+pathways/i, reason: 'overbroad legacy positioning' },
+  { re: /Someone\s+just\s+(checked|viewed|joined|shared|explored)/i, reason: 'fabricated social-proof activity' },
+  { re: />Just\s+now</i, reason: 'fabricated real-time social-proof timestamp' },
 ]
 
 for (const file of publicFiles) {
-  if (!fs.existsSync(file)) continue
   const text = fs.readFileSync(file, 'utf8')
   for (const rule of forbidden) {
     if (rule.re.test(text)) {
@@ -68,5 +70,5 @@ for (const file of publicFiles) {
 }
 
 if (!process.exitCode) {
-  console.log(`Freshness guard passed across ${publicFiles.length} public source files.`)
+  console.log(`Freshness and credibility guard passed across ${publicFiles.length} public source files.`)
 }
