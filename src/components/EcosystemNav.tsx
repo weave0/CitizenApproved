@@ -21,13 +21,9 @@ export default function EcosystemNav() {
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-12">
           <div className="flex items-center gap-3">
-            <Image
-              src="/gfd-logo.png"
-              alt=""
-              width={120}
-              height={20}
-              className="h-5 w-auto"
-            />
+            <span className="inline-flex h-7 min-w-10 items-center justify-center rounded-md border border-zinc-700 bg-zinc-950 px-2 text-[11px] font-bold tracking-[0.14em] text-zinc-300" aria-hidden="true">
+              GFD
+            </span>
             <span className="text-sm font-semibold text-zinc-300">
               GFD Ecosystem
             </span>
@@ -36,7 +32,7 @@ export default function EcosystemNav() {
           <button
             type="button"
             onClick={() => setIsOpen(!isOpen)}
-            className="flex items-center gap-2 text-sm text-zinc-400 hover:text-zinc-200 transition-colors"
+            className="flex min-h-11 items-center gap-2 px-2 text-sm text-zinc-300 hover:text-white transition-colors"
             aria-label={isOpen ? "Close ecosystem menu" : "Open ecosystem menu"}
             aria-expanded={isOpen}
             aria-controls="ecosystem-menu"
@@ -70,137 +66,48 @@ export default function EcosystemNav() {
             <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
               <div className="grid md:grid-cols-3 gap-6">
                 <div>
-                  <h2 className="text-xs font-bold text-zinc-500 uppercase tracking-wider mb-3">
+                  <h2 className="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-3">
                     Production Platforms
                   </h2>
                   <div className="space-y-2">
-                    <a
-                      href="https://goodflippindesign.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-start gap-3 p-2 rounded-lg hover:bg-zinc-800 transition-colors group"
-                    >
-                      <span className="text-2xl" aria-hidden="true">🎨</span>
-                      <div>
-                        <div className="font-semibold text-zinc-200 group-hover:text-white text-sm">Good Flippin Design</div>
-                        <div className="text-xs text-zinc-500">Strategic Web Development</div>
-                      </div>
+                    <a href="https://goodflippindesign.com" target="_blank" rel="noopener noreferrer" className="flex min-h-11 items-start gap-3 p-2 rounded-lg hover:bg-zinc-800 transition-colors group">
+                      <span className="text-2xl" aria-hidden="true">🎨</span><div><div className="font-semibold text-zinc-200 group-hover:text-white text-sm">Good Flippin Design</div><div className="text-xs text-zinc-400">Strategic Web Development</div></div>
                     </a>
-
-                    <a
-                      href="https://aiaimate.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-start gap-3 p-2 rounded-lg hover:bg-zinc-800 transition-colors group"
-                    >
-                      <span className="text-2xl" aria-hidden="true">🧠</span>
-                      <div>
-                        <div className="font-semibold text-zinc-200 group-hover:text-white text-sm">AI Aimate</div>
-                        <div className="text-xs text-zinc-500">AI Education Platform</div>
-                      </div>
+                    <a href="https://aiaimate.com" target="_blank" rel="noopener noreferrer" className="flex min-h-11 items-start gap-3 p-2 rounded-lg hover:bg-zinc-800 transition-colors group">
+                      <span className="text-2xl" aria-hidden="true">🧠</span><div><div className="font-semibold text-zinc-200 group-hover:text-white text-sm">AI Aimate</div><div className="text-xs text-zinc-400">AI Education Platform</div></div>
                     </a>
-
-                    <a
-                      href="https://culturesherpa.org"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-start gap-3 p-2 rounded-lg hover:bg-zinc-800 transition-colors group"
-                    >
-                      <span className="text-2xl" aria-hidden="true">🌍</span>
-                      <div>
-                        <div className="font-semibold text-zinc-200 group-hover:text-white text-sm">CultureSherpa</div>
-                        <div className="text-xs text-zinc-500">Interactive Cultural Atlas</div>
-                      </div>
+                    <a href="https://culturesherpa.org" target="_blank" rel="noopener noreferrer" className="flex min-h-11 items-start gap-3 p-2 rounded-lg hover:bg-zinc-800 transition-colors group">
+                      <span className="text-2xl" aria-hidden="true">🌍</span><div><div className="font-semibold text-zinc-200 group-hover:text-white text-sm">CultureSherpa</div><div className="text-xs text-zinc-400">Interactive Cultural Atlas</div></div>
                     </a>
-
-                    <a
-                      href="https://goodflippinvibes.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-start gap-3 p-2 rounded-lg hover:bg-zinc-800 transition-colors group"
-                    >
-                      <span className="text-2xl" aria-hidden="true">✨</span>
-                      <div>
-                        <div className="font-semibold text-zinc-200 group-hover:text-white text-sm">Good Flippin Vibes</div>
-                        <div className="text-xs text-zinc-500">Holistic Wellness Platform</div>
-                      </div>
+                    <a href="https://goodflippinvibes.com" target="_blank" rel="noopener noreferrer" className="flex min-h-11 items-start gap-3 p-2 rounded-lg hover:bg-zinc-800 transition-colors group">
+                      <span className="text-2xl" aria-hidden="true">✨</span><div><div className="font-semibold text-zinc-200 group-hover:text-white text-sm">Good Flippin Vibes</div><div className="text-xs text-zinc-400">Holistic Wellness Platform</div></div>
                     </a>
                   </div>
                 </div>
 
                 <div>
-                  <h2 className="text-xs font-bold text-zinc-500 uppercase tracking-wider mb-3">
-                    Research & Intelligence
-                  </h2>
+                  <h2 className="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-3">Research & Intelligence</h2>
                   <div className="space-y-2">
-                    <a
-                      href="https://globaldeets.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-start gap-3 p-2 rounded-lg hover:bg-zinc-800 transition-colors group"
-                    >
-                      <span className="text-2xl" aria-hidden="true">📊</span>
-                      <div>
-                        <div className="font-semibold text-zinc-200 group-hover:text-white text-sm">GlobalDeets</div>
-                        <div className="text-xs text-zinc-500">Visualization & Research Platform</div>
-                      </div>
+                    <a href="https://globaldeets.com" target="_blank" rel="noopener noreferrer" className="flex min-h-11 items-start gap-3 p-2 rounded-lg hover:bg-zinc-800 transition-colors group">
+                      <span className="text-2xl" aria-hidden="true">📊</span><div><div className="font-semibold text-zinc-200 group-hover:text-white text-sm">GlobalDeets</div><div className="text-xs text-zinc-400">Visualization & Research Platform</div></div>
                     </a>
-
-                    <a
-                      href="https://citizenapproved.org"
-                      className="flex items-start gap-3 p-2 rounded-lg bg-blue-950/30 border border-blue-800/30"
-                      aria-current="page"
-                    >
-                      <div
-                        className="flex-shrink-0 w-8 h-8 rounded-full overflow-hidden bg-gradient-to-br from-cyan-500/20 to-blue-500/20 p-1.5 flex items-center justify-center"
-                        aria-hidden="true"
-                      >
-                        <Image
-                          src="/logos/citizenapproved-logo.png"
-                          alt=""
-                          width={32}
-                          height={32}
-                          className="w-full h-full object-contain"
-                        />
+                    <a href="https://citizenapproved.org" className="flex min-h-11 items-start gap-3 p-2 rounded-lg bg-blue-950/30 border border-blue-800/30" aria-current="page">
+                      <div className="flex-shrink-0 w-8 h-8 rounded-full overflow-hidden bg-gradient-to-br from-cyan-500/20 to-blue-500/20 p-1 flex items-center justify-center" aria-hidden="true">
+                        <Image src="/citizenapproved-icon-48x48.png" alt="" width={48} height={48} className="w-full h-full object-contain" />
                       </div>
-                      <div>
-                        <div className="font-semibold text-blue-300 text-sm">CitizenApproved</div>
-                        <div className="text-xs text-blue-400">U.S. Citizenship Pathways</div>
-                        <div className="text-xs text-blue-500 mt-0.5">← You are here</div>
-                      </div>
+                      <div><div className="font-semibold text-blue-200 text-sm">CitizenApproved</div><div className="text-xs text-blue-300">U.S. Citizenship Pathways</div><div className="text-xs text-blue-300 mt-0.5">← You are here</div></div>
                     </a>
                   </div>
                 </div>
 
                 <div>
-                  <h2 className="text-xs font-bold text-zinc-500 uppercase tracking-wider mb-3">
-                    Support the Ecosystem
-                  </h2>
+                  <h2 className="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-3">Support the Ecosystem</h2>
                   <div className="space-y-2">
-                    <a
-                      href="https://gofund.me/f07ea3faf"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-start gap-3 p-3 rounded-lg bg-gradient-to-r from-rose-500/20 to-pink-500/20 border border-rose-500/30 hover:border-rose-400/50 transition-colors group"
-                    >
-                      <span className="text-2xl" aria-hidden="true">❤️</span>
-                      <div>
-                        <div className="font-bold text-rose-300 group-hover:text-rose-200 text-sm">GoFundMe: $300K Campaign</div>
-                        <div className="text-xs text-rose-400">Help sustain the GFD Ecosystem</div>
-                      </div>
+                    <a href="https://gofund.me/f07ea3faf" target="_blank" rel="noopener noreferrer" className="flex min-h-11 items-start gap-3 p-3 rounded-lg bg-gradient-to-r from-rose-500/20 to-pink-500/20 border border-rose-500/30 hover:border-rose-400/50 transition-colors group">
+                      <span className="text-2xl" aria-hidden="true">❤️</span><div><div className="font-bold text-rose-200 group-hover:text-white text-sm">GoFundMe: $300K Campaign</div><div className="text-xs text-rose-200">Help sustain the GFD Ecosystem</div></div>
                     </a>
-
-                    <a
-                      href="https://goodflippindesign.com/donate.html"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-start gap-3 p-2 rounded-lg hover:bg-zinc-800 transition-colors group"
-                    >
-                      <span className="text-2xl" aria-hidden="true">🤝</span>
-                      <div>
-                        <div className="font-semibold text-zinc-200 group-hover:text-white text-sm">Other Donation Options</div>
-                        <div className="text-xs text-zinc-500">Stripe, PayPal, and more</div>
-                      </div>
+                    <a href="https://goodflippindesign.com/donate.html" target="_blank" rel="noopener noreferrer" className="flex min-h-11 items-start gap-3 p-2 rounded-lg hover:bg-zinc-800 transition-colors group">
+                      <span className="text-2xl" aria-hidden="true">🤝</span><div><div className="font-semibold text-zinc-200 group-hover:text-white text-sm">Other Donation Options</div><div className="text-xs text-zinc-400">Stripe, PayPal, and more</div></div>
                     </a>
                   </div>
                 </div>
