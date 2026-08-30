@@ -14,11 +14,11 @@ const navLinks = [
 ];
 
 const tools = [
-  { href: "/eligibility", label: "Eligibility Wizard" },
+  { href: "/eligibility", label: "Pathway Triage" },
   { href: "/civics", label: "Civics Test Guide" },
   { href: "/costs", label: "Current Fees" },
-  { href: "/documents", label: "Document Checklist" },
-  { href: "/processing", label: "Processing Times" },
+  { href: "/documents", label: "Evidence Guide" },
+  { href: "/processing", label: "Processing Guide" },
 ];
 
 export function Navbar() {
@@ -26,7 +26,7 @@ export function Navbar() {
   const [toolsOpen, setToolsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50">
+    <nav className="fixed top-0 left-0 right-0 z-50" aria-label="Primary navigation">
       <div className="absolute inset-0 bg-[#050508]/80 backdrop-blur-xl border-b border-white/[0.06]" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
@@ -35,56 +35,35 @@ export function Navbar() {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity" />
               <div className="relative w-10 h-10 rounded-xl overflow-hidden">
-                <Image
-                  src="/ca-logo.png"
-                  alt="CitizenApproved"
-                  width={40}
-                  height={40}
-                  className="w-full h-full object-cover"
-                  priority
-                />
+                <Image src="/ca-logo.png" alt="CitizenApproved" width={40} height={40} className="w-full h-full object-cover" priority />
               </div>
             </div>
-            <span className="text-lg font-bold bg-gradient-to-r from-white via-white to-white/60 bg-clip-text text-transparent">
-              CitizenApproved
-            </span>
+            <span className="text-lg font-bold bg-gradient-to-r from-white via-white to-white/60 bg-clip-text text-transparent">CitizenApproved</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="px-3 py-2 text-sm text-white/60 hover:text-white rounded-lg hover:bg-white/[0.06] transition-all duration-200"
-              >
-                {link.label}
-              </Link>
+              <Link key={link.href} href={link.href} className="px-3 py-2 text-sm text-white/60 hover:text-white rounded-lg hover:bg-white/[0.06] transition-all duration-200">{link.label}</Link>
             ))}
 
             <div className="relative">
               <button
                 onClick={() => setToolsOpen(!toolsOpen)}
                 className="flex items-center gap-1 px-3 py-2 text-sm text-white/60 hover:text-white rounded-lg hover:bg-white/[0.06] transition-all duration-200"
+                aria-expanded={toolsOpen}
+                aria-haspopup="menu"
+                aria-controls="tools-menu"
               >
                 Tools
-                <ChevronDown
-                  className={`w-4 h-4 transition-transform ${toolsOpen ? "rotate-180" : ""}`}
-                />
+                <ChevronDown className={`w-4 h-4 transition-transform ${toolsOpen ? "rotate-180" : ""}`} />
               </button>
 
               {toolsOpen && (
                 <>
-                  <div className="fixed inset-0 z-10" onClick={() => setToolsOpen(false)} />
-                  <div className="absolute right-0 mt-2 w-56 py-2 bg-[#0a0a0f]/95 backdrop-blur-xl border border-white/[0.08] rounded-xl shadow-2xl shadow-black/50 z-20">
+                  <div className="fixed inset-0 z-10" onClick={() => setToolsOpen(false)} aria-hidden="true" />
+                  <div id="tools-menu" role="menu" className="absolute right-0 mt-2 w-56 py-2 bg-[#0a0a0f]/95 backdrop-blur-xl border border-white/[0.08] rounded-xl shadow-2xl shadow-black/50 z-20">
                     {tools.map((tool) => (
-                      <Link
-                        key={tool.href}
-                        href={tool.href}
-                        onClick={() => setToolsOpen(false)}
-                        className="block px-4 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/[0.06] transition-colors"
-                      >
-                        {tool.label}
-                      </Link>
+                      <Link key={tool.href} href={tool.href} role="menuitem" onClick={() => setToolsOpen(false)} className="block px-4 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/[0.06] transition-colors">{tool.label}</Link>
                     ))}
                   </div>
                 </>
@@ -102,6 +81,8 @@ export function Navbar() {
               onClick={() => setIsOpen(!isOpen)}
               className="md:hidden p-2 text-white/60 hover:text-white rounded-lg hover:bg-white/[0.06] transition-colors"
               aria-label="Toggle navigation"
+              aria-expanded={isOpen}
+              aria-controls="mobile-navigation"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -110,30 +91,15 @@ export function Navbar() {
       </div>
 
       {isOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-[#050508]/98 backdrop-blur-xl border-b border-white/[0.06]">
+        <div id="mobile-navigation" className="md:hidden absolute top-full left-0 right-0 bg-[#050508]/98 backdrop-blur-xl border-b border-white/[0.06]">
           <div className="px-4 py-4 space-y-1">
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="block px-4 py-3 text-white/70 hover:text-white hover:bg-white/[0.06] rounded-lg transition-colors"
-              >
-                {link.label}
-              </Link>
+              <Link key={link.href} href={link.href} onClick={() => setIsOpen(false)} className="block px-4 py-3 text-white/70 hover:text-white hover:bg-white/[0.06] rounded-lg transition-colors">{link.label}</Link>
             ))}
-
             <div className="pt-2 mt-2 border-t border-white/[0.06]">
               <p className="px-4 py-2 text-xs text-white/40 uppercase tracking-wider">Tools</p>
               {tools.map((tool) => (
-                <Link
-                  key={tool.href}
-                  href={tool.href}
-                  onClick={() => setIsOpen(false)}
-                  className="block px-4 py-3 text-white/70 hover:text-white hover:bg-white/[0.06] rounded-lg transition-colors"
-                >
-                  {tool.label}
-                </Link>
+                <Link key={tool.href} href={tool.href} onClick={() => setIsOpen(false)} className="block px-4 py-3 text-white/70 hover:text-white hover:bg-white/[0.06] rounded-lg transition-colors">{tool.label}</Link>
               ))}
             </div>
           </div>
