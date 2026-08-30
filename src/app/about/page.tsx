@@ -1,233 +1,32 @@
-'use client'
-
 import Link from 'next/link'
-import { Scale, Heart, Globe, Shield, BookOpen, CheckCircle, AlertTriangle } from 'lucide-react'
+import { ArrowRight, BookOpen, CheckCircle2, Globe2, Scale, ShieldCheck, TriangleAlert } from 'lucide-react'
 import { Navbar } from '@/components/Navbar'
+import { formatReviewDate } from '@/lib/policy/current-policy'
 
 export default function AboutPage() {
   return (
     <main className="min-h-screen">
       <Navbar />
-      
-      {/* Background */}
-      <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/20 via-gray-950 to-gray-950 pointer-events-none" />
-      <div className="fixed inset-0 cyber-grid pointer-events-none opacity-20" />
-
-      <div className="relative z-10 max-w-4xl mx-auto px-4 pt-28 pb-12">
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white via-cyan-200 to-cyan-400 bg-clip-text text-transparent mb-4">
-            About CitizenApproved
-          </h1>
-          <p className="text-white/60 text-lg">
-            Making citizenship information accessible to everyone
-          </p>
+      <section className="pt-28 md:pt-36 pb-16 px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-sm text-cyan-300 mb-5">Project standard · reviewed {formatReviewDate()}</div>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">About CitizenApproved</h1>
+          <p className="text-xl text-[var(--text-secondary)] max-w-4xl leading-relaxed">CitizenApproved is a free educational project for understanding U.S. citizenship and naturalization law. It is designed to make primary sources easier to find, legal categories easier to distinguish, and changing policy easier to track.</p>
         </div>
+      </section>
 
-        {/* Mission */}
-        <section className="mb-12">
-          <div className="glass-panel p-8">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center">
-                <Heart className="w-6 h-6 text-white" />
-              </div>
-              <h2 className="text-2xl font-bold text-white">Our Mission</h2>
-            </div>
-            <p className="text-gray-300 text-lg leading-relaxed mb-4">
-              CitizenApproved exists to make U.S. citizenship information accessible, accurate, and understandable 
-              for everyone—regardless of their native language, financial situation, or legal background.
-            </p>
-            <p className="text-gray-400 leading-relaxed">
-              We believe that navigating the path to citizenship shouldn&apos;t require expensive legal consultations 
-              just to understand the basics. By sourcing all information directly from federal law and official 
-              government sources, we provide a foundation of knowledge that empowers applicants to understand 
-              their options and make informed decisions.
-            </p>
-          </div>
-        </section>
+      <section className="pb-16 px-6"><div className="max-w-5xl mx-auto glass-panel p-8"><h2 className="text-2xl font-bold mb-4">The mission</h2><p className="text-gray-300 leading-relaxed mb-4">A person should be able to learn what rule applies today, where that rule comes from, what facts matter, what has changed, and what remains uncertain without first having to decode hundreds of pages of statutes, regulations, forms and policy guidance.</p><p className="text-gray-400">That does not mean reducing citizenship law to a simplistic eligibility score. Where the law depends on dates, historical statutes, custody, criminal history, travel, immigration status or other individualized facts, CitizenApproved explains the issue and points to the controlling sources rather than pretending to adjudicate the case.</p></div></section>
 
-        {/* Core Values */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold text-cyan-400 mb-6">Our Core Values</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="glass-panel p-6">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center mb-4">
-                <Scale className="w-5 h-5 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold text-white mb-2">Legal Accuracy</h3>
-              <p className="text-gray-400">
-                Every piece of information is sourced from official federal law, regulations, and government publications. 
-                We cite our sources so you can verify everything yourself.
-              </p>
-            </div>
+      <section className="py-16 px-6 bg-white/[0.02]"><div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-6">
+        <div className="glass-panel p-7"><Scale className="w-7 h-7 text-cyan-400 mb-4" /><h2 className="text-xl font-semibold mb-3">Authority before rhetoric</h2><p className="text-gray-400">Current constitutional, statutory, regulatory and binding judicial authority is identified before proposals, advocacy or political argument.</p></div>
+        <div className="glass-panel p-7"><ShieldCheck className="w-7 h-7 text-green-400 mb-4" /><h2 className="text-xl font-semibold mb-3">Primary-source verification</h2><p className="text-gray-400">Volatile facts such as fees, filing rules, testing requirements and agency practices carry verification dates and links to the government or court source.</p></div>
+        <div className="glass-panel p-7"><Globe2 className="w-7 h-7 text-violet-400 mb-4" /><h2 className="text-xl font-semibold mb-3">Translation-friendly writing</h2><p className="text-gray-400">Pages favor plain, literal English and defined legal terms so browser and assistive translation tools have a cleaner source text. We do not claim that an automated translation is legally authoritative.</p></div>
+        <div className="glass-panel p-7"><BookOpen className="w-7 h-7 text-blue-400 mb-4" /><h2 className="text-xl font-semibold mb-3">Education, not advocacy</h2><p className="text-gray-400">The goal is to explain what a policy does, why proponents support it, what credible criticisms exist, and which authority currently governs—not to recruit the reader to a political position.</p></div>
+      </div></section>
 
-            <div className="glass-panel p-6">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center mb-4">
-                <Globe className="w-5 h-5 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold text-white mb-2">Accessibility</h3>
-              <p className="text-gray-400">
-                Written in plain English for easy translation into 100+ languages. Free forever, with no paywalls, 
-                accounts, or hidden fees.
-              </p>
-            </div>
+      <section className="py-16 px-6"><div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-6"><div className="glass-panel p-7"><CheckCircle2 className="w-7 h-7 text-green-400 mb-4" /><h2 className="text-xl font-semibold mb-4">What this project is</h2><ul className="space-y-3 text-gray-300"><li>An educational guide to major U.S. citizenship and naturalization frameworks.</li><li>A current-policy ledger for rules and practices that change.</li><li>A bridge to statutes, regulations, court decisions and official government materials.</li><li>A public resource intended to be understandable without specialist training.</li></ul></div><div className="glass-panel p-7 border border-yellow-400/20"><TriangleAlert className="w-7 h-7 text-yellow-400 mb-4" /><h2 className="text-xl font-semibold mb-4">What this project is not</h2><ul className="space-y-3 text-gray-300"><li>A law firm or government agency.</li><li>Legal advice or representation.</li><li>A guarantee that any person is eligible for a benefit or already a citizen.</li><li>A substitute for the current USCIS form instructions or a court order in an individual case.</li></ul></div></div></section>
 
-            <div className="glass-panel p-6">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center mb-4">
-                <Shield className="w-5 h-5 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold text-white mb-2">Transparency</h3>
-              <p className="text-gray-400">
-                We show you exactly where each requirement comes from in the law. Understanding the legal hierarchy 
-                helps you know which sources to trust most.
-              </p>
-            </div>
-
-            <div className="glass-panel p-6">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-400 to-violet-500 flex items-center justify-center mb-4">
-                <BookOpen className="w-5 h-5 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold text-white mb-2">Education</h3>
-              <p className="text-gray-400">
-                Beyond just listing requirements, we explain the &quot;why&quot; behind the law. Understanding context 
-                helps you navigate the process more confidently.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* What We Are / What We Are Not */}
-        <section className="mb-12">
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="glass-panel p-6 border-green-500/20">
-              <div className="flex items-center gap-2 mb-4">
-                <CheckCircle className="w-6 h-6 text-green-400" />
-                <h3 className="text-xl font-semibold text-white">What We Are</h3>
-              </div>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-2 text-gray-300">
-                  <span className="text-green-400 mt-1">✓</span>
-                  <span>An educational resource about U.S. citizenship law</span>
-                </li>
-                <li className="flex items-start gap-2 text-gray-300">
-                  <span className="text-green-400 mt-1">✓</span>
-                  <span>A comprehensive guide to all citizenship pathways</span>
-                </li>
-                <li className="flex items-start gap-2 text-gray-300">
-                  <span className="text-green-400 mt-1">✓</span>
-                  <span>A collection of free tools to help you prepare</span>
-                </li>
-                <li className="flex items-start gap-2 text-gray-300">
-                  <span className="text-green-400 mt-1">✓</span>
-                  <span>A bridge to official government sources</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="glass-panel p-6 border-red-500/20">
-              <div className="flex items-center gap-2 mb-4">
-                <AlertTriangle className="w-6 h-6 text-red-400" />
-                <h3 className="text-xl font-semibold text-white">What We Are Not</h3>
-              </div>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-2 text-gray-300">
-                  <span className="text-red-400 mt-1">✗</span>
-                  <span>A law firm or legal service provider</span>
-                </li>
-                <li className="flex items-start gap-2 text-gray-300">
-                  <span className="text-red-400 mt-1">✗</span>
-                  <span>A replacement for qualified legal advice</span>
-                </li>
-                <li className="flex items-start gap-2 text-gray-300">
-                  <span className="text-red-400 mt-1">✗</span>
-                  <span>Affiliated with USCIS or any government agency</span>
-                </li>
-                <li className="flex items-start gap-2 text-gray-300">
-                  <span className="text-red-400 mt-1">✗</span>
-                  <span>Able to guarantee any immigration outcome</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        {/* Our Sources */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold text-cyan-400 mb-6">Our Sources</h2>
-          <div className="glass-panel p-6">
-            <p className="text-gray-300 mb-4">
-              All information on CitizenApproved is derived from authoritative legal sources:
-            </p>
-            <ul className="space-y-3 mb-6">
-              <li className="flex items-center gap-3 text-gray-300">
-                <span className="w-2 h-2 rounded-full bg-cyan-400"></span>
-                <strong>Title 8 U.S. Code</strong> — The official federal immigration statutes
-              </li>
-              <li className="flex items-center gap-3 text-gray-300">
-                <span className="w-2 h-2 rounded-full bg-cyan-400"></span>
-                <strong>8 CFR</strong> — Code of Federal Regulations (implementing rules)
-              </li>
-              <li className="flex items-center gap-3 text-gray-300">
-                <span className="w-2 h-2 rounded-full bg-cyan-400"></span>
-                <strong>USCIS Policy Manual</strong> — Official agency guidance
-              </li>
-              <li className="flex items-center gap-3 text-gray-300">
-                <span className="w-2 h-2 rounded-full bg-cyan-400"></span>
-                <strong>Federal Court Decisions</strong> — Binding legal interpretations
-              </li>
-            </ul>
-            <Link href="/sources" className="text-cyan-400 hover:text-cyan-300 font-semibold">
-              View our complete sources documentation →
-            </Link>
-          </div>
-        </section>
-
-        {/* When to Consult an Attorney */}
-        <section className="mb-12">
-          <div className="glass-panel p-6 border-amber-500/20 bg-amber-500/5">
-            <div className="flex items-center gap-2 mb-4">
-              <AlertTriangle className="w-6 h-6 text-amber-400" />
-              <h3 className="text-xl font-semibold text-white">When to Consult an Attorney</h3>
-            </div>
-            <p className="text-gray-300 mb-4">
-              While our resources can help you understand the basics, you should consult a licensed immigration 
-              attorney if:
-            </p>
-            <ul className="space-y-2 text-gray-400">
-              <li>• You have any criminal history (even minor offenses)</li>
-              <li>• You&apos;ve had previous immigration violations</li>
-              <li>• You&apos;re unsure which pathway applies to your situation</li>
-              <li>• You&apos;ve received a denial or Request for Evidence (RFE)</li>
-              <li>• Your case involves complex family or travel history</li>
-              <li>• You need representation at an interview or hearing</li>
-            </ul>
-          </div>
-        </section>
-
-        {/* Contact / Feedback */}
-        <section className="mb-12">
-          <div className="glass-panel p-6 text-center">
-            <h3 className="text-xl font-semibold text-white mb-2">Have Feedback?</h3>
-            <p className="text-gray-400 mb-4">
-              Found an error? Have a suggestion? We&apos;re always working to improve our resources.
-            </p>
-            <p className="text-gray-500 text-sm">
-              This is an open educational project. All content is provided free of charge.
-            </p>
-          </div>
-        </section>
-
-        {/* Disclaimer */}
-        <div className="p-4 bg-gray-900/50 border border-gray-800 rounded-lg">
-          <p className="text-xs text-gray-500 text-center">
-            <strong>Legal Disclaimer:</strong> CitizenApproved provides general information about U.S. citizenship 
-            pathways based on federal law and official sources. This information is educational in nature and does 
-            not constitute legal advice. Immigration law is complex and individual circumstances vary. For advice 
-            about your specific situation, consult a licensed immigration attorney. CitizenApproved is not affiliated 
-            with USCIS, the Department of Homeland Security, or any government agency.
-          </p>
-        </div>
-      </div>
+      <section className="pb-20 px-6"><div className="max-w-5xl mx-auto glass-panel p-8"><h2 className="text-2xl font-bold mb-4">When individualized legal help matters</h2><p className="text-gray-300 mb-5">Criminal history, immigration violations, long absences, old acquisition or derivative-citizenship rules, disputed parentage, adoption and custody, prior removal proceedings, possible false claims to citizenship, denaturalization questions and other high-stakes facts can require individualized legal analysis.</p><div className="flex flex-wrap gap-5 text-sm"><a href="https://www.uscis.gov/scams-fraud-and-misconduct/avoid-scams/find-legal-services" target="_blank" rel="noreferrer" className="text-cyan-300">USCIS: Find legal services <ArrowRight className="inline w-4 h-4" /></a><Link href="/sources" className="text-cyan-300">Research methodology <ArrowRight className="inline w-4 h-4" /></Link><Link href="/updates" className="text-cyan-300">Current-policy ledger <ArrowRight className="inline w-4 h-4" /></Link></div></div></section>
     </main>
   )
 }
