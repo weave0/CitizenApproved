@@ -9,7 +9,7 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     permissions:
       contents: read
       deployments: write
@@ -39,6 +39,12 @@ jobs:
       - name: Build Static Export
         run: npm run build:static
 
+      - name: Install Rendered Accessibility Auditor
+        run: npm install --global pa11y@10.0.0
+
+      - name: Rendered Accessibility Audit
+        run: NODE_PATH="$(npm root --global)" node scripts/check-rendered-accessibility.cjs
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v4
         with:
@@ -50,9 +56,10 @@ jobs:
       - name: Deployment Summary
         run: |
           echo "✅ Freshness guard passed"
-          echo "✅ Accessibility baseline guard passed"
+          echo "✅ Accessibility source baseline passed"
           echo "✅ Official government resource integrity passed"
           echo "✅ Build completed with RSC payload flattening"
+          echo "✅ Rendered axe + 320px reflow audit passed across sitemap routes"
           echo "✅ Deployed to Cloudflare Pages with Wrangler v4"
           echo ""
           echo "Production URL: https://citizenapproved.org"
