@@ -9,6 +9,5 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
     },
     sitemap: 'https://citizenapproved.org/sitemap.xml',
-    host: 'https://citizenapproved.org',
   }
 }
