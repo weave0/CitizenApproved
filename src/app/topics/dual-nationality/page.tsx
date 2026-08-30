@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight, Globe2, Passport, Scale, ShieldAlert, TriangleAlert } from 'lucide-react'
+import { ArrowRight, Globe2, IdCard, Scale, ShieldAlert, TriangleAlert } from 'lucide-react'
 import { Navbar } from '@/components/Navbar'
 import { formatReviewDate } from '@/lib/policy/current-policy'
 
@@ -34,7 +34,7 @@ export default function DualNationalityPage() {
             <p className="text-gray-400">Dual nationals can have obligations in both countries, including tax, military-service, registration or travel requirements under the relevant laws.</p>
           </div>
           <div className="glass-panel p-8">
-            <Passport className="w-7 h-7 text-green-400 mb-4" />
+            <IdCard className="w-7 h-7 text-green-400 mb-4" />
             <h2 className="text-2xl font-bold mb-4">U.S. passport rule</h2>
             <p className="text-gray-300 mb-4">The State Department states that U.S. citizens, including dual nationals, must enter and depart the United States using a U.S. passport. A U.S. citizen is not eligible for a U.S. visa or ESTA using another nationality.</p>
             <a href="https://travel.state.gov/en/international-travel/planning/personal-needs/dual-nationality.html" target="_blank" rel="noreferrer" className="text-cyan-300">State Department dual-nationality guidance <ArrowRight className="inline w-4 h-4" /></a>
