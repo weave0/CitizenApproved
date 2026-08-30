@@ -84,7 +84,7 @@ export function Navbar() {
             </div>
 
             <div className="flex items-center gap-3">
-              <Link href="/languages" className="hidden sm:flex min-h-11 items-center gap-2 rounded-full border border-white/20 bg-white/[0.06] px-3 text-white hover:bg-white/[0.1]" aria-label="Language guides and accessibility options">
+              <Link href="/languages" className="hidden sm:flex min-h-11 items-center gap-2 rounded-full border border-white/20 bg-white/[0.06] px-3 text-white hover:bg-white/[0.1]" aria-label="Open citizenship language guides">
                 <Globe className="w-4 h-4 text-cyan-300" aria-hidden="true" />
                 <span className="text-xs font-medium text-white">Languages & access</span>
               </Link>
