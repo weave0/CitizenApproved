@@ -10,7 +10,7 @@ jobs:
   validate:
     name: Build, Freshness, Accessibility & Source Integrity
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
 
     steps:
       - name: Checkout
@@ -63,14 +63,21 @@ jobs:
             find out -name "__next.*.txt" -type f | head -5
           fi
 
+      - name: Install Rendered Accessibility Auditor
+        run: npm install --global pa11y@10.0.0
+
+      - name: Rendered Accessibility Audit
+        run: NODE_PATH="$(npm root --global)" node scripts/check-rendered-accessibility.cjs
+
       - name: CI Summary
         run: |
           echo "✅ Policy freshness guard passed"
-          echo "✅ Accessibility baseline guard passed"
+          echo "✅ Accessibility source baseline passed"
           echo "✅ Official government resource integrity passed"
           echo "✅ TypeScript type check passed"
           echo "✅ React/Next.js linting passed"
           echo "✅ Static build completed"
+          echo "✅ Rendered axe + 320px reflow audit passed across sitemap routes"
           echo "✅ RSC payloads flattened"
           echo ""
           echo "Build artifact size:"
