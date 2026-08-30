@@ -1,12 +1,63 @@
 /* Global accessibility layer. Keep this file small, explicit, and design-system agnostic. */
 
+:root {
+  --text-secondary: #d4d4dc;
+  --text-muted: #c4c7cf;
+}
+
 html {
   text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  background: #050508;
 }
 
 body {
   overflow-wrap: anywhere;
+  background: #050508;
+  color: #f8fafc;
+}
+
+/*
+ * The research surface must have deterministic contrast. The original visual
+ * system placed legal copy over translucent glass, gradients, glow fields and
+ * a fixed cyber-grid. Those effects make foreground/background contrast
+ * variable and harder to verify. Preserve the dark identity, but keep reading
+ * surfaces opaque and let accent color live in borders, icons and links.
+ */
+main,
+main section {
+  background-color: #050508 !important;
+  color: #f8fafc;
+}
+
+.cyber-grid,
+.hero-glow {
+  display: none !important;
+}
+
+.gradient-text {
+  background: none !important;
+  color: #a5f3fc !important;
+  -webkit-text-fill-color: #a5f3fc !important;
+  text-shadow: none !important;
+}
+
+.neon-text {
+  text-shadow: none !important;
+}
+
+:where(.glass-panel, .gradient-border, .pathway-card, .stat-card) {
+  background: #111118 !important;
+  border-color: #3f3f46 !important;
+  box-shadow: none !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+.gradient-border::before,
+.pathway-card::before,
+.stat-card::before {
+  display: none !important;
 }
 
 /* A keyboard-first skip link that remains out of the visual flow until focused. */
@@ -53,6 +104,16 @@ main li {
   min-height: 2.75rem;
 }
 
+/*
+ * Legacy pages used very-low-contrast utility classes as decorative "muted"
+ * text. Normalize the known failing muted classes to a readable neutral.
+ */
+:where(main, nav) :where(.text-gray-500, .text-zinc-500),
+:where(main, nav) [class~="text-white/40"],
+:where(main, nav) [class~="text-white/50"] {
+  color: #c4c7cf !important;
+}
+
 /* Respect system motion preferences throughout the existing animated visual system. */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -68,8 +129,6 @@ main li {
     transition-duration: 0.001ms !important;
   }
 
-  .cyber-grid,
-  .hero-glow,
   .animate-float,
   .animate-pulse-glow,
   .animate-shimmer,
@@ -89,15 +148,13 @@ main li {
 /* Increase separation for users who request more contrast. */
 @media (prefers-contrast: more) {
   :root {
-    --text-secondary: #e4e4ec;
-    --text-muted: #c4c4cf;
-    --glass-border: rgba(255, 255, 255, 0.35);
+    --text-secondary: #f1f1f5;
+    --text-muted: #e4e4ec;
+    --glass-border: rgba(255, 255, 255, 0.5);
   }
 
-  .glass-panel,
-  .gradient-border,
-  .pathway-card {
-    border-color: rgba(255, 255, 255, 0.35) !important;
+  :where(.glass-panel, .gradient-border, .pathway-card, .stat-card) {
+    border-color: #d4d4d8 !important;
   }
 }
 
@@ -114,6 +171,7 @@ main li {
   .glass-panel,
   .gradient-border,
   .pathway-card,
+  .stat-card,
   .btn-primary,
   .btn-secondary {
     background: Canvas !important;
@@ -121,24 +179,19 @@ main li {
     box-shadow: none !important;
     color: CanvasText !important;
   }
-
-  .cyber-grid,
-  .hero-glow {
-    display: none !important;
-  }
 }
 
 /* A readable paper/PDF fallback for classrooms, libraries, clinics, and low-bandwidth sharing. */
 @media print {
   html,
-  body {
+  body,
+  main,
+  main section {
     background: #ffffff !important;
     color: #000000 !important;
   }
 
   nav,
-  .cyber-grid,
-  .hero-glow,
   [data-no-print='true'] {
     display: none !important;
   }
@@ -152,10 +205,10 @@ main li {
     max-width: none !important;
   }
 
-  :where(.glass-panel, .gradient-border, .pathway-card) {
+  :where(.glass-panel, .gradient-border, .pathway-card, .stat-card) {
     break-inside: avoid;
     background: transparent !important;
-    border: 1px solid #999999 !important;
+    border: 1px solid #777777 !important;
     box-shadow: none !important;
     color: #000000 !important;
   }

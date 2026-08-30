@@ -22,34 +22,33 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       <Navbar />
-      <section className="pt-32 md:pt-40 pb-20 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true"><div className="absolute w-[650px] h-[650px] rounded-full bg-[var(--neon-cyan)] opacity-15 blur-[160px] -top-64 left-[5%]" /><div className="absolute w-[500px] h-[500px] rounded-full bg-[var(--neon-magenta)] opacity-10 blur-[160px] -top-32 right-[5%]" /></div>
-        <div className="max-w-6xl mx-auto relative text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-400/20 bg-cyan-400/10 text-cyan-200 text-sm mb-7"><BookOpen className="w-4 h-4" aria-hidden="true" />Policy and source review: {formatReviewDate()}</div>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-7"><span className="gradient-text">Understand U.S.</span><br /><span className="text-white">citizenship as it stands today.</span></h1>
+      <section className="pt-32 md:pt-40 pb-20 px-6">
+        <div className="max-w-6xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-300/50 bg-[#0d2024] text-cyan-100 text-sm mb-7"><BookOpen className="w-4 h-4" aria-hidden="true" />Policy and source review: {formatReviewDate()}</div>
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-7"><span className="text-cyan-100">Understand U.S.</span><br /><span className="text-white">citizenship as it stands today.</span></h1>
           <p className="text-xl md:text-2xl text-[var(--text-secondary)] max-w-4xl mx-auto leading-relaxed mb-10">A free, source-first guide to citizenship law and naturalization—built to explain the rule, the date, the agency, the evidence, and the official source you should use next.</p>
           <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4">
-            <Link href="/eligibility" className="px-8 py-4 rounded-xl bg-cyan-500 text-black font-semibold">Find the legal pathway <ArrowRight className="inline w-5 h-5" aria-hidden="true" /></Link>
-            <Link href="/help" className="px-8 py-4 rounded-xl border border-cyan-400/30 text-cyan-200 font-semibold">Find the official resource</Link>
-            <Link href="/updates" className="px-8 py-4 rounded-xl border border-white/15 text-white font-semibold">See what changed</Link>
+            <Link href="/eligibility" className="px-8 py-4 rounded-xl bg-cyan-300 text-[#050508] font-semibold">Find the legal pathway <ArrowRight className="inline w-5 h-5" aria-hidden="true" /></Link>
+            <Link href="/help" className="px-8 py-4 rounded-xl border border-cyan-300/60 text-cyan-100 font-semibold">Find the official resource</Link>
+            <Link href="/updates" className="px-8 py-4 rounded-xl border border-white/30 text-white font-semibold">See what changed</Link>
           </div>
         </div>
       </section>
 
-      <section className="py-16 px-6 bg-white/[0.02]"><div className="max-w-6xl mx-auto"><div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">{principles.map(([Icon, title, text]) => <div key={title} className="glass-panel p-6"><Icon className="w-7 h-7 text-cyan-400 mb-4" aria-hidden="true" /><h2 className="text-lg font-semibold mb-2">{title}</h2><p className="text-sm text-gray-300">{text}</p></div>)}</div></div></section>
+      <section className="py-16 px-6"><div className="max-w-6xl mx-auto"><div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">{principles.map(([Icon, title, text]) => <div key={title} className="glass-panel p-6"><Icon className="w-7 h-7 text-cyan-300 mb-4" aria-hidden="true" /><h2 className="text-lg font-semibold mb-2">{title}</h2><p className="text-sm text-gray-300">{text}</p></div>)}</div></div></section>
 
-      <section className="py-20 px-6"><div className="max-w-6xl mx-auto"><div className="mb-10"><h2 className="text-3xl md:text-4xl font-bold mb-4">Major citizenship frameworks</h2><p className="text-gray-300 max-w-3xl">These are routing categories, not a claim that five cards can capture every historical or special nationality provision. Each page explains when dates or specialized statutes require a deeper analysis.</p></div><div className="grid md:grid-cols-2 gap-5">{pathways.map(([title, text, law, href]) => <Link key={title} href={href} className="glass-panel p-7 group"><div className="text-xs font-mono text-cyan-200 mb-3">{law}</div><h3 className="text-2xl font-semibold mb-3">{title}</h3><p className="text-gray-300 mb-5">{text}</p><span className="text-cyan-200">Open framework <ArrowRight className="inline w-4 h-4" aria-hidden="true" /></span></Link>)}</div></div></section>
+      <section className="py-20 px-6"><div className="max-w-6xl mx-auto"><div className="mb-10"><h2 className="text-3xl md:text-4xl font-bold mb-4">Major citizenship frameworks</h2><p className="text-gray-300 max-w-3xl">These are routing categories, not a claim that five cards can capture every historical or special nationality provision. Each page explains when dates or specialized statutes require a deeper analysis.</p></div><div className="grid md:grid-cols-2 gap-5">{pathways.map(([title, text, law, href]) => <Link key={title} href={href} className="glass-panel p-7 group"><div className="text-xs font-mono text-cyan-100 mb-3">{law}</div><h3 className="text-2xl font-semibold mb-3">{title}</h3><p className="text-gray-300 mb-5">{text}</p><span className="text-cyan-100">Open framework <ArrowRight className="inline w-4 h-4" aria-hidden="true" /></span></Link>)}</div></div></section>
 
-      <section className="py-20 px-6 bg-white/[0.02]">
+      <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="mb-8"><h2 className="text-3xl md:text-4xl font-bold mb-4">Practical guides</h2><p className="text-gray-300 max-w-3xl">Use these to understand the issue. Use the official-resource guide when you are ready to file, verify a current government instruction, find legal help, or work from outside the United States.</p></div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <Link href="/documents" className="glass-panel p-6"><FileSearch className="w-7 h-7 text-violet-400 mb-4" aria-hidden="true" /><h3 className="text-lg font-semibold mb-2">Evidence</h3><p className="text-sm text-gray-300">What is baseline, what is conditional, and where the current instructions control.</p></Link>
-            <Link href="/costs" className="glass-panel p-6"><Scale className="w-7 h-7 text-green-400 mb-4" aria-hidden="true" /><h3 className="text-lg font-semibold mb-2">Fees</h3><p className="text-sm text-gray-300">Current amounts, filing methods, reduced fees, waivers, exemptions and proposals.</p></Link>
-            <Link href="/civics" className="glass-panel p-6"><BookOpen className="w-7 h-7 text-pink-400 mb-4" aria-hidden="true" /><h3 className="text-lg font-semibold mb-2">Civics test</h3><p className="text-sm text-gray-300">The filing-date split between the 2008 and 2025 tests with official study sources.</p></Link>
-            <Link href="/processing" className="glass-panel p-6"><Clock3 className="w-7 h-7 text-yellow-400 mb-4" aria-hidden="true" /><h3 className="text-lg font-semibold mb-2">Processing</h3><p className="text-sm text-gray-300">How to use live USCIS data without mistaking an estimate for a promise.</p></Link>
-            <Link href="/glossary" className="glass-panel p-6"><BookOpen className="w-7 h-7 text-cyan-400 mb-4" aria-hidden="true" /><h3 className="text-lg font-semibold mb-2">Plain-language glossary</h3><p className="text-sm text-gray-300">Definitions for terms whose legal meaning can disappear in ordinary language or translation.</p></Link>
-            <Link href="/accessibility" className="glass-panel p-6"><Globe2 className="w-7 h-7 text-blue-400 mb-4" aria-hidden="true" /><h3 className="text-lg font-semibold mb-2">Language & accessibility</h3><p className="text-sm text-gray-300">Official multilingual resources, disability access, reduced motion, print, keyboard and translation guidance.</p></Link>
+            <Link href="/documents" className="glass-panel p-6"><FileSearch className="w-7 h-7 text-violet-300 mb-4" aria-hidden="true" /><h3 className="text-lg font-semibold mb-2">Evidence</h3><p className="text-sm text-gray-300">What is baseline, what is conditional, and where the current instructions control.</p></Link>
+            <Link href="/costs" className="glass-panel p-6"><Scale className="w-7 h-7 text-green-300 mb-4" aria-hidden="true" /><h3 className="text-lg font-semibold mb-2">Fees</h3><p className="text-sm text-gray-300">Current amounts, filing methods, reduced fees, waivers, exemptions and proposals.</p></Link>
+            <Link href="/civics" className="glass-panel p-6"><BookOpen className="w-7 h-7 text-pink-300 mb-4" aria-hidden="true" /><h3 className="text-lg font-semibold mb-2">Civics test</h3><p className="text-sm text-gray-300">The filing-date split between the 2008 and 2025 tests with official study sources.</p></Link>
+            <Link href="/processing" className="glass-panel p-6"><Clock3 className="w-7 h-7 text-yellow-300 mb-4" aria-hidden="true" /><h3 className="text-lg font-semibold mb-2">Processing</h3><p className="text-sm text-gray-300">How to use live USCIS data without mistaking an estimate for a promise.</p></Link>
+            <Link href="/glossary" className="glass-panel p-6"><BookOpen className="w-7 h-7 text-cyan-300 mb-4" aria-hidden="true" /><h3 className="text-lg font-semibold mb-2">Plain-language glossary</h3><p className="text-sm text-gray-300">Definitions for terms whose legal meaning can disappear in ordinary language or translation.</p></Link>
+            <Link href="/accessibility" className="glass-panel p-6"><Globe2 className="w-7 h-7 text-blue-300 mb-4" aria-hidden="true" /><h3 className="text-lg font-semibold mb-2">Language & accessibility</h3><p className="text-sm text-gray-300">Official multilingual resources, disability access, reduced motion, print, keyboard and translation guidance.</p></Link>
           </div>
         </div>
       </section>
@@ -57,21 +56,21 @@ export default function Home() {
       <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-6">
           <div className="glass-panel p-8 md:p-10">
-            <Landmark className="w-8 h-8 text-cyan-400 mb-5" aria-hidden="true" />
+            <Landmark className="w-8 h-8 text-cyan-300 mb-5" aria-hidden="true" />
             <h2 className="text-3xl font-bold mb-4">Go to the government source that owns the question.</h2>
             <p className="text-gray-300 mb-5">USCIS, the Department of State, DOJ/EOIR, Congress, regulators, and courts do different jobs. The official-help hub explains which one to use for filing, proof of citizenship, a case inquiry, language support, disability accommodations, legal representation, or primary-law research.</p>
-            <Link href="/help" className="inline-flex items-center gap-2 text-cyan-200 underline underline-offset-4">Open official help <ArrowRight className="w-4 h-4" aria-hidden="true" /></Link>
+            <Link href="/help" className="inline-flex items-center gap-2 text-cyan-100 underline underline-offset-4">Open official help <ArrowRight className="w-4 h-4" aria-hidden="true" /></Link>
           </div>
           <div className="glass-panel p-8 md:p-10">
-            <Globe2 className="w-8 h-8 text-violet-400 mb-5" aria-hidden="true" />
+            <Globe2 className="w-8 h-8 text-violet-300 mb-5" aria-hidden="true" />
             <h2 className="text-3xl font-bold mb-4">Global audience, U.S. legal subject.</h2>
             <p className="text-gray-300 mb-5">Readers abroad, multilingual families, educators, researchers, people using assistive technology, and applicants with limited bandwidth should be able to reach the same core information without a separate “special” version.</p>
-            <Link href="/accessibility" className="inline-flex items-center gap-2 text-cyan-200 underline underline-offset-4">Language and accessibility approach <ArrowRight className="w-4 h-4" aria-hidden="true" /></Link>
+            <Link href="/accessibility" className="inline-flex items-center gap-2 text-cyan-100 underline underline-offset-4">Language and accessibility approach <ArrowRight className="w-4 h-4" aria-hidden="true" /></Link>
           </div>
         </div>
       </section>
 
-      <section className="py-20 px-6 bg-white/[0.02]"><div className="max-w-6xl mx-auto glass-panel p-8 md:p-10 grid lg:grid-cols-[1fr_auto] gap-8 items-center"><div><Gavel className="w-7 h-7 text-cyan-400 mb-4" aria-hidden="true" /><h2 className="text-3xl font-bold mb-4">Verify us.</h2><p className="text-gray-300 max-w-3xl mb-4">CitizenApproved is designed so a reader can inspect the source beneath a consequential claim. The methodology explains how statutes, court decisions, regulations, agency policy and proposed rules are treated differently.</p><p className="text-sm text-gray-400">Educational information, not legal advice. CitizenApproved is not affiliated with USCIS or the U.S. government.</p></div><div className="flex flex-col gap-3"><Link href="/sources" className="px-6 py-3 rounded-lg border border-cyan-400/20 text-cyan-200">Source methodology <ArrowRight className="inline w-4 h-4" aria-hidden="true" /></Link><Link href="/legal" className="px-6 py-3 rounded-lg border border-white/10 text-white">Legal foundation <ArrowRight className="inline w-4 h-4" aria-hidden="true" /></Link></div></div></section>
+      <section className="py-20 px-6"><div className="max-w-6xl mx-auto glass-panel p-8 md:p-10 grid lg:grid-cols-[1fr_auto] gap-8 items-center"><div><Gavel className="w-7 h-7 text-cyan-300 mb-4" aria-hidden="true" /><h2 className="text-3xl font-bold mb-4">Verify us.</h2><p className="text-gray-300 max-w-3xl mb-4">CitizenApproved is designed so a reader can inspect the source beneath a consequential claim. The methodology explains how statutes, court decisions, regulations, agency policy and proposed rules are treated differently.</p><p className="text-sm text-gray-300">Educational information, not legal advice. CitizenApproved is not affiliated with USCIS or the U.S. government.</p></div><div className="flex flex-col gap-3"><Link href="/sources" className="px-6 py-3 rounded-lg border border-cyan-300/50 text-cyan-100">Source methodology <ArrowRight className="inline w-4 h-4" aria-hidden="true" /></Link><Link href="/legal" className="px-6 py-3 rounded-lg border border-white/20 text-white">Legal foundation <ArrowRight className="inline w-4 h-4" aria-hidden="true" /></Link></div></div></section>
     </main>
   )
 }

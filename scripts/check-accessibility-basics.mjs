@@ -25,6 +25,7 @@ const layout = read('src/app/layout.tsx')
 const navbar = read('src/components/Navbar.tsx')
 const accessibilityCss = read('src/app/accessibility.css')
 const sitemap = read('src/app/sitemap.ts')
+const spanishGuide = read('src/app/languages/es/page.tsx')
 
 const requiredLayoutPatterns = [
   [/<html\b[^>]*\blang=["']en["'][^>]*>/, 'root document must declare its language'],
@@ -43,6 +44,10 @@ if (/id=["']page-content["'][^>]*aria-hidden/.test(navbar)) {
   fail('skip-link target must not be hidden from assistive technology')
 }
 
+if (!/<main\b[^>]*\blang=["']es["'][^>]*>/.test(spanishGuide)) {
+  fail('the maintained Spanish orientation page must declare its content language')
+}
+
 const requiredCssPatterns = [
   [/focus-visible/, 'visible keyboard focus styles are required'],
   [/prefers-reduced-motion:\s*reduce/, 'reduced-motion support is required'],
@@ -54,7 +59,7 @@ for (const [pattern, message] of requiredCssPatterns) {
   if (!pattern.test(accessibilityCss)) fail(message)
 }
 
-for (const route of ['/help', '/accessibility', '/glossary']) {
+for (const route of ['/help', '/accessibility', '/glossary', '/languages', '/languages/es']) {
   if (!sitemap.includes(`'${route}'`)) fail(`${route} must remain discoverable in the sitemap`)
 }
 

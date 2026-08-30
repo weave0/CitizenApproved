@@ -77,6 +77,21 @@ export const OFFICIAL_RESOURCES: OfficialResource[] = [
     note: 'When a translated filing guide conflicts with the current form or instructions, verify the live USCIS form page before filing.',
   },
   {
+    title: 'USCIS en español: Ciudadanía',
+    agency: 'USCIS',
+    url: 'https://www.uscis.gov/es/ciudadania',
+    kind: 'language',
+    description: 'USCIS Spanish-language citizenship and naturalization resources, study materials, process guidance, and related official links.',
+  },
+  {
+    title: 'USCIS Language Access Plan',
+    agency: 'USCIS',
+    url: 'https://www.uscis.gov/sites/default/files/document/brochures/USCIS_Language_Access_Plan-November_2024.pdf',
+    kind: 'language',
+    description: 'USCIS plan describing language-access obligations, multilingual services, and the languages prioritized for citizenship outreach.',
+    note: 'CitizenApproved uses this government-defined language set to prioritize translation work rather than inventing its own popularity ranking.',
+  },
+  {
     title: 'USAGov citizenship and naturalization',
     agency: 'U.S. General Services Administration (USAGov)',
     url: 'https://www.usa.gov/naturalization',
