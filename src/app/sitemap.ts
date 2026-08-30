@@ -1,8 +1,10 @@
 import type { MetadataRoute } from 'next'
+import { LAST_POLICY_REVIEW } from '@/lib/policy/current-policy'
 
 export const dynamic = 'force-static'
 
 const baseUrl = 'https://citizenapproved.org'
+const reviewedAt = new Date(`${LAST_POLICY_REVIEW}T00:00:00Z`)
 
 const routes = [
   '',
@@ -25,8 +27,13 @@ const routes = [
   '/resources/checklist',
   '/resources/forms',
   '/resources/timeline',
-  '/right-to-repair',
   '/sources',
+  '/topics',
+  '/topics/dual-nationality',
+  '/topics/exceptions',
+  '/topics/historical-law',
+  '/topics/proof',
+  '/topics/review',
   '/updates',
   '/why-so-long',
   '/privacy',
@@ -36,8 +43,15 @@ const routes = [
 export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((path) => ({
     url: `${baseUrl}${path}`,
-    lastModified: new Date(),
+    lastModified: reviewedAt,
     changeFrequency: path === '/updates' ? 'daily' : 'weekly',
-    priority: path === '' ? 1 : path === '/updates' ? 0.95 : path.startsWith('/pathways') ? 0.85 : 0.7,
+    priority:
+      path === ''
+        ? 1
+        : path === '/updates'
+          ? 0.95
+          : path.startsWith('/pathways') || path.startsWith('/topics')
+            ? 0.85
+            : 0.7,
   }))
 }
