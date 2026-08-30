@@ -1,0 +1,172 @@
+/* Global accessibility layer. Keep this file small, explicit, and design-system agnostic. */
+
+html {
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  overflow-wrap: anywhere;
+}
+
+/* A keyboard-first skip link that remains out of the visual flow until focused. */
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 1000;
+  transform: translateY(-180%);
+  padding: 0.75rem 1rem;
+  border: 2px solid #ffffff;
+  border-radius: 0.5rem;
+  background: #050508;
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 0 0 3px #050508;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* Never remove focus without replacing it with an equally visible treatment. */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 3px solid #66f7ff;
+  outline-offset: 3px;
+  border-radius: 0.35rem;
+}
+
+/* Help long legal citations and URLs survive zoom and narrow screens. */
+main :where(p, li, dd, dt, blockquote, a, code) {
+  overflow-wrap: anywhere;
+}
+
+/* Improve legibility for long-form educational copy without forcing a new visual style. */
+main p,
+main li {
+  line-height: 1.65;
+}
+
+/* Avoid tiny interactive targets where text or icon controls appear. */
+:where(button, input, select, textarea) {
+  min-height: 2.75rem;
+}
+
+/* Respect system motion preferences throughout the existing animated visual system. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .cyber-grid,
+  .hero-glow,
+  .animate-float,
+  .animate-pulse-glow,
+  .animate-shimmer,
+  .animate-gradient {
+    animation: none !important;
+  }
+
+  .gradient-border:hover,
+  .pathway-card:hover,
+  .btn-primary:hover,
+  .btn-secondary:hover,
+  .stat-card:hover {
+    transform: none !important;
+  }
+}
+
+/* Increase separation for users who request more contrast. */
+@media (prefers-contrast: more) {
+  :root {
+    --text-secondary: #e4e4ec;
+    --text-muted: #c4c4cf;
+    --glass-border: rgba(255, 255, 255, 0.35);
+  }
+
+  .glass-panel,
+  .gradient-border,
+  .pathway-card {
+    border-color: rgba(255, 255, 255, 0.35) !important;
+  }
+}
+
+/* Let Windows High Contrast and similar forced-color modes do their job. */
+@media (forced-colors: active) {
+  .gradient-text,
+  .neon-text,
+  .legal-citation {
+    color: CanvasText !important;
+    -webkit-text-fill-color: CanvasText !important;
+    text-shadow: none !important;
+  }
+
+  .glass-panel,
+  .gradient-border,
+  .pathway-card,
+  .btn-primary,
+  .btn-secondary {
+    background: Canvas !important;
+    border: 1px solid CanvasText !important;
+    box-shadow: none !important;
+    color: CanvasText !important;
+  }
+
+  .cyber-grid,
+  .hero-glow {
+    display: none !important;
+  }
+}
+
+/* A readable paper/PDF fallback for classrooms, libraries, clinics, and low-bandwidth sharing. */
+@media print {
+  html,
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  nav,
+  .cyber-grid,
+  .hero-glow,
+  [data-no-print='true'] {
+    display: none !important;
+  }
+
+  body {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 11pt;
+  }
+
+  main {
+    max-width: none !important;
+  }
+
+  :where(.glass-panel, .gradient-border, .pathway-card) {
+    break-inside: avoid;
+    background: transparent !important;
+    border: 1px solid #999999 !important;
+    box-shadow: none !important;
+    color: #000000 !important;
+  }
+
+  :where(h1, h2, h3, h4, p, li, a, span, div) {
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+    text-shadow: none !important;
+  }
+
+  a {
+    text-decoration: underline !important;
+  }
+}
