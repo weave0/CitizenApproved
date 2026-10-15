@@ -129,17 +129,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SentryInit />
 
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-WM6Q66W9W0"
+          src="/ga4-consent.js"
           strategy="afterInteractive"
+          data-ga4="G-WM6Q66W9W0"
+          data-hosts="citizenapproved.org,www.citizenapproved.org"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-WM6Q66W9W0');`}
-        </Script>
         <Script id="web-vitals-reporter" strategy="afterInteractive">
-          {`(()=>{if(!window.PerformanceObserver)return;function r(n,v,i){if(window.gtag)gtag('event',n,{value:Math.round('CLS'===n?1e3*v:v),metric_id:i||'',non_interaction:!0,event_category:'Web Vitals'});}const ob=(t,cb,opts)=>{try{new PerformanceObserver(l=>{l.getEntries().forEach(cb)}).observe(Object.assign({type:t,buffered:!0},opts||{}));}catch(e){}};ob('largest-contentful-paint',e=>r('LCP',e.startTime,e.id));ob('first-input',e=>r('FID',e.processingStart-e.startTime,e.id));ob('layout-shift',e=>{if(!e.hadRecentInput)r('CLS',e.value,e.id);},{durationThreshold:0});ob('event',e=>{if(e.interactionId)r('INP',e.duration,e.id);},{durationThreshold:40});const np=(performance.getEntriesByType('navigation')||[])[0];if(np)r('TTFB',np.responseStart,np.name);})();`}
+          {`(()=>{if(!window.PerformanceObserver)return;function r(n,v,i){if(window.gtag)gtag('event',n,{value:Math.round('CLS'===n?1e3*v:v),metric_id:'browser',non_interaction:!0,event_category:'Web Vitals'});}const ob=(t,cb,opts)=>{try{new PerformanceObserver(l=>{l.getEntries().forEach(cb)}).observe(Object.assign({type:t,buffered:!0},opts||{}));}catch(e){}};ob('largest-contentful-paint',e=>r('LCP',e.startTime,e.id));ob('first-input',e=>r('FID',e.processingStart-e.startTime,e.id));ob('layout-shift',e=>{if(!e.hadRecentInput)r('CLS',e.value,e.id);},{durationThreshold:0});ob('event',e=>{if(e.interactionId)r('INP',e.duration,e.id);},{durationThreshold:40});const np=(performance.getEntriesByType('navigation')||[])[0];if(np)r('TTFB',np.responseStart,np.name);})();`}
         </Script>
       </body>
     </html>

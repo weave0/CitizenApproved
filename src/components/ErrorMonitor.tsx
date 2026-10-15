@@ -9,19 +9,19 @@ declare global {
 
 export function ErrorMonitor() {
   useEffect(() => {
-    const handleError = (e: ErrorEvent) => {
+    const handleError = () => {
       if (typeof window.gtag === 'function')
         window.gtag('event', 'js_error', {
           event_category: 'Error',
-          event_label: String(e.message).slice(0, 150),
+          event_label: 'client_error',
           non_interaction: true,
         });
     };
-    const handleRejection = (e: PromiseRejectionEvent) => {
+    const handleRejection = () => {
       if (typeof window.gtag === 'function')
         window.gtag('event', 'promise_error', {
           event_category: 'Error',
-          event_label: String(e.reason).slice(0, 150),
+          event_label: 'unhandled_rejection',
           non_interaction: true,
         });
     };
