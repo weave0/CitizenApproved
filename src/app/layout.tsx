@@ -126,6 +126,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="relative z-10 min-h-screen">
           {children}
         </div>
+        <footer className="relative z-10 py-6 px-4 text-center text-sm text-gray-400" aria-label="Creator and independent project support">
+          <div className="flex flex-wrap justify-center gap-5">
+            <a href="https://www.linkedin.com/in/weaverbrett/" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-300">Connect with creator on LinkedIn</a>
+            <a href="https://gofund.me/3f0dfec7a" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-300">Support GlobalDeets (separate project; GoFundMe)</a>
+          </div>
+        </footer>
         <SentryInit />
 
         <Script
